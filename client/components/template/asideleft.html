@@ -1,0 +1,14 @@
+<div class="aside" tabindex="-1" role="dialog" ng-controller="AsideLeftController as aside">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header">
+                <h4 class="aside-title">Menu</h4>
+            </div>
+            <div class="aside-body">
+                <div class="list-group" ng-show="aside.isRekam()">
+                    <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in aside.rekam" class="list-group-item" title="{{menu.label}}">{{menu.label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

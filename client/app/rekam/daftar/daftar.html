@@ -1,0 +1,41 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Daftar Pasien</h3>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div ng-show="rk.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
+                <div class="table-responsive" ng-show="rk.datas.length>0">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">No. Registrasi</th>
+                                <th class="text-center">Tanggal Registrasi</th>
+                                <th class="text-center">Nama Pasien</th>
+                                <th class="text-center">Tanggal Lahir</th>
+                                <th class="text-center">Umur</th>
+                                <th class="text-center">Jenis Kelamin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in rk.datas">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.registrasi}}</td>
+                                <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>
+                                <td>{{data.nama}}</td>
+                                <td>{{data.lahir|date:'dd MMMM yyyy'}}</td>
+                                <td>{{data.umur}}</td>
+                                <td>{{data.jk}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

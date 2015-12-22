@@ -1,0 +1,40 @@
+<navbar></navbar>
+
+<div class="login">
+    <div class="hero-login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h1>Login</h1>
+                    <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="email" class="form-control input-sm" ng-model="vm.user.email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control input-sm" ng-model="vm.user.password" required>
+                        </div>
+
+                        <div class="form-group has-error">
+                            <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
+                                Masukkan Username dan Password anda
+                            </p>
+                            <p class="help-block" ng-show="vm.errors.other">{{vm.errors.other}}</p>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary btn-sm" type="submit"><span class="fa fa-sign-in fa-fw"></span> Login</button>
+                        </div>
+                    </form>
+                    <hr/>
+                    <div class="footer">
+                        <div>Copyright &copy; {{vm.y1}}<span ng-show="y2>y1"> - {{vm.y2}}</span></div>
+                        <div>UPT. Kesehatan Paru Masyarakat Provinsi Sumatera Utara</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

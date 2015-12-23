@@ -9,28 +9,56 @@
         <div class="col-md-12">
             <div class="blockui" block-ui="block">
                 <div ng-show="rk.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
+                <div class="well" ng-show="rk.datas.length>0">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <ui-select name="by" ng-model="rk.by.selected" search-enabled="false" style="width: 200px;">
+                                <ui-select-match placeholder="Cari berdasarkan...">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="by in rk.bys">
+                                    <div ng-bind-html="by.name"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group" ng-show="rk.by.selected.id=='1'">
+                            <input type="text" class="form-control input-sm" ng-model="search.registrasi" style="width: 200px;" />
+                        </div>
+                        <div class="form-group" ng-show="rk.by.selected.id=='2'">
+                            <input type="text" class="form-control input-sm" ng-model="search.nama" style="width: 200px;" />
+                        </div>
+                    </form>
+                </div>
                 <div class="table-responsive" ng-show="rk.datas.length>0">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">No. Registrasi</th>
+                                <th class="sort" ng-click="rk.predicate='registrasi'; reverse=!reverse">
+                                    <span>No. Registrasi<span ng-show="rk.predicate=='registrasi'"><span ng-class="{'fa fa-angle-up pull-right':!reverse,'fa fa-angle-down pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
                                 <th class="text-center">Tanggal Registrasi</th>
-                                <th class="text-center">Nama Pasien</th>
-                                <th class="text-center">Tanggal Lahir</th>
+                                <th class="sort" ng-click="rk.predicate='nama'; reverse=!reverse">
+                                    <span>Nama Pasien<span ng-show="rk.predicate=='nama'"><span ng-class="{'fa fa-angle-up pull-right':!reverse,'fa fa-angle-down pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
                                 <th class="text-center">Umur</th>
                                 <th class="text-center">Jenis Kelamin</th>
+                                <th class="text-center">Status Keluarga</th>
+                                <th class="text-center">Dikirim / Konsul</th>
+                                <th class="text-center">Pembiayaan</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="data in rk.datas">
+                            <tr ng-repeat="data in rk.datas | orderBy:predicate:reverse | filter:search">
                                 <td class="text-center">{{$index+1}}</td>
                                 <td>{{data.registrasi}}</td>
                                 <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>
                                 <td>{{data.nama}}</td>
-                                <td>{{data.lahir|date:'dd MMMM yyyy'}}</td>
                                 <td>{{data.umur}}</td>
                                 <td>{{data.jk}}</td>
+                                <td>{{data.sk}}</td>
+                                <td>{{data.dikirim}}</td>
+                                <td>{{data.pembiayaan}}</td>
                             </tr>
                         </tbody>
                     </table>

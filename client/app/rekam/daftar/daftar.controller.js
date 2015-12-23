@@ -7,6 +7,19 @@ class RDaftarController {
         this.$timeout = $timeout;
         this.Restangular = Restangular;
         this.getProgram();
+        this.predicate = 'registrasi';
+
+        this.by = {};
+        this.bys = [
+            {
+                id: '1',
+                name: 'No. Registrasi'
+            },
+            {
+                id: '2',
+                name: 'Nama Pasien'
+            }
+        ];
     }
 
     getProgram() {

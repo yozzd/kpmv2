@@ -20,6 +20,70 @@ class RCreateController {
                 name: 'P'
             }
         ];
+
+        this.sk = {};
+        this.sks = [
+            {
+                id: '1',
+                name: 'A'
+            },
+            {
+                id: '2',
+                name: 'I'
+            },
+            {
+                id: '3',
+                name: 'S'
+            },
+            {
+                id: '4',
+                name: 'J'
+            },
+            {
+                id: '5',
+                name: 'D'
+            }
+        ];
+
+        this.dikirim = {};
+        this.dikirims = [
+            {
+                id: '1',
+                name: 'Puskesmas'
+            },
+            {
+                id: '2',
+                name: 'Rumah Sakit / Klinik'
+            },
+            {
+                id: '3',
+                name: 'Praktek Dokter Swasta (PDS)'
+            },
+            {
+                id: '4',
+                name: 'Datang Sendiri'
+            },
+            {
+                id: '5',
+                name: 'Dll'
+            }
+        ];
+
+        this.pembiayaan = {};
+        this.pembiayaans = [
+            {
+                id: '1',
+                name: 'BPJS'
+            },
+            {
+                id: '2',
+                name: 'Biaya Sendiri'
+            },
+            {
+                id: '3',
+                name: 'Dll'
+            }
+        ];
     }
 
     lahir(tgl) {
@@ -35,7 +99,21 @@ class RCreateController {
                     nama: this.data.nama,
                     lahir: this.data.lahir,
                     umur: this.data.umur,
-                    jk: this.jk.selected.name
+                    jk: this.jk.selected.name,
+                    suku: this.data.suku,
+                    agama: this.data.agama,
+                    pekerjaan: this.data.pekerjaan,
+                    sk: this.sk.selected.name,
+                    jalan: this.data.jalan,
+                    lingkungan: this.data.lingkungan,
+                    kelkec: this.data.kelkec,
+                    kotakab: this.data.kotakab,
+                    provinsi: this.data.provinsi,
+                    telp: this.data.telp,
+                    dikirim: this.dikirim.selected.name,
+                    kdikirim: this.data.kdikirim,
+                    pembiayaan: this.pembiayaan.selected.name,
+                    kpembiayaan: this.data.kpembiayaan
                 })
                 .then(() => {
                     this.$alert({

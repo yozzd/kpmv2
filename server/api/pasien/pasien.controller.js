@@ -89,7 +89,21 @@ export function create(req, res) {
                     nama: req.body.nama,
                     lahir: req.body.lahir,
                     umur: req.body.umur,
-                    jk: req.body.jk
+                    jk: req.body.jk,
+                    suku: req.body.suku,
+                    agama: req.body.agama,
+                    pekerjaan: req.body.pekerjaan,
+                    sk: req.body.sk,
+                    jalan: req.body.jalan,
+                    lingkungan: req.body.lingkungan,
+                    kelkec: req.body.kelkec,
+                    kotakab: req.body.kotakab,
+                    provinsi: req.body.provinsi,
+                    telp: req.body.telp,
+                    dikirim: req.body.dikirim,
+                    kdikirim: req.body.kdikirim,
+                    pembiayaan: req.body.pembiayaan,
+                    kpembiayaan: req.body.kpembiayaan
                 });
                 return newPasien.saveAsync()
                     .then(saved => {

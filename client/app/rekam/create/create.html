@@ -7,56 +7,148 @@
             <h3>Create Pasien</h3>
             <hr/>
         </div>
-        <div class="col-md-4">
-            <form class="form" name="form" ng-submit="rk.submit(form)" novalidate>
-                <div class="form-group" ng-class="{'has-error':form.registrasi.$error.required && rk.submitted}">
-                    <label>Nomor Registrasi <span class="req">*</span></label>
-                    <input type="text" name="registrasi" class="form-control input-sm" ng-model="rk.data.registrasi" required>
-                    <p class="help-block" ng-show="form.registrasi.$error.required && rk.submitted">
-                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
-                    </p>
+        <form class="form" name="form" ng-submit="rk.submit(form)" novalidate>
+            <div class="col-md-4">
+                <div class="well">
+                    <div class="form-group" ng-class="{'has-error':form.registrasi.$error.required && rk.submitted}">
+                        <label>Nomor Registrasi <span class="req">*</span></label>
+                        <input type="text" name="registrasi" class="form-control input-sm" ng-model="rk.data.registrasi" required>
+                        <p class="help-block" ng-show="form.registrasi.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.tanggal.$error.required && rk.submitted}">
+                        <label>Tanggal Registrasi <span class="req">*</span></label>
+                        <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.data.tanggal" data-date-format="dd MMMM yyyy" bs-datepicker required>
+                        <p class="help-block" ng-show="form.tanggal.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.nama.$error.required && rk.submitted}">
+                        <label>Nama Pasien <span class="req">*</span></label>
+                        <input type="text" name="nama" class="form-control input-sm" ng-model="rk.data.nama" required>
+                        <p class="help-block" ng-show="form.nama.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="text" name="lahir" class="form-control input-sm" ng-model="rk.data.lahir" ng-change="rk.lahir(rk.data.lahir)" data-date-format="dd MMMM yyyy" bs-datepicker>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.umur.$error.required && rk.submitted}">
+                        <label>Umur <span class="req">*</span></label>
+                        <input type="text" name="umur" class="form-control input-sm" ng-model="rk.data.umur" required>
+                        <p class="help-block" ng-show="form.umur.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.jk.$error.required && rk.submitted}">
+                        <label>Jenis Kelamin <span class="req">*</span></label>
+                        <ui-select name="jk" ng-model="rk.jk.selected" search-enabled="false" required>
+                            <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="jk in rk.jks">
+                                <div ng-bind-html="jk.name"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p class="help-block" ng-show="form.jk.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label>Suku</label>
+                        <input type="text" name="suku" class="form-control input-sm" ng-model="rk.data.suku">
+                    </div>
+                    <div class="form-group">
+                        <label>Agama</label>
+                        <input type="text" name="agama" class="form-control input-sm" ng-model="rk.data.agama">
+                    </div>
+                    <div class="form-group">
+                        <label>Pekerjaan</label>
+                        <input type="text" name="pekerjaan" class="form-control input-sm" ng-model="rk.data.pekerjaan">
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.sk.$error.required && rk.submitted}">
+                        <label>Status Keluarga <span class="req">*</span></label>
+                        <ui-select name="sk" ng-model="rk.sk.selected" search-enabled="false" required>
+                            <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="sk in rk.sks">
+                                <div ng-bind-html="sk.name"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p class="help-block" ng-show="form.sk.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error':form.tanggal.$error.required && rk.submitted}">
-                    <label>Tanggal Registrasi <span class="req">*</span></label>
-                    <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.data.tanggal" data-date-format="dd MMMM yyyy" bs-datepicker required>
-                    <p class="help-block" ng-show="form.tanggal.$error.required && rk.submitted">
-                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
-                    </p>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <div class="form-group">
+                        <p><strong>Alamat</strong></p>
+                        <label>Jalan</label>
+                        <input type="text" name="jalan" class="form-control input-sm" ng-model="rk.data.jalan">
+                    </div>
+                    <div class="form-group">
+                        <label>Lingkungan</label>
+                        <input type="text" name="lingkungan" class="form-control input-sm" ng-model="rk.data.lingkungan">
+                    </div>
+                    <div class="form-group">
+                        <label>Kelurahan / Kecamatan</label>
+                        <input type="text" name="kelkec" class="form-control input-sm" ng-model="rk.data.kelkec">
+                    </div>
+                    <div class="form-group">
+                        <label>Kota / Kabupaten</label>
+                        <input type="text" name="kotakab" class="form-control input-sm" ng-model="rk.data.kotakab">
+                    </div>
+                    <div class="form-group">
+                        <label>Provinsi</label>
+                        <input type="text" name="provinsi" class="form-control input-sm" ng-model="rk.data.provinsi">
+                    </div>
+                    <div class="form-group">
+                        <label>No. Telp. / HP</label>
+                        <input type="text" name="telp" class="form-control input-sm" ng-model="rk.data.telp">
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error':form.nama.$error.required && rk.submitted}">
-                    <label>Nama Pasien <span class="req">*</span></label>
-                    <input type="text" name="nama" class="form-control input-sm" ng-model="rk.data.nama" required>
-                    <p class="help-block" ng-show="form.nama.$error.required && rk.submitted">
-                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
-                    </p>
+                <div class="well">
+                    <div class="form-group" ng-class="{'has-error':form.dikirim.$error.required && rk.submitted}">
+                        <label>Dikirim / Konsul <span class="req">*</span></label>
+                        <ui-select name="dikirim" ng-model="rk.dikirim.selected" search-enabled="false">
+                            <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="dikirim in rk.dikirims">
+                                <div ng-bind-html="dikirim.name"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p class="help-block" ng-show="form.dikirim.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group" ng-show="rk.dikirim.selected">
+                        <label>Keterangan</label>
+                        <input type="text" name="kdikirim" class="form-control input-sm" ng-model="rk.data.kdikirim">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Tanggal Lahir</label>
-                    <input type="text" name="lahir" class="form-control input-sm" ng-model="rk.data.lahir" ng-change="rk.lahir(rk.data.lahir)" data-date-format="dd MMMM yyyy" bs-datepicker>
+                <div class="well">
+                    <div class="form-group" ng-class="{'has-error':form.pembiayaan.$error.required && rk.submitted}">
+                        <label>Pembiayaan <span class="req">*</span></label>
+                        <ui-select name="pembiayaan" ng-model="rk.pembiayaan.selected" search-enabled="false" required>
+                            <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices repeat="pembiayaan in rk.pembiayaans">
+                                <div ng-bind-html="pembiayaan.name"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p class="help-block" ng-show="form.pembiayaan.$error.required && rk.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group" ng-show="rk.pembiayaan.selected">
+                        <label>Keterangan</label>
+                        <input type="text" name="kpembiayaan" class="form-control input-sm" ng-model="rk.data.kpembiayaan">
+                    </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error':form.umur.$error.required && rk.submitted}">
-                    <label>Umur <span class="req">*</span></label>
-                    <input type="text" name="umur" class="form-control input-sm" ng-model="rk.data.umur" required>
-                    <p class="help-block" ng-show="form.umur.$error.required && rk.submitted">
-                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
-                    </p>
-                </div>
-                <div class="form-group" ng-class="{'has-error':form.jk.$error.required && rk.submitted}">
-                    <label>Jenis Kelamin <span class="req">*</span></label>
-                    <ui-select name="jk" ng-model="rk.jk.selected" search-enabled="false" required>
-                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
-                        <ui-select-choices repeat="jk in rk.jks">
-                            <div ng-bind-html="jk.name"></div>
-                        </ui-select-choices>
-                    </ui-select>
-                    <p class="help-block" ng-show="form.kelamin.$error.required && rk.submitted">
-                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
-                    </p>
-                </div>
-                <div>
-                    <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
+            </div>
+        </form>
     </div>
 </div>

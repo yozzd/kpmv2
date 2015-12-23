@@ -30,5 +30,33 @@ angular.module('kpmApp.rekam')
                 ncyBreadcrumb: {
                     label: 'Create Pasien'
                 }
+            })
+            .state('rekam.sub', {
+                url: '/sub/{id}',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/sub/sub.html',
+                        controller: 'RSubController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{rk.nama}}'
+                }
+            })
+            .state('rekam.sub.profil', {
+                url: '/profil',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/profil/profil.html',
+                        controller: 'RProfilController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Profil'
+                }
             });
     });

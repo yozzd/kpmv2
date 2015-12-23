@@ -6,7 +6,7 @@ class RDaftarController {
         this.block = blockUI.instances.get('block');
         this.$timeout = $timeout;
         this.Restangular = Restangular;
-        this.getProgram();
+        this.getPasien();
         this.predicate = 'registrasi';
 
         this.by = {};
@@ -22,7 +22,7 @@ class RDaftarController {
         ];
     }
 
-    getProgram() {
+    getPasien() {
         this.block.start();
         this.Restangular.all('pasiens').customGETLIST()
             .then(datas => {

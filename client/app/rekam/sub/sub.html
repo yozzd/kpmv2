@@ -1,0 +1,25 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h3>{{rk.nama}}</h3>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <table>
+                <tbody>
+                    <tr>
+                        <td><a ui-sref=".profil({id: rk.id})" title="Profil">Profil</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a ui-sref=".anamnesa({id: rk.id})" title="Anamnesa">Anamnesa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

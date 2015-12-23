@@ -53,7 +53,7 @@
                                 <td class="text-center">{{$index+1}}</td>
                                 <td>{{data.registrasi}}</td>
                                 <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>
-                                <td>{{data.nama}}</td>
+                                <td><a ui-sref=".sub({id:data._id})">{{data.nama}}</a></td>
                                 <td>{{data.umur}}</td>
                                 <td>{{data.jk}}</td>
                                 <td>{{data.sk}}</td>

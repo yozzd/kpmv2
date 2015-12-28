@@ -1,6 +1,6 @@
 'use strict';
 
-class RSubController {
+class RkSubController {
 
     constructor(Restangular, $stateParams) {
         this.Restangular = Restangular;
@@ -18,4 +18,4 @@ class RSubController {
 }
 
 angular.module('kpmApp.rekam')
-    .controller('RSubController', RSubController);
+    .controller('RkSubController', RkSubController);

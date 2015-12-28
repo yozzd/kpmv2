@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 var Pasien = require('./pasien.model');
+var Anamnesa = require('../anamnesa/anamnesa.model');
 
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
@@ -106,6 +107,13 @@ export function create(req, res) {
                     kpembiayaan: req.body.kpembiayaan
                 });
                 return newPasien.saveAsync()
+                    .then(saved => {
+                        var newAnamnesa = new Anamnesa({
+                            _pasien: saved[0]._id
+                        });
+                        newAnamnesa.saveAsync();
+                        return saved;
+                    })
                     .then(saved => {
                         return saved;
                     });

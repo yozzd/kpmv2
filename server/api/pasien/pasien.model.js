@@ -102,6 +102,10 @@ var PasienSchema = new mongoose.Schema({
         type: String,
         default: '',
         trim: true
+    },
+    _anamnesa: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Anamnesa'
     }
 });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-class RProfilController {
+class RkProfilController {
 
     constructor(Restangular, $stateParams, $alert) {
         this.Restangular = Restangular;
@@ -97,22 +97,22 @@ class RProfilController {
 
                 this.jk = {
                     selected: {
-                        name: data.jk
+                        name: this.data.jk
                     }
                 };
                 this.sk = {
                     selected: {
-                        name: data.sk
+                        name: this.data.sk
                     }
                 };
                 this.dikirim = {
                     selected: {
-                        name: data.dikirim
+                        name: this.data.dikirim
                     }
                 };
                 this.pembiayaan = {
                     selected: {
-                        name: data.pembiayaan
+                        name: this.data.pembiayaan
                     }
                 };
             });
@@ -168,4 +168,4 @@ class RProfilController {
 }
 
 angular.module('kpmApp.rekam')
-    .controller('RProfilController', RProfilController);
+    .controller('RkProfilController', RkProfilController);

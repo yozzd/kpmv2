@@ -9,7 +9,7 @@ angular.module('kpmApp.rekam')
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/daftar/daftar.html',
-                        controller: 'RDaftarController',
+                        controller: 'RkDaftarController',
                         controllerAs: 'rk'
                     }
                 },
@@ -23,7 +23,7 @@ angular.module('kpmApp.rekam')
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/create/create.html',
-                        controller: 'RCreateController',
+                        controller: 'RkCreateController',
                         controllerAs: 'rk'
                     }
                 },
@@ -37,7 +37,7 @@ angular.module('kpmApp.rekam')
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/sub/sub.html',
-                        controller: 'RSubController',
+                        controller: 'RkSubController',
                         controllerAs: 'rk'
                     }
                 },
@@ -51,12 +51,26 @@ angular.module('kpmApp.rekam')
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/profil/profil.html',
-                        controller: 'RProfilController',
+                        controller: 'RkProfilController',
                         controllerAs: 'rk'
                     }
                 },
                 ncyBreadcrumb: {
                     label: 'Profil'
+                }
+            })
+            .state('rekam.sub.anamnesa', {
+                url: '/anamnesa',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/anamnesa/anamnesa.html',
+                        controller: 'RkAnamnesaController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Anamnesa'
                 }
             });
     });

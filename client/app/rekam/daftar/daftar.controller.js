@@ -1,6 +1,6 @@
 'use strict';
 
-class RDaftarController {
+class RkDaftarController {
 
     constructor(Restangular, blockUI, $timeout) {
         this.block = blockUI.instances.get('block');
@@ -36,4 +36,4 @@ class RDaftarController {
 }
 
 angular.module('kpmApp.rekam')
-    .controller('RDaftarController', RDaftarController);
+    .controller('RkDaftarController', RkDaftarController);

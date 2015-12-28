@@ -1,0 +1,893 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+        </div>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#t1" aria-controls="t1" role="tab" data-toggle="tab">1</a></li>
+            <li role="presentation"><a href="#t2" aria-controls="t2" role="tab" data-toggle="tab">2</a></li>
+            <li role="presentation"><a href="#t3" aria-controls="t3" role="tab" data-toggle="tab">3</a></li>
+            <li role="presentation"><a href="#t4" aria-controls="t4" role="tab" data-toggle="tab">4</a></li>
+            <li role="presentation"><a href="#t5" aria-controls="t5" role="tab" data-toggle="tab">5</a></li>
+            <li role="presentation"><a href="#t6" aria-controls="t6" role="tab" data-toggle="tab">6</a></li>
+            <li role="presentation"><a href="#t7" aria-controls="t7" role="tab" data-toggle="tab">7</a></li>
+        </ul>
+
+
+        <div class="blockui" block-ui="block">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="t1">
+                    <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">1.</td>
+                                <td colspan="2" style="width: 28%;">Keluhan Utama</td>
+                                <td colspan="3"></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Batuk</td>
+                                <td colspan="3">
+                                    <ui-select name="batuk" ng-model="rk.batuk.selected" search-enabled="false" ng-change="rk.clbatuk(rk.batuk.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="batuk in rk.batuks">
+                                            <div ng-bind-html="batuk.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.batuk.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Sejak Berapa Lama</td>
+                                <td style="width: 10%;">
+                                    <ui-select name="lamabatuk1" ng-model="rk.lamabatuk1.selected" search-enabled="false" ng-disabled="rk.batuk.selected.name!='Ya'" ng-required="rk.batuk.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">
+                                            <div ng-bind-html="$select.selected.name"></div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="lamabatuk1 in rk.lamabatuk1s">
+                                            <div ng-bind-html="lamabatuk1.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td style="width: 10%;">
+                                    <input type="text" name="lamabatuk2" class="form-control input-sm" ng-model="rk.data.lamabatuk2" ng-disabled="rk.batuk.selected.name!='Ya'" ng-required="rk.batuk.selected.name=='Ya'">
+                                </td>
+                                <td>
+                                    <ui-select name="lamabatuk3" ng-model="rk.lamabatuk3.selected" search-enabled="false" ng-disabled="rk.batuk.selected.name!='Ya'" ng-required="rk.batuk.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="lamabatuk3 in rk.lamabatuk3s">
+                                            <div ng-bind-html="lamabatuk3.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.lamabatuk1.$error.required||form1.lamabatuk2.$error.required||form1.lamabatuk3.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.batuk.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Intensitas</td>
+                                <td colspan="3">
+                                    <ui-select name="intensitasbatuk" ng-model="rk.intensitasbatuk.selected" search-enabled="false" ng-disabled="rk.batuk.selected.name!='Ya'" ng-required="rk.batuk.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="intensitasbatuk in rk.intensitasbatuks">
+                                            <div ng-bind-html="intensitasbatuk.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.intensitasbatuk.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.batuk.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Frekuensi</td>
+                                <td colspan="3">
+                                    <ui-select name="frekuensibatuk" ng-model="rk.frekuensibatuk.selected" search-enabled="false" ng-disabled="rk.batuk.selected.name!='Ya'" ng-required="rk.batuk.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="frekuensibatuk in rk.frekuensibatuks">
+                                            <div ng-bind-html="frekuensibatuk.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.frekuensibatuk.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Batuk Darah</td>
+                                <td colspan="3">
+                                    <ui-select name="batukdarah" ng-model="rk.batukdarah.selected" search-enabled="false" ng-change="rk.clbatukdarah(rk.batukdarah.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="batukdarah in rk.batukdarahs">
+                                            <div ng-bind-html="batukdarah.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.batukdarah.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Sejak Berapa Lama</td>
+                                <td style="width: 10%;">
+                                    <ui-select name="lamabatukdarah1" ng-model="rk.lamabatukdarah1.selected" search-enabled="false" ng-disabled="rk.batukdarah.selected.name!='Ya'" ng-required="rk.batukdarah.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">
+                                            <div ng-bind-html="$select.selected.name"></div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="lamabatukdarah1 in rk.lamabatukdarah1s">
+                                            <div ng-bind-html="lamabatukdarah1.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td style="width: 10%;">
+                                    <input type="text" name="lamabatukdarah2" class="form-control input-sm" ng-model="rk.data.lamabatukdarah2" ng-disabled="rk.batukdarah.selected.name!='Ya'" ng-required="rk.batukdarah.selected.name=='Ya'">
+                                </td>
+                                <td>
+                                    <ui-select name="lamabatukdarah3" ng-model="rk.lamabatukdarah3.selected" search-enabled="false" ng-disabled="rk.batukdarah.selected.name!='Ya'" ng-required="rk.batukdarah.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="lamabatukdarah3 in rk.lamabatukdarah3s">
+                                            <div ng-bind-html="lamabatukdarah3.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.lamabatukdarah1.$error.required||form1.lamabatukdarah2.$error.required||form1.lamabatukdarah3.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.batukdarah.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Intensitas</td>
+                                <td colspan="3">
+                                    <ui-select name="intensitasbatukdarah" ng-model="rk.intensitasbatukdarah.selected" search-enabled="false" ng-disabled="rk.batukdarah.selected.name!='Ya'" ng-required="rk.batukdarah.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="intensitasbatukdarah in rk.intensitasbatukdarahs">
+                                            <div ng-bind-html="intensitasbatukdarah.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.intensitasbatukdarah.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.batukdarah.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Volume</td>
+                                <td colspan="3">
+                                    <ui-select name="volumebatukdarah" ng-model="rk.volumebatukdarah.selected" search-enabled="false" ng-disabled="rk.batukdarah.selected.name!='Ya'" ng-required="rk.batukdarah.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="volumebatukdarah in rk.volumebatukdarahs">
+                                            <div ng-bind-html="volumebatukdarah.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.volumebatukdarah.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Sesak Napas</td>
+                                <td colspan="3">
+                                    <ui-select name="sesak" ng-model="rk.sesak.selected" search-enabled="false" ng-change="rk.clsesak(rk.sesak.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="sesak in rk.sesaks">
+                                            <div ng-bind-html="sesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Sejak Berapa Lama</td>
+                                <td style="width: 10%;">
+                                    <ui-select name="lamasesak1" ng-model="rk.lamasesak1.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">
+                                            <div ng-bind-html="$select.selected.name"></div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="lamasesak1 in rk.lamasesak1s">
+                                            <div ng-bind-html="lamasesak1.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td style="width: 10%;">
+                                    <input type="text" name="lamasesak2" class="form-control input-sm" ng-model="rk.data.lamasesak2" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                </td>
+                                <td>
+                                    <ui-select name="lamasesak3" ng-model="rk.lamasesak3.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="lamasesak3 in rk.lamasesak3s">
+                                            <div ng-bind-html="lamasesak3.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.lamasesak1.$error.required||form1.lamasesak2.$error.required||form1.lamasesak3.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Sifat Sesak</td>
+                                <td colspan="3">
+                                    <ui-select name="sifatsesak" ng-model="rk.sifatsesak.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="sifatsesak in rk.sifatsesaks">
+                                            <div ng-bind-html="sifatsesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.sifatsesak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Intensitas</td>
+                                <td colspan="3">
+                                    <ui-select name="intensitassesak" ng-model="rk.intensitassesak.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="intensitassesak in rk.intensitassesaks">
+                                            <div ng-bind-html="intensitassesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.intensitassesak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Frekuensi</td>
+                                <td colspan="3">
+                                    <ui-select name="frekuensisesak" ng-model="rk.frekuensisesak.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="frekuensisesak in rk.frekuensisesaks">
+                                            <div ng-bind-html="frekuensisesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.frekuensisesak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Mengi</td>
+                                <td colspan="3">
+                                    <ui-select name="mengisesak" ng-model="rk.mengisesak.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="mengisesak in rk.mengisesaks">
+                                            <div ng-bind-html="mengisesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.mengisesak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Bertambah di malam hari</td>
+                                <td colspan="3">
+                                    <ui-select name="bertambah1sesak" ng-model="rk.bertambah1sesak.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="bertambah1sesak in rk.bertambah1sesaks">
+                                            <div ng-bind-html="bertambah1sesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.bertambah1sesak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Bertambah pada waktu aktifitas fisik</td>
+                                <td colspan="3">
+                                    <ui-select name="bertambah2sesak" ng-model="rk.bertambah2sesak.selected" search-enabled="false" ng-disabled="rk.sesak.selected.name!='Ya'" ng-required="rk.sesak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="bertambah2sesak in rk.bertambah2sesaks">
+                                            <div ng-bind-html="bertambah2sesak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.bertambah2sesak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.sesak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Faktor Pencetus</td>
+                                <td colspan="3">
+                                    <input type="text" name="faktorsesak" class="form-control input-sm" ng-model="rk.data.faktorsesak" ng-disabled="rk.sesak.selected.name!='Ya'">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Dahak</td>
+                                <td colspan="3">
+                                    <ui-select name="dahak" ng-model="rk.dahak.selected" search-enabled="false" ng-change="rk.cldahak(rk.dahak.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="dahak in rk.dahaks">
+                                            <div ng-bind-html="dahak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.dahak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Volume</td>
+                                <td colspan="3">
+                                    <ui-select name="volumedahak" ng-model="rk.volumedahak.selected" search-enabled="false" ng-disabled="rk.dahak.selected.name!='Ya'" ng-required="rk.dahak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="volumedahak in rk.volumedahaks">
+                                            <div ng-bind-html="volumedahak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.volumedahak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.dahak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Warna</td>
+                                <td colspan="3">
+                                    <ui-select name="warnadahak" ng-model="rk.warnadahak.selected" search-enabled="false" ng-disabled="rk.dahak.selected.name!='Ya'" ng-required="rk.dahak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="warnadahak in rk.warnadahaks">
+                                            <div ng-bind-html="warnadahak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.warnadahak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.dahak.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Konsistensi</td>
+                                <td colspan="3">
+                                    <ui-select name="konsistensidahak" ng-model="rk.konsistensidahak.selected" search-enabled="false" ng-disabled="rk.dahak.selected.name!='Ya'" ng-required="rk.dahak.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="konsistensidahak in rk.konsistensidahaks">
+                                            <div ng-bind-html="konsistensidahak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.konsistensidahak.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Nyeri Dada</td>
+                                <td colspan="3">
+                                    <ui-select name="nyeri" ng-model="rk.nyeri.selected" search-enabled="false" ng-change="rk.clnyeri(rk.nyeri.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="nyeri in rk.nyeris">
+                                            <div ng-bind-html="nyeri.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.nyeri.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Lokasi</td>
+                                <td colspan="3">
+                                    <input type="text" name="lokasinyeri" class="form-control input-sm" ng-model="rk.data.lokasinyeri" ng-disabled="rk.nyeri.selected.name!='Ya'" ng-required="rk.nyeri.selected.name=='Ya'">
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.lokasinyeri.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t2">
+                    <form class="form" name="form2" ng-submit="rk.submit2(form2)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">2.</td>
+                                <td colspan="2" style="width: 28%;">Keluhan Tambahan</td>
+                                <td colspan="3"></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Demam</td>
+                                <td colspan="3">
+                                    <ui-select name="demam" ng-model="rk.demam.selected" search-enabled="false" ng-change="rk.cldemam(rk.demam.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="demam in rk.demams">
+                                            <div ng-bind-html="demam.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.demam.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Sejak Berapa Lama</td>
+                                <td style="width: 10%;">
+                                    <ui-select name="lamademam1" ng-model="rk.lamademam1.selected" search-enabled="false" ng-disabled="rk.demam.selected.name!='Ya'" ng-required="rk.demam.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">
+                                            <div ng-bind-html="$select.selected.name"></div>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="lamademam1 in rk.lamademam1s">
+                                            <div ng-bind-html="lamademam1.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td style="width: 10%;">
+                                    <input type="text" name="lamademam2" class="form-control input-sm" ng-model="rk.data.lamademam2" ng-disabled="rk.demam.selected.name!='Ya'" ng-required="rk.demam.selected.name=='Ya'">
+                                </td>
+                                <td>
+                                    <ui-select name="lamademam3" ng-model="rk.lamademam3.selected" search-enabled="false" ng-disabled="rk.demam.selected.name!='Ya'" ng-required="rk.demam.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="lamademam3 in rk.lamademam3s">
+                                            <div ng-bind-html="lamademam3.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.lamademam1.$error.required||form1.lamademam2.$error.required||form1.lamademam3.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.demam.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Pagi / Siang</td>
+                                <td colspan="3">
+                                    <ui-select name="pagisiangdemam" ng-model="rk.pagisiangdemam.selected" search-enabled="false" ng-disabled="rk.demam.selected.name!='Ya'" ng-required="rk.demam.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pagisiangdemam in rk.pagisiangdemams">
+                                            <div ng-bind-html="pagisiangdemam.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.pagisiangdemam.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.demam.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Sore</td>
+                                <td colspan="3">
+                                    <ui-select name="soredemam" ng-model="rk.soredemam.selected" search-enabled="false" ng-disabled="rk.demam.selected.name!='Ya'" ng-required="rk.demam.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="soredemam in rk.soredemams">
+                                            <div ng-bind-html="soredemam.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.soredemam.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.demam.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Malam</td>
+                                <td colspan="3">
+                                    <ui-select name="malamdemam" ng-model="rk.malamdemam.selected" search-enabled="false" ng-disabled="rk.demam.selected.name!='Ya'" ng-required="rk.demam.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="malamdemam in rk.malamdemams">
+                                            <div ng-bind-html="malamdemam.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.malamdemam.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Keringat Malam</td>
+                                <td colspan="3">
+                                    <ui-select name="keringat" ng-model="rk.keringat.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="keringat in rk.keringats">
+                                            <div ng-bind-html="keringat.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Nafsu makan / BB menurun</td>
+                                <td colspan="3">
+                                    <ui-select name="nafsu" ng-model="rk.nafsu.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="nafsu in rk.nafsus">
+                                            <div ng-bind-html="nafsu.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Badan lemah / Tidak enak badan</td>
+                                <td colspan="3">
+                                    <ui-select name="lemah" ng-model="rk.lemah.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="lemah in rk.lemahs">
+                                            <div ng-bind-html="lemah.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Lain-lain</td>
+                                <td colspan="3">
+                                    <input type="text" name="lain" class="form-control input-sm" ng-model="rk.data.lain">
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t3">
+                    <form class="form" name="form3" ng-submit="rk.submit3(form3)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">3.</td>
+                                <td colspan="2" style="width: 28%;">Riwayat Penyakit Sebelumnya</td>
+                                <td>
+                                    <textarea name="penyakit" class="form-control" rows="3" ng-model="rk.data.penyakit"></textarea>
+                                </td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t4">
+                    <form class="form" name="form4" ng-submit="rk.submit4(form4)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">4.</td>
+                                <td colspan="2" style="width: 28%;">Riwayat Pengobatan Sebelumnya</td>
+                                <td>
+                                    <textarea name="pengobatan" class="form-control" rows="3" ng-model="rk.data.pengobatan"></textarea>
+                                </td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t5">
+                    <form class="form" name="form5" ng-submit="rk.submit5(form5)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">5.</td>
+                                <td style="width: 28%;">Gravida (Hamil)</td>
+                                <td>
+                                    <ui-select name="gravida" ng-model="rk.gravida.selected" search-enabled="false" ng-change="rk.clgravida(rk.gravida.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="gravida in rk.gravidas">
+                                            <div ng-bind-html="gravida.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.gravida.selected.name!='Ya'}">
+                                <td></td>
+                                <td>Usia Kehamilan Trimester</td>
+                                <td>
+                                    <ui-select name="trimester" ng-model="rk.trimester.selected" search-enabled="false" ng-disabled="rk.gravida.selected.name!='Ya'" ng-required="rk.gravida.selected.name=='Ya'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="trimester in rk.trimesters">
+                                            <div ng-bind-html="trimester.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t6">
+                    <form class="form" name="form6" ng-submit="rk.submit6(form6)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">6.</td>
+                                <td colspan="2" style="width: 28%;">Kebiasaan</td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Merokok</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Lama</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="lamamerokok" class="form-control input-sm" ng-model="rk.data.lamamerokok" />
+                                        <div class="input-group-addon">thn</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Jenis</td>
+                                <td>
+                                    <input type="text" name="jenisrokok" class="form-control input-sm" ng-model="rk.data.jenisrokok" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Banyak</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="banyakrokok" class="form-control input-sm" ng-model="rk.data.banyakrokok" />
+                                        <div class="input-group-addon">btg/hari</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Usia mulai merokok</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="usiamerokok" class="form-control input-sm" ng-model="rk.data.usiamerokok" />
+                                        <div class="input-group-addon">thn</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Obat-obatan</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Lama</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="lamaobat" class="form-control input-sm" ng-model="rk.data.lamaobat" />
+                                        <div class="input-group-addon">thn</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Jenis</td>
+                                <td>
+                                    <input type="text" name="jenisobat" class="form-control input-sm" ng-model="rk.data.jenisobat" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Alkohol</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Lama</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="lamaalkohol" class="form-control input-sm" ng-model="rk.data.lamaalkohol" />
+                                        <div class="input-group-addon">thn</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Jenis</td>
+                                <td>
+                                    <input type="text" name="jenisalkohol" class="form-control input-sm" ng-model="rk.data.jenisalkohol" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t7">
+                    <form class="form" name="form7" ng-submit="rk.submit7(form7)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">7.</td>
+                                <td colspan="2" style="width: 28%;">Anamnesa Keluarga</td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>a.</td>
+                                <td>Penderita TBC Paru</td>
+                                <td>
+                                    <ui-select name="tbcparu" ng-model="rk.tbcparu.selected" search-enabled="false" ng-change="rk.cltbcparu(rk.tbcparu.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="tbcparu in rk.tbcparus">
+                                            <div ng-bind-html="tbcparu.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.tbcparu.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Jika Ya Siapa</td>
+                                <td>
+                                    <input type="text" name="tbcparuya" class="form-control input-sm" ng-model="rk.data.tbcparuya" ng-disabled="rk.tbcparu.selected.name!='Ya'" ng-required="rk.tbcparu.selected.name=='Ya'" />
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form7.tbcparuya.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Riwayat Asma pada Keluarga</td>
+                                <td>
+                                    <ui-select name="asma" ng-model="rk.asma.selected" search-enabled="false" ng-change="rk.clasma(rk.asma.selected.id)">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="asma in rk.asmas">
+                                            <div ng-bind-html="asma.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr ng-class="{'text-muted':rk.asma.selected.name!='Ya'}">
+                                <td></td>
+                                <td></td>
+                                <td>Jika Ya Siapa</td>
+                                <td>
+                                    <input type="text" name="asmaya" class="form-control input-sm" ng-model="rk.data.asmaya" ng-disabled="rk.asma.selected.name!='Ya'" ng-required="rk.asma.selected.name=='Ya'" />
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form7.asmaya.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

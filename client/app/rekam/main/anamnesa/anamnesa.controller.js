@@ -616,7 +616,7 @@ class RkAnamnesaController {
     }
 
     clbatuk(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.lamabatuk1 = {
                 selected: null
             };
@@ -634,7 +634,7 @@ class RkAnamnesaController {
     }
 
     clbatukdarah(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.lamabatukdarah1 = {
                 selected: null
             };
@@ -652,7 +652,7 @@ class RkAnamnesaController {
     }
 
     clsesak(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.lamasesak1 = {
                 selected: null
             };
@@ -683,7 +683,7 @@ class RkAnamnesaController {
     }
 
     cldahak(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.volumedahak = {
                 selected: null
             };
@@ -697,13 +697,13 @@ class RkAnamnesaController {
     }
 
     clnyeri(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.data.lokasinyeri = null;
         }
     }
 
     cldemam(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.lamademam1 = {
                 selected: null
             };
@@ -724,7 +724,7 @@ class RkAnamnesaController {
     }
 
     clgravida(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.trimester = {
                 selected: null
             };
@@ -732,13 +732,13 @@ class RkAnamnesaController {
     }
 
     cltbcparu(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.data.tbcparuya = null;
         }
     }
 
     clasma(x) {
-        if (x == 2) {
+        if (x === 2) {
             this.data.asmaya = null;
         }
     }

@@ -6,3 +6,4 @@ client/bower_components
 dist
 /server/config
 npm-debug.log
+client/app/rekam/main/files

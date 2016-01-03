@@ -1,0 +1,702 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Pemeriksaan Laboratorium</h4>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#t1" aria-controls="t1" role="tab" data-toggle="tab">1</a></li>
+            <li role="presentation"><a href="#t2" aria-controls="t2" role="tab" data-toggle="tab">2</a></li>
+            <li role="presentation"><a href="#t3" aria-controls="t3" role="tab" data-toggle="tab">3</a></li>
+            <li role="presentation"><a href="#t4" aria-controls="t4" role="tab" data-toggle="tab">4</a></li>
+            <li role="presentation"><a href="#t5" aria-controls="t5" role="tab" data-toggle="tab">5</a></li>
+        </ul>
+
+
+        <div class="blockui" block-ui="block">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="t1">
+                    <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">1.</td>
+                                <td colspan="2" style="width: 28%;">Darah Rutin / Lengkap</td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Hb</td>
+                                <td>
+                                    <input type="text" name="hb" class="form-control input-sm" ng-model="rk.data.hb" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>LED</td>
+                                <td>
+                                    <input type="text" name="led" class="form-control input-sm" ng-model="rk.data.led" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Leukosit</td>
+                                <td>
+                                    <input type="text" name="leukosit" class="form-control input-sm" ng-model="rk.data.leukosit" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Thrombosit</td>
+                                <td>
+                                    <input type="text" name="thrombosit" class="form-control input-sm" ng-model="rk.data.thrombosit" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Erythrosit</td>
+                                <td>
+                                    <input type="text" name="erythrosit" class="form-control input-sm" ng-model="rk.data.erythrosit" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>f.</td>
+                                <td>Haematokrit (Ht)</td>
+                                <td>
+                                    <input type="text" name="haematokrit" class="form-control input-sm" ng-model="rk.data.haematokrit" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>g.</td>
+                                <td>Golongan Darah</td>
+                                <td>
+                                    <input type="text" name="goldarah" class="form-control input-sm" ng-model="rk.data.goldarah" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t2">
+                    <form class="form" name="form2" ng-submit="rk.submit2(form2)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">2.</td>
+                                <td colspan="2" style="width: 28%;">Urin Rutin / Lengkap</td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Ph</td>
+                                <td>
+                                    <input type="text" name="ph" class="form-control input-sm" ng-model="rk.data.ph" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Reduksi</td>
+                                <td>
+                                    <input type="text" name="reduksi" class="form-control input-sm" ng-model="rk.data.reduksi" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Protein</td>
+                                <td>
+                                    <input type="text" name="protein" class="form-control input-sm" ng-model="rk.data.protein" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Bilirubin</td>
+                                <td>
+                                    <input type="text" name="bilirubin" class="form-control input-sm" ng-model="rk.data.bilirubin" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Sedimen</td>
+                                <td>
+                                    <input type="text" name="sedimen" class="form-control input-sm" ng-model="rk.data.sedimen" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t3">
+                    <form class="form" name="form3" ng-submit="rk.submit3(form3)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">3.</td>
+                                <td colspan="2" style="width: 28%;">Faeces Rutin</td>
+                                <td>
+                                    <input type="text" name="faeces" class="form-control input-sm" ng-model="rk.data.faeces" />
+                                </td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t4">
+                    <form class="form" name="form4" ng-submit="rk.submit4(form4)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">4.</td>
+                                <td colspan="2" style="width: 28%;">Mikrobiologi</td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Direct Smear BTA (SPS)</td>
+                                <td>
+                                    <input type="text" name="dsbta" class="form-control input-sm" ng-model="rk.data.dsbta" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>I</td>
+                                <td>
+                                    <input type="text" name="dsbta1" class="form-control input-sm" ng-model="rk.data.dsbta1" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>II</td>
+                                <td>
+                                    <input type="text" name="dsbta2" class="form-control input-sm" ng-model="rk.data.dsbta2" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>III</td>
+                                <td>
+                                    <input type="text" name="dsbta3" class="form-control input-sm" ng-model="rk.data.dsbta3" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Kultur / Resistensi BTA (Tgl)</td>
+                                <td>
+                                    <input type="text" name="btatgl" class="form-control input-sm" ng-model="rk.data.btatgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Sensitif</td>
+                                <td>
+                                    <input type="text" name="btasensitif" class="form-control input-sm" ng-model="rk.data.btasensitif" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Resinten</td>
+                                <td>
+                                    <input type="text" name="btaresinten" class="form-control input-sm" ng-model="rk.data.btaresinten" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Direct Smear (Gran) Sputum</td>
+                                <td>
+                                    <input type="text" name="dssputum" class="form-control input-sm" ng-model="rk.data.dssputum" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Kultur / Resistensi Sputum (Tgl)</td>
+                                <td>
+                                    <input type="text" name="sputumtgl" class="form-control input-sm" ng-model="rk.data.sputumtgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Sensitif</td>
+                                <td>
+                                    <input type="text" name="sputumsensitif" class="form-control input-sm" ng-model="rk.data.sputumsensitif" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Resinten</td>
+                                <td>
+                                    <input type="text" name="sputumresinten" class="form-control input-sm" ng-model="rk.data.sputumresinten" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Direct (Jamur / Spora)</td>
+                                <td>
+                                    <input type="text" name="jamur" class="form-control input-sm" ng-model="rk.data.jamur" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>f.</td>
+                                <td>Kultur Jamur (Tgl)</td>
+                                <td>
+                                    <input type="text" name="jamurtgl" class="form-control input-sm" ng-model="rk.data.jamurtgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>g.</td>
+                                <td>Kultur Cairan Pleura (Tgl)</td>
+                                <td>
+                                    <input type="text" name="kulturpleuratgl" class="form-control input-sm" ng-model="rk.data.kulturpleuratgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="t5">
+                    <form class="form" name="form5" ng-submit="rk.submit5(form5)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">5.</td>
+                                <td colspan="2" style="width: 28%;">Kimia Klinik</td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Analisa Cairan Pleura (Tgl)</td>
+                                <td>
+                                    <input type="text" name="analisapleuratgl" class="form-control input-sm" ng-model="rk.data.analisapleuratgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Tes Rivalta</td>
+                                <td>
+                                    <input type="text" name="rivalta" class="form-control input-sm" ng-model="rk.data.rivalta" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>LDH</td>
+                                <td>
+                                    <input type="text" name="ldhpleura" class="form-control input-sm" ng-model="rk.data.ldhpleura" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Protein</td>
+                                <td>
+                                    <input type="text" name="proteinpleura" class="form-control input-sm" ng-model="rk.data.proteinpleura" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Transudat / Exudat</td>
+                                <td>
+                                    <input type="text" name="transudat" class="form-control input-sm" ng-model="rk.data.transudat" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Faal Hati (LFT) (Tgl)</td>
+                                <td>
+                                    <input type="text" name="faalhatitgl" class="form-control input-sm" ng-model="rk.data.faalhatitgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>SGOT</td>
+                                <td>
+                                    <input type="text" name="sgot" class="form-control input-sm" ng-model="rk.data.sgot" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>SGPT</td>
+                                <td>
+                                    <input type="text" name="sgpt" class="form-control input-sm" ng-model="rk.data.sgpt" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Bil. Total / Direct</td>
+                                <td>
+                                    <input type="text" name="biltotal" class="form-control input-sm" ng-model="rk.data.biltotal" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Bil. Direct</td>
+                                <td>
+                                    <input type="text" name="bildirect" class="form-control input-sm" ng-model="rk.data.bildirect" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Alkali Fosfatase</td>
+                                <td>
+                                    <input type="text" name="fosfatase" class="form-control input-sm" ng-model="rk.data.fosfatase" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Protein Elektrofores (SPE)</td>
+                                <td>
+                                    <input type="text" name="elektrofores" class="form-control input-sm" ng-model="rk.data.elektrofores" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Total Protein</td>
+                                <td>
+                                    <input type="text" name="total" class="form-control input-sm" ng-model="rk.data.total" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Faal Ginjal (Tgl)</td>
+                                <td>
+                                    <input type="text" name="faalginjaltgl" class="form-control input-sm" ng-model="rk.data.faalginjaltgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Ureum</td>
+                                <td>
+                                    <input type="text" name="ureum" class="form-control input-sm" ng-model="rk.data.ureum" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Kratinin</td>
+                                <td>
+                                    <input type="text" name="kratinin" class="form-control input-sm" ng-model="rk.data.kratinin" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Asam Urat</td>
+                                <td>
+                                    <input type="text" name="asamurat" class="form-control input-sm" ng-model="rk.data.asamurat" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Kratinin Urine</td>
+                                <td>
+                                    <input type="text" name="kratininurine" class="form-control input-sm" ng-model="rk.data.kratininurine" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Protein Urine 24 Jam</td>
+                                <td>
+                                    <input type="text" name="proteinurine" class="form-control input-sm" ng-model="rk.data.proteinurine" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Elektrolit Darah (Tgl)</td>
+                                <td>
+                                    <input type="text" name="elektrolittgl" class="form-control input-sm" ng-model="rk.data.elektrolittgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Natrium</td>
+                                <td>
+                                    <input type="text" name="natrium" class="form-control input-sm" ng-model="rk.data.natrium" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Kalium</td>
+                                <td>
+                                    <input type="text" name="kalium" class="form-control input-sm" ng-model="rk.data.kalium" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Chlorida</td>
+                                <td>
+                                    <input type="text" name="chlorida" class="form-control input-sm" ng-model="rk.data.chlorida" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>AGDA</td>
+                                <td>
+                                    <input type="text" name="agda" class="form-control input-sm" ng-model="rk.data.agda" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>f.</td>
+                                <td>Profil Jantung (Tgl)</td>
+                                <td>
+                                    <input type="text" name="jantungtgl" class="form-control input-sm" ng-model="rk.data.jantungtgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>EKG</td>
+                                <td>
+                                    <input type="text" name="ekg" class="form-control input-sm" ng-model="rk.data.ekg" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Treadmill</td>
+                                <td>
+                                    <input type="text" name="treadmill" class="form-control input-sm" ng-model="rk.data.treadmill" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>CPK / CK - Nac</td>
+                                <td>
+                                    <input type="text" name="cpk" class="form-control input-sm" ng-model="rk.data.cpk" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>LDH</td>
+                                <td>
+                                    <input type="text" name="ldhjantung" class="form-control input-sm" ng-model="rk.data.ldhjantung" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Troponin I</td>
+                                <td>
+                                    <input type="text" name="troponin" class="form-control input-sm" ng-model="rk.data.troponin" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>g.</td>
+                                <td>Tes Gula Darah (Tgl)</td>
+                                <td>
+                                    <input type="text" name="glukosatgl" class="form-control input-sm" ng-model="rk.data.glukosatgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Glukosa Puasa</td>
+                                <td>
+                                    <input type="text" name="glukosapuasa" class="form-control input-sm" ng-model="rk.data.glukosapuasa" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Glukosa 2 Jam PP</td>
+                                <td>
+                                    <input type="text" name="glukosapp" class="form-control input-sm" ng-model="rk.data.glukosapp" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Glukosa Ad Random</td>
+                                <td>
+                                    <input type="text" name="glukosarandom" class="form-control input-sm" ng-model="rk.data.glukosarandom" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>h.</td>
+                                <td>Profil Lipid (Tgl)</td>
+                                <td>
+                                    <input type="text" name="lipidtgl" class="form-control input-sm" ng-model="rk.data.lipidtgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>HDL Cholesterol</td>
+                                <td>
+                                    <input type="text" name="hdl" class="form-control input-sm" ng-model="rk.data.hdl" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>LDL Cholesterol</td>
+                                <td>
+                                    <input type="text" name="ldl" class="form-control input-sm" ng-model="rk.data.ldl" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Cholesterol Total</td>
+                                <td>
+                                    <input type="text" name="cholesterol" class="form-control input-sm" ng-model="rk.data.cholesterol" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Triglecerida</td>
+                                <td>
+                                    <input type="text" name="triglecerida" class="form-control input-sm" ng-model="rk.data.triglecerida" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Lipid Total</td>
+                                <td>
+                                    <input type="text" name="lipidtotal" class="form-control input-sm" ng-model="rk.data.lipidtotal" />
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

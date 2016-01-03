@@ -12,6 +12,10 @@
 import _ from 'lodash';
 var Pasien = require('./pasien.model');
 var Anamnesa = require('../anamnesa/anamnesa.model');
+var Fisik = require('../fisik/fisik.model');
+var Radiologi = require('../radiologi/radiologi.model');
+var Laboratorium = require('../laboratorium/laboratorium.model');
+var Medis = require('../medis/medis.model');
 
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
@@ -115,6 +119,31 @@ export function create(req, res) {
                         return saved;
                     })
                     .then(saved => {
+                        var newFisik = new Fisik({
+                            _pasien: saved[0]._id
+                        });
+                        newFisik.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newRadiologi = new Radiologi({
+                            _pasien: saved[0]._id
+                        });
+                        newRadiologi.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newLaboratorium = new Laboratorium({
+                            _pasien: saved[0]._id
+                        });
+                        newLaboratorium.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newMedis = new Medis({
+                            _pasien: saved[0]._id
+                        });
+                        newMedis.saveAsync();
                         return saved;
                     });
             }

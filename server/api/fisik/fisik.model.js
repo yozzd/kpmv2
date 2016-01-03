@@ -1,128 +1,138 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
+var relationship = require("mongoose-relationship");
 
-var PasienSchema = new mongoose.Schema({
-    registrasi: {
+var FisikSchema = new mongoose.Schema({
+    keadaan: {
         type: String,
         default: '',
         trim: true
     },
-    tanggal: {
-        type: Date,
-        default: '',
-        trim: true
-    },
-    nama: {
+    kesadaran: {
         type: String,
         default: '',
         trim: true
     },
-    lahir: {
-        type: Date,
-        default: '',
-        trim: true
-    },
-    umur: {
+    frekuensi: {
         type: String,
         default: '',
         trim: true
     },
-    jk: {
+    nadi: {
         type: String,
         default: '',
         trim: true
     },
-    suku: {
+    suhu: {
         type: String,
         default: '',
         trim: true
     },
-    agama: {
+    dispnoe: {
         type: String,
         default: '',
         trim: true
     },
-    pekerjaan: {
+    orthopnoe: {
         type: String,
         default: '',
         trim: true
     },
-    sk: {
+    odem: {
         type: String,
         default: '',
         trim: true
     },
-    jalan: {
+    lain: {
         type: String,
         default: '',
         trim: true
     },
-    lingkungan: {
+    inspeksi: {
         type: String,
         default: '',
         trim: true
     },
-    kelkec: {
+    palpasi: {
         type: String,
         default: '',
         trim: true
     },
-    kotakab: {
+    perkusi: {
         type: String,
         default: '',
         trim: true
     },
-    provinsi: {
+    auskultasi: {
         type: String,
         default: '',
         trim: true
     },
-    telp: {
+    hr: {
         type: String,
         default: '',
         trim: true
     },
-    dikirim: {
+    st: {
         type: String,
         default: '',
         trim: true
     },
-    kdikirim: {
+    abdomen: {
         type: String,
         default: '',
         trim: true
     },
-    pembiayaan: {
+    hepar: {
         type: String,
         default: '',
         trim: true
     },
-    kpembiayaan: {
+    limpa: {
         type: String,
         default: '',
         trim: true
     },
-    _anamnesa: {
+    extrimitas: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    anemis: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    sianosis: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    ikhterus: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    berat: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    tinggi: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    _pasien: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Anamnesa'
-    },
-    _fisik: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Fisik'
-    },
-    _radiologi: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Radiologi'
-    },
-    _laboratorium: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Laboratorium'
-    },
-    _medis: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Medis'
+        ref: 'Pasien',
+        childPath: '_fisik'
     }
 });
 
-export default mongoose.model('Pasien', PasienSchema, 'pasien');
+FisikSchema.plugin(relationship, {
+    relationshipPathName: '_pasien'
+});
+
+export default mongoose.model('Fisik', FisikSchema, 'fisik');

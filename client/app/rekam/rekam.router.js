@@ -72,5 +72,61 @@ angular.module('kpmApp.rekam')
                 ncyBreadcrumb: {
                     label: 'Anamnesa'
                 }
+            })
+            .state('rekam.sub.fisik', {
+                url: '/fisik',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/fisik/fisik.html',
+                        controller: 'RkFisikDiagnostikController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Fisik Diagnostik'
+                }
+            })
+            .state('rekam.sub.radiologi', {
+                url: '/radiologi',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/radiologi/radiologi.html',
+                        controller: 'RkRadiologiController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Pemeriksaan Radiologi'
+                }
+            })
+            .state('rekam.sub.laboratorium', {
+                url: '/laboratorium',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/laboratorium/laboratorium.html',
+                        controller: 'RkLaboratoriumController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Pemeriksaan Laboratorium'
+                }
+            })
+            .state('rekam.sub.medis', {
+                url: '/medis',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/medis/medis.html',
+                        controller: 'RkMedisController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Pemeriksaan / Tindakan Medis Diagnostik'
+                }
             });
     });

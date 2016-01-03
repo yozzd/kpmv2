@@ -1,0 +1,94 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Pemeriksaan Radiologi</h4>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#t1" aria-controls="t1" role="tab" data-toggle="tab">1</a></li>
+        </ul>
+
+        <div class="blockui" block-ui="block">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="t1">
+                    <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">a.</td>
+                                <td colspan="2" style="width: 28%;">Gambar</td>
+                                <td>
+                                    <input type="file" ngf-select ng-model="rk.file" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFiles">
+                                    <p class="help-block" ng-show="form1.file.$error.maxSize">
+                                        <span class="fa fa-times-circle fa-fw"></span> Ukuran file terlalu besar {{errorFiles[0].size / 1000000|number:1}}MB : maksimum 2MB
+                                    </p>
+                                </td>
+                                <td style="width: 30%; text-align: center;">
+                                    <a ng-href="{{rk.data.image && 'app/rekam/main/files/'+rk.id+'/images/'+rk.data.image || 'assets/images/noimage.jpg'}}" target="_blank" title="{{rk.data.image}}">
+                                        <img class="img-thumbnail" ng-src="{{rk.data.image && 'app/rekam/main/files/'+rk.id+'/images/thumb-'+rk.data.image || 'assets/images/noimage.jpg'}}">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>b.</td>
+                                <td colspan="2">Thorak PA / Bilateral (Tgl)</td>
+                                <td>
+                                    <input type="text" name="thorakpatgl" class="form-control input-sm" ng-model="rk.data.thorakpatgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2">Hasil Foto</td>
+                                <td>
+                                    <textarea name="thorakpahasil" class="form-control" rows="3" ng-model="rk.data.thorakpahasil"></textarea>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>c.</td>
+                                <td colspan="2">CT Scan Thorak (Tgl)</td>
+                                <td>
+                                    <input type="text" name="thorakcttgl" class="form-control input-sm" ng-model="rk.data.thorakcttgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2">Hasil Foto</td>
+                                <td>
+                                    <textarea name="thorakcthasil" class="form-control" rows="3" ng-model="rk.data.thorakcthasil"></textarea>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>d.</td>
+                                <td colspan="2">USG Thorak (Tgl)</td>
+                                <td>
+                                    <input type="text" name="thorakusgtgl" class="form-control input-sm" ng-model="rk.data.thorakusgtgl" data-date-format="dd MMMM yyyy" bs-datepicker>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2">Hasil Foto</td>
+                                <td>
+                                    <textarea name="thorakusghasil" class="form-control" rows="3" ng-model="rk.data.thorakusghasil"></textarea>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

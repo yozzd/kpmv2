@@ -1,0 +1,309 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Fisik Diagnostik</h4>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#t1" aria-controls="t1" role="tab" data-toggle="tab">1</a></li>
+        </ul>
+
+
+        <div class="blockui" block-ui="block">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="t1">
+                    <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">1.</td>
+                                <td colspan="2" style="width: 28%;">Keadaan Umum</td>
+                                <td>
+                                    <ui-select name="keadaan" ng-model="rk.keadaan.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="keadaan in rk.keadaans">
+                                            <div ng-bind-html="keadaan.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td colspan="2">Kesadaran</td>
+                                <td>
+                                    <ui-select name="kesadaran" ng-model="rk.kesadaran.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="kesadaran in rk.kesadarans">
+                                            <div ng-bind-html="kesadaran.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td colspan="2">Frekuensi Pernafasan (RR)</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="frekuensi" class="form-control input-sm" ng-model="rk.data.frekuensi" />
+                                        <div class="input-group-addon">x/menit</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td colspan="2">Pols / Nadi</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="nadi" class="form-control input-sm" ng-model="rk.data.nadi" />
+                                        <div class="input-group-addon">x/menit</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td colspan="2">Suhu Tubuh (Temperatur)</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="suhu" class="form-control input-sm" ng-model="rk.data.suhu" />
+                                        <div class="input-group-addon"><sup>o</sup>C</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td colspan="2">Dispnoe</td>
+                                <td>
+                                    <ui-select name="dispnoe" ng-model="rk.dispnoe.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="dispnoe in rk.dispnoes">
+                                            <div ng-bind-html="dispnoe.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td colspan="2">Orthopnoe</td>
+                                <td>
+                                    <ui-select name="orthopnoe" ng-model="rk.orthopnoe.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="orthopnoe in rk.orthopnoes">
+                                            <div ng-bind-html="orthopnoe.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td colspan="2">Odem Pre Tibial / Pre Orbital</td>
+                                <td>
+                                    <ui-select name="odem" ng-model="rk.odem.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="odem in rk.odems">
+                                            <div ng-bind-html="odem.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9.</td>
+                                <td colspan="2">Lain-lain</td>
+                                <td>
+                                    <textarea name="lain" class="form-control" rows="3" ng-model="rk.data.lain"></textarea>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10.</td>
+                                <td colspan="2">Dada</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="width: 2%;">a.</td>
+                                <td>Paru</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Inspeksi</td>
+                                <td>
+                                    <input type="text" name="inspeksi" class="form-control input-sm" ng-model="rk.data.inspeksi" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Palpasi</td>
+                                <td>
+                                    <input type="text" name="palpasi" class="form-control input-sm" ng-model="rk.data.palpasi" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Perkusi</td>
+                                <td>
+                                    <input type="text" name="perkusi" class="form-control input-sm" ng-model="rk.data.perkusi" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Auskultasi</td>
+                                <td>
+                                    <input type="text" name="auskultasi" class="form-control input-sm" ng-model="rk.data.auskultasi" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Cor</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>HR</td>
+                                <td>
+                                    <input type="text" name="hr" class="form-control input-sm" ng-model="rk.data.hr" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>ST</td>
+                                <td>
+                                    <input type="text" name="st" class="form-control input-sm" ng-model="rk.data.st" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Abdomen</td>
+                                <td>
+                                    <input type="text" name="abdomen" class="form-control input-sm" ng-model="rk.data.abdomen" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Hepar</td>
+                                <td>
+                                    <input type="text" name="hepar" class="form-control input-sm" ng-model="rk.data.hepar" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Limpa</td>
+                                <td>
+                                    <input type="text" name="limpa" class="form-control input-sm" ng-model="rk.data.limpa" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>f.</td>
+                                <td>Extrimitas</td>
+                                <td>
+                                    <input type="text" name="extrimitas" class="form-control input-sm" ng-model="rk.data.extrimitas" />
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11.</td>
+                                <td colspan="2">Anemis</td>
+                                <td>
+                                    <ui-select name="anemis" ng-model="rk.anemis.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="anemis in rk.anemiss">
+                                            <div ng-bind-html="anemis.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12.</td>
+                                <td colspan="2">Sianosis</td>
+                                <td>
+                                    <ui-select name="sianosis" ng-model="rk.sianosis.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="sianosis in rk.sianosiss">
+                                            <div ng-bind-html="sianosis.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13.</td>
+                                <td colspan="2">Ikhterus</td>
+                                <td>
+                                    <ui-select name="ikhterus" ng-model="rk.ikhterus.selected" search-enabled="false">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ikhterus in rk.ikhteruss">
+                                            <div ng-bind-html="ikhterus.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14.</td>
+                                <td colspan="2">Berat Badan</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="berat" class="form-control input-sm" ng-model="rk.data.berat" />
+                                        <div class="input-group-addon">kg</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15.</td>
+                                <td colspan="2">Tinggi Badan</td>
+                                <td>
+                                    <div class="input-group">
+                                        <input type="text" name="tinggi" class="form-control input-sm" ng-model="rk.data.tinggi" />
+                                        <div class="input-group-addon">cm</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

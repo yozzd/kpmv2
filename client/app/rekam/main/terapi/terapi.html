@@ -1,0 +1,90 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Tindakan Medik Terapi</h4>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#t1" aria-controls="t1" role="tab" data-toggle="tab">1</a></li>
+        </ul>
+
+        <div class="blockui" block-ui="block">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="t1">
+                    <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">1.</td>
+                                <td style="width: 28%;">
+                                    <label>
+                                        <input type="checkbox" checklist-model="rk.terapi.opt" value="1"> Nebulizer</label>
+                                </td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checklist-model="rk.terapi.opt" value="2" checklist-change="rk.cek(rk.terapi.opt)"> Punctie Pleura</label>
+                                </td>
+                                <td>
+                                    <ui-select name="punctie" ng-model="rk.punctie.selected" search-enabled="false" ng-disabled="rk.dis" ng-required="!rk.dis">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="punctie in rk.puncties">
+                                            <div ng-bind-html="punctie.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.punctie.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="kpunctie" class="form-control input-sm" placeholder="Keterangan" ng-model="rk.data.kpunctie" ng-disabled="rk.dis" />
+                                </td>
+                                <td class="has-error">
+                                    <p class="help-block" style="margin: 0;" ng-show="(form1.kpunctie.$error.required) && rk.submitted">
+                                        Tidak boleh kosong
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checklist-model="rk.terapi.opt" value="3"> Water Sealed Drainage (WSD)</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" checklist-model="rk.terapi.opt" value="4"> Pleurodosis</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

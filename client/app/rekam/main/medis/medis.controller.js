@@ -101,7 +101,6 @@ class RkMedisController {
             }
         ];
 
-
         this.kesimpulan = {};
         this.kesimpulans = this.opt1;
 

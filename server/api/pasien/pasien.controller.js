@@ -16,6 +16,11 @@ var Fisik = require('../fisik/fisik.model');
 var Radiologi = require('../radiologi/radiologi.model');
 var Laboratorium = require('../laboratorium/laboratorium.model');
 var Medis = require('../medis/medis.model');
+var Pengobatan = require('../pengobatan/pengobatan.model');
+var Terapi = require('../terapi/terapi.model');
+var Rehabilitasi = require('../rehabilitasi/rehabilitasi.model');
+var Konsultasi = require('../konsultasi/konsultasi.model');
+var Usul = require('../usul/usul.model');
 
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
@@ -144,6 +149,41 @@ export function create(req, res) {
                             _pasien: saved[0]._id
                         });
                         newMedis.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newPengobatan = new Pengobatan({
+                            _pasien: saved[0]._id
+                        });
+                        newPengobatan.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newTerapi = new Terapi({
+                            _pasien: saved[0]._id
+                        });
+                        newTerapi.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newRehabilitasi = new Rehabilitasi({
+                            _pasien: saved[0]._id
+                        });
+                        newRehabilitasi.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newKonsultasi = new Konsultasi({
+                            _pasien: saved[0]._id
+                        });
+                        newKonsultasi.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newUsul = new Usul({
+                            _pasien: saved[0]._id
+                        });
+                        newUsul.saveAsync();
                         return saved;
                     });
             }

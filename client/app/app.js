@@ -17,7 +17,8 @@ angular.module('kpmApp', [
     'ncy-angular-breadcrumb',
     'blockUI',
     'ui.select',
-    'ngFileUpload'
+    'ngFileUpload',
+    'checklist-model'
 ])
     .config(function ($urlRouterProvider, $locationProvider, RestangularProvider, blockUIConfig, uiSelectConfig) {
         $urlRouterProvider

@@ -3,38 +3,58 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 var relationship = require('mongoose-relationship');
 
-var RadiologiSchema = new mongoose.Schema({
-    image: {
+var PengobatanSchema = new mongoose.Schema({
+    tb: {
         type: String,
         default: '',
         trim: true
     },
-    thorakpatgl: {
-        type: Date,
-        default: '',
-        trim: true
-    },
-    thorakpahasil: {
+    tb1: {
         type: String,
         default: '',
         trim: true
     },
-    thorakcttgl: {
-        type: Date,
-        default: '',
-        trim: true
-    },
-    thorakcthasil: {
+    tb2: {
         type: String,
         default: '',
         trim: true
     },
-    thorakusgtgl: {
-        type: Date,
+    tb3: {
+        type: String,
         default: '',
         trim: true
     },
-    thorakusghasil: {
+    tb4: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    tb5: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    nontb1: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    nontb2: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    nontb3: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    nontb4: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    nontb5: {
         type: String,
         default: '',
         trim: true
@@ -42,12 +62,12 @@ var RadiologiSchema = new mongoose.Schema({
     _pasien: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pasien',
-        childPath: '_radiologi'
+        childPath: '_pengobatan'
     }
 });
 
-RadiologiSchema.plugin(relationship, {
+PengobatanSchema.plugin(relationship, {
     relationshipPathName: '_pasien'
 });
 
-export default mongoose.model('Radiologi', RadiologiSchema, 'radiologi');
+export default mongoose.model('Pengobatan', PengobatanSchema, 'pengobatan');

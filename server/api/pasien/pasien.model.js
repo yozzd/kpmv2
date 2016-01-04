@@ -122,6 +122,26 @@ var PasienSchema = new mongoose.Schema({
     _medis: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Medis'
+    },
+    _pengobatan: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pengobatan'
+    },
+    _terapi: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Terapi'
+    },
+    _rehabilitasi: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Rehabilitasi'
+    },
+    _konsultasi: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Konsultasi'
+    },
+    _usul: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usul'
     }
 });
 

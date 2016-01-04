@@ -128,5 +128,75 @@ angular.module('kpmApp.rekam')
                 ncyBreadcrumb: {
                     label: 'Pemeriksaan / Tindakan Medis Diagnostik'
                 }
+            })
+            .state('rekam.sub.pengobatan', {
+                url: '/pengobatan',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/pengobatan/pengobatan.html',
+                        controller: 'RkPengobatanController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Pengobatan'
+                }
+            })
+            .state('rekam.sub.terapi', {
+                url: '/terapi',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/terapi/terapi.html',
+                        controller: 'RkTerapiController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Tindakan Medik Terapi'
+                }
+            })
+            .state('rekam.sub.rehabilitasi', {
+                url: '/rehabilitasi',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/rehabilitasi/rehabilitasi.html',
+                        controller: 'RkRehabilitasiController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Rehabilitasi Medik'
+                }
+            })
+            .state('rekam.sub.konsultasi', {
+                url: '/konsultasi',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/konsultasi/konsultasi.html',
+                        controller: 'RkKonsultasiController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Konsultasi Khusus'
+                }
+            })
+            .state('rekam.sub.usul', {
+                url: '/usul',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/usul/usul.html',
+                        controller: 'RkUsulController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Usul / Tindakan Lanjut'
+                }
             });
     });

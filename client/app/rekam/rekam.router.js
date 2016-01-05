@@ -129,6 +129,20 @@ angular.module('kpmApp.rekam')
                     label: 'Pemeriksaan / Tindakan Medis Diagnostik'
                 }
             })
+            .state('rekam.sub.diagnosa', {
+                url: '/diagnosa',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/diagnosa/diagnosa.html',
+                        controller: 'RkDiagnosaController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Diagnosa'
+                }
+            })
             .state('rekam.sub.pengobatan', {
                 url: '/pengobatan',
                 authenticate: 'rekam',

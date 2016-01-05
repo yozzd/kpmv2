@@ -123,6 +123,10 @@ var PasienSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Medis'
     },
+    _diagnosa: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Diagnosa'
+    },
     _pengobatan: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pengobatan'

@@ -1,0 +1,210 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Diagnosa</h4>
+            <hr/>
+        </div>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#t1" aria-controls="t1" role="tab" data-toggle="tab">1</a></li>
+        </ul>
+
+
+        <div class="blockui" block-ui="block">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="t1">
+                    <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                        <table class="ft">
+                            <tr>
+                                <td style="width: 2%;">1.</td>
+                                <td style="width: 28%;">
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="1"> TB Paru</label>
+                                </td>
+                                <td></td>
+                                <td style="width: 30%;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="ptbparu" ng-model="rk.ptbparu.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='1'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ptbparu in rk.ptbparus">
+                                            <div ng-bind-html="ptbparu.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td>
+                                    <ui-select name="ptbparupositif" ng-model="rk.ptbparupositif.selected" search-enabled="false" ng-show="rk.ptbparu.selected.name=='TB Paru BTA Positif'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ptbparupositif in rk.ptbparupositifs">
+                                            <div ng-bind-html="ptbparupositif.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select name="ptbparunegatif" ng-model="rk.ptbparunegatif.selected" search-enabled="false" ng-show="rk.ptbparu.selected.name=='TB Paru BTA Negatif'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ptbparunegatif in rk.ptbparunegatifs">
+                                            <div ng-bind-html="ptbparunegatif.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select name="ptbparuekstra" ng-model="rk.ptbparuekstra.selected" search-enabled="false" ng-show="rk.ptbparu.selected.name=='TB Ekstra Paru'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ptbparuekstra in rk.ptbparuekstras">
+                                            <div ng-bind-html="ptbparuekstra.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <ui-select name="ptbparuekstralokasi" ng-model="rk.ptbparuekstralokasi.selected" search-enabled="false" ng-show="rk.ptbparu.selected.name=='TB Ekstra Paru'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ptbparuekstralokasi in rk.ptbparuekstralokasis">
+                                            <div ng-bind-html="ptbparuekstralokasi.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="2"> ISPA (Infeksi Saluran Pernafasan Akut)</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="pispa" ng-model="rk.pispa.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='2'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pispa in rk.pispas">
+                                            <div ng-bind-html="pispa.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td>
+                                    <ui-select name="ppneumonia" ng-model="rk.ppneumonia.selected" search-enabled="false" ng-show="rk.pispa.selected.name=='Pneumonia'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ppneumonia in rk.ppneumonias">
+                                            <div ng-bind-html="ppneumonia.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="3"> Penyakit Kelainan Pleura</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="ppleura" ng-model="rk.ppleura.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='3'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ppleura in rk.ppleuras">
+                                            <div ng-bind-html="ppleura.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td>
+                                    <ui-select name="ppneumothoraks1" ng-model="rk.ppneumothoraks1.selected" search-enabled="false" ng-show="rk.ppleura.selected.name=='Pneumothoraks'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ppneumothoraks1 in rk.ppneumothoraks1s">
+                                            <div ng-bind-html="ppneumothoraks1.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select name="pefusi" ng-model="rk.pefusi.selected" search-enabled="false" ng-show="rk.ppleura.selected.name=='Efusi Pleura (Hemathothoraks / Empyema)'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pefusi in rk.pefusis">
+                                            <div ng-bind-html="pefusi.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <ui-select name="ppneumothoraks2" ng-model="rk.ppneumothoraks2.selected" search-enabled="false" ng-show="rk.ppleura.selected.name=='Pneumothoraks'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="ppneumothoraks2 in rk.ppneumothoraks2s">
+                                            <div ng-bind-html="ppneumothoraks2.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="4"> Asma Bronkhial</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="pbronkhial" ng-model="rk.pbronkhial.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='4'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pbronkhial in rk.pbronkhials">
+                                            <div ng-bind-html="pbronkhial.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td>
+                                    <ui-select name="pdewasa" ng-model="rk.pdewasa.selected" search-enabled="false" ng-show="rk.pbronkhial.selected.name=='Dewasa'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pdewasa in rk.pdewasas">
+                                            <div ng-bind-html="pdewasa.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <ui-select name="panak" ng-model="rk.panak.selected" search-enabled="false" ng-show="rk.pbronkhial.selected.name=='Anak'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="panak in rk.panaks">
+                                            <div ng-bind-html="panak.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <hr/>
+                            <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

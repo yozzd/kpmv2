@@ -16,6 +16,7 @@ var Fisik = require('../fisik/fisik.model');
 var Radiologi = require('../radiologi/radiologi.model');
 var Laboratorium = require('../laboratorium/laboratorium.model');
 var Medis = require('../medis/medis.model');
+var Diagnosa = require('../diagnosa/diagnosa.model');
 var Pengobatan = require('../pengobatan/pengobatan.model');
 var Terapi = require('../terapi/terapi.model');
 var Rehabilitasi = require('../rehabilitasi/rehabilitasi.model');
@@ -149,6 +150,13 @@ export function create(req, res) {
                             _pasien: saved[0]._id
                         });
                         newMedis.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newDiagnosa = new Diagnosa({
+                            _pasien: saved[0]._id
+                        });
+                        newDiagnosa.saveAsync();
                         return saved;
                     })
                     .then(saved => {

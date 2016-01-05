@@ -21,7 +21,7 @@
                         <table class="ft">
                             <tr>
                                 <td style="width: 2%;">1.</td>
-                                <td style="width: 28%;">
+                                <td style="width: 33%;">
                                     <label>
                                         <input type="radio" ng-model="rk.pdiagnosa.opt" value="1"> TB Paru</label>
                                 </td>
@@ -189,6 +189,249 @@
                                         </ui-select-choices>
                                     </ui-select>
                                 </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="5"> Penyakit Paru Obstruktif Kronik (PPOK)</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="pppok" ng-model="rk.pppok.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='5'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pppok in rk.pppoks">
+                                            <div ng-bind-html="pppok.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td>
+                                    <ui-select name="peksaserbasi" ng-model="rk.peksaserbasi.selected" search-enabled="false" ng-show="rk.pppok.selected.name=='Eksaserbasi Akut'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="peksaserbasi in rk.peksaserbasis">
+                                            <div ng-bind-html="peksaserbasi.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="6"> Cor Pulmonale Chronicum (CPC)</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="7"> Bronkhiektasis</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="8"> Atelektasis</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="9"> Abses Paru</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="10"> Abses Paru</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Tipe / Jenis Sel</td>
+                                <td>
+                                    <input type="text" name="ptptipe" class="form-control input-sm" ng-model="rk.ptptipe" ng-disabled="rk.pdiagnosa.opt!='10'">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Stadium</td>
+                                <td>
+                                    <input type="text" name="ptpstadium" class="form-control input-sm" ng-model="rk.ptpstadium" ng-disabled="rk.pdiagnosa.opt!='10'">
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="11"> Tumor Mediastinum</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="12"> Penyakit Vascular Paru</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="pvascular" ng-model="rk.pvascular.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='12'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="pvascular in rk.pvasculars">
+                                            <div ng-bind-html="pvascular.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="13"> Sequele Tuberkulosis</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <ui-select name="psequele" ng-model="rk.psequele.selected" search-enabled="false" ng-disabled="rk.pdiagnosa.opt!='13'">
+                                        <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="psequele in rk.psequeles">
+                                            <div ng-bind-html="psequele.name"></div>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="14"> Penyakit Paru / Saluran Nafas Lainnya</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="pparu" class="form-control input-sm" ng-model="rk.pparu" ng-disabled="rk.pdiagnosa.opt!='14'">
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15.</td>
+                                <td>
+                                    <label>
+                                        <input type="radio" ng-model="rk.pdiagnosa.opt" value="15"> Penyakit Non Paru / Non Saluran Nafas Lainnya</label>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="text" name="pnonparu" class="form-control input-sm" ng-model="rk.pnonparu" ng-disabled="rk.pdiagnosa.opt!='15'">
+                                </td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>

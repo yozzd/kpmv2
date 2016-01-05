@@ -79,6 +79,46 @@ var DiagnosaSchema = new mongoose.Schema({
         default: '',
         trim: true
     },
+    pppok: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    peksaserbasi: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    ptptipe: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    ptpstadium: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    pvascular: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    psequele: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    pparu: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    pnonparu: {
+        type: String,
+        default: '',
+        trim: true
+    },
     _pasien: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pasien',

@@ -23,6 +23,10 @@ var Rehabilitasi = require('../rehabilitasi/rehabilitasi.model');
 var Konsultasi = require('../konsultasi/konsultasi.model');
 var Usul = require('../usul/usul.model');
 
+var fs = require('bluebird').promisifyAll(require('fs-extra'));
+//var NodePDF = require('nodepdf');
+var NodePDF = require('bluebird').promisifyAll(require('nodepdf'));
+
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
     return function (err) {
@@ -218,4 +222,52 @@ export function destroy(req, res) {
         .then(handleEntityNotFound(res))
         .then(removeEntity(res))
         .catch(handleError(res));
+}
+
+export function cetak(req, res) {
+    Pasien.findByIdAsync(req.params.id)
+        .then(pasien => {
+
+            var content = '';
+            content += '<html>';
+            content += '<style>';
+            content += 'body {font-size: 12px;}';
+            content += 'table {font-size: 12px; width: 100%; background-color: transparent; border-collapse: collapse; border-spacing: 0; border-top: 1px solid #000000; border-left: 1px solid #000000;}';
+            content += '.table th, .table td {padding: 2px 4px 4px 4px; text-align: left; vertical-align: middle; border-right: 1px solid #000000; border-bottom: 1px solid #000000;}';
+            content += '.table th {font-weight: bold;}';
+            content += '.table thead th {vertical-align: middle;}';
+            content += '</style>';
+            content += '<body>';
+
+            content += '<div style="text-align: center;">';
+            content += '<h3>KESEHATAN PARU MASYARAKAT (KPM)<br/>UPT. DINAS KESEHATAN PROVINSI SUMATERA UTARA</h3>';
+            content += '<p><strong><u>KARTU STATUS PASIEN RAWAT JALAN</u></strong></p>';
+            content += '</div>';
+
+            content += '</body>';
+            content += '</html>';
+
+            var options = {
+                'content': content,
+                'paperSize': {
+                    'format': 'A4',
+                    'orientation': 'portrait',
+                    'margin': {
+                        'top': '2cm',
+                        'right': '2cm',
+                        'bottom': '2cm',
+                        'left': '2cm'
+                    }
+                }
+            }
+
+            NodePDF.renderAsync(null, './client/app/rekam/main/files/' + req.params.id + '/pdf/' + req.params.id + '.pdf', options)
+                .then(() => {
+                    fs.readFileAsync('./client/app/rekam/main/files/' + req.params.id + '/pdf/' + req.params.id + '.pdf')
+                        .then(data => {
+                            res.contentType('application/pdf');
+                            res.send(data);
+                        })
+                })
+        });
 }

@@ -258,6 +258,58 @@ class RkDiagnosaController {
             }
         ];
 
+        this.opt14 = [
+            {
+                id: 1,
+                name: 'Stabil'
+            },
+            {
+                id: 2,
+                name: 'Eksaserbasi Akut'
+            }
+        ];
+
+        this.opt15 = [
+            {
+                id: 1,
+                name: 'Ringan'
+            },
+            {
+                id: 2,
+                name: 'Sedang'
+            },
+            {
+                id: 3,
+                name: 'Berat'
+            }
+        ];
+
+        this.opt16 = [
+            {
+                id: 1,
+                name: 'Emboli Paru'
+            },
+            {
+                id: 2,
+                name: 'Infark Paru'
+            }
+        ];
+
+        this.opt17 = [
+            {
+                id: 1,
+                name: 'SOPT'
+            },
+            {
+                id: 2,
+                name: 'Kalsifikasi'
+            },
+            {
+                id: 3,
+                name: 'Fibrosis'
+            }
+        ];
+
         //tbparu
         this.ptbparu = {};
         this.ptbparus = this.opt1;
@@ -303,6 +355,21 @@ class RkDiagnosaController {
 
         this.panak = {};
         this.panaks = this.opt13;
+
+        //ppok
+        this.pppok = {};
+        this.pppoks = this.opt14;
+
+        this.peksaserbasi = {};
+        this.peksaserbasis = this.opt15;
+
+        //pvascular
+        this.pvascular = {};
+        this.pvasculars = this.opt16;
+
+        //psequele
+        this.psequele = {};
+        this.psequeles = this.opt17;
     }
 
     getPasien() {
@@ -471,6 +538,73 @@ class RkDiagnosaController {
                         };
                     }
 
+                    if (this.data.pdiagnosa === '5') {
+                        this.pppok = {
+                            selected: {
+                                name: this.data.pppok
+                            }
+                        };
+                        if (this.data.pppok === 'Eksaserbasi Akut') {
+                            this.peksaserbasi = {
+                                selected: {
+                                    name: this.data.peksaserbasi
+                                }
+                            };
+                        } else {
+                            this.peksaserbasi = {
+                                selected: undefined
+                            };
+                        }
+                    } else {
+                        this.pppok = {
+                            selected: undefined
+                        };
+                    }
+
+                    if (this.data.pdiagnosa === '10') {
+                        this.ptptipe = this.data.ptptipe;
+                        this.ptpstadium = this.data.ptpstadium;
+                    } else {
+                        this.ptptipe = '';
+                        this.ptpstadium = '';
+                    }
+
+                    if (this.data.pdiagnosa === '12') {
+                        this.pvascular = {
+                            selected: {
+                                name: this.data.pvascular
+                            }
+                        };
+                    } else {
+                        this.pvascular = {
+                            selected: undefined
+                        };
+                    }
+
+                    if (this.data.pdiagnosa === '13') {
+                        this.psequele = {
+                            selected: {
+                                name: this.data.psequele
+                            }
+                        };
+                    } else {
+                        this.psequele = {
+                            selected: undefined
+                        };
+                    }
+
+                    if (this.data.pdiagnosa === '14') {
+                        this.pparu = this.data.pparu;
+                    } else {
+                        this.pparu = '';
+                    }
+
+                    if (this.data.pdiagnosa === '15') {
+                        this.pnonparu = this.data.pnonparu;
+                    } else {
+                        this.pnonparu = '';
+                    }
+
                     this.block.stop();
                 }, 1000);
             });
@@ -495,6 +629,14 @@ class RkDiagnosaController {
                     pbronkhial: this.pbronkhial.selected === undefined ? '' : this.pbronkhial.selected.name,
                     pdewasa: this.pdewasa.selected === undefined ? '' : this.pdewasa.selected.name,
                     panak: this.panak.selected === undefined ? '' : this.panak.selected.name,
+                    pppok: this.pppok.selected === undefined ? '' : this.pppok.selected.name,
+                    peksaserbasi: this.peksaserbasi.selected === undefined ? '' : this.peksaserbasi.selected.name,
+                    ptptipe: this.ptptipe,
+                    ptpstadium: this.ptpstadium,
+                    pvascular: this.pvascular.selected === undefined ? '' : this.pvascular.selected.name,
+                    psequele: this.psequele.selected === undefined ? '' : this.psequele.selected.name,
+                    pparu: this.pparu,
+                    pnonparu: this.pnonparu,
                 }, this.data._id)
                 .then(() => {
                     this.blockmessage = 'Updating ...';

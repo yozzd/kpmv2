@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
-var relationship = require("mongoose-relationship");
+var relationship = require('mongoose-relationship');
 
 var FisikSchema = new mongoose.Schema({
     keadaan: {

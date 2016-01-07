@@ -19,7 +19,7 @@
                     </div>
                     <div class="form-group" ng-class="{'has-error':form.tanggal.$error.required && rk.submitted}">
                         <label>Tanggal Registrasi <span class="req">*</span></label>
-                        <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.data.tanggal" data-date-format="dd MMMM yyyy" bs-datepicker required>
+                        <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.data.tanggal" data-date-format="dd MMMM yyyy" data-autoclose="true" data-container="body" bs-datepicker required>
                         <p class="help-block" ng-show="form.tanggal.$error.required && rk.submitted">
                             <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
                         </p>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label>Tanggal Lahir</label>
-                        <input type="text" name="lahir" class="form-control input-sm" ng-model="rk.data.lahir" ng-change="rk.lahir(rk.data.lahir)" data-date-format="dd MMMM yyyy" bs-datepicker>
+                        <input type="text" name="lahir" class="form-control input-sm" ng-model="rk.data.lahir" ng-change="rk.lahir(rk.data.lahir)" data-date-format="dd MMMM yyyy" data-autoclose="true" data-container="body" bs-datepicker>
                     </div>
                     <div class="form-group" ng-class="{'has-error':form.umur.$error.required && rk.submitted}">
                         <label>Umur <span class="req">*</span></label>

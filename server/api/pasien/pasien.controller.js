@@ -226,7 +226,7 @@ export function destroy(req, res) {
 }
 
 export function cetak(req, res) {
-    Pasien.findById(req.params.id).populate('_anamnesa').execAsync()
+    Pasien.findById(req.params.id).populate('_anamnesa _fisik _radiologi _laboratorium _medis _pengobatan _terapi _rehabilitasi _konsultasi _usul').execAsync()
         .then(pasien => {
 
             var content = '';
@@ -258,7 +258,7 @@ export function cetak(req, res) {
             content += '</tr>';
             content += '</table>';
 
-            content += '<table style="border: 0; width: 80%;">';
+            content += '<table style="border: 0;">';
             content += '<tr>';
             content += '<td colspan="2">Nama</td>';
             content += '<td>:</td>';
@@ -347,11 +347,12 @@ export function cetak(req, res) {
             content += '</tr>';
             content += '</table>';
 
+            //anamnesa
             content += '<p><strong><u>I. ANAMNESA</u></strong></p>';
-            content += '<table style="border: 0; width: 80%;">';
+            content += '<table style="border: 0;">';
             content += '<tr>';
             content += '<td style="width: 3%;">1.</td>';
-            content += '<td colspan="2">Keluhan Utama</td>';
+            content += '<td colspan="2" style="width: 47%;">Keluhan Utama</td>';
             content += '<td></td>';
             content += '<td></td>';
             content += '</tr>';
@@ -785,6 +786,1275 @@ export function cetak(req, res) {
                 content += '<td>' + pasien._anamnesa.asmaya + '</td>';
                 content += '</tr>';
             }
+            content += '</table>';
+
+            //fisik
+            content += '<p><strong><u>II. FISIK DIAGNOSTIK</u></strong></p>';
+            content += '<table style="border: 0;">';
+            content += '<tr>';
+            content += '<td style="width: 3%;">1.</td>';
+            content += '<td colspan="2" style="width: 47%;">Keadaan Umum</td>';
+            content += '<td style="width: 2%;">:</td>';
+            content += '<td>' + pasien._fisik.keadaan + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>2.</td>';
+            content += '<td colspan="2">Kesadaran</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.kesadaran + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>3.</td>';
+            content += '<td colspan="2">Frekuensi Pernafasan (RR)</td>';
+            content += '<td>:</td>';
+            if (pasien._fisik.frekuensi === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._fisik.frekuensi + ' x/menit</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>4.</td>';
+            content += '<td colspan="2">Pols / Nadi</td>';
+            content += '<td>:</td>';
+            if (pasien._fisik.nadi === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._fisik.nadi + ' x/menit</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>5.</td>';
+            content += '<td colspan="2">Suhu Tubuh (Temperatur)</td>';
+            content += '<td>:</td>';
+            if (pasien._fisik.suhu === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._fisik.suhu + ' <sup>o</sup>C</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>6.</td>';
+            content += '<td colspan="2">Dispnoe</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.dispnoe + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>7.</td>';
+            content += '<td colspan="2">Orthopnoe</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.orthopnoe + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>8.</td>';
+            content += '<td colspan="2">Odem Pre Tibial / Pre Orbital</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.odem + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>9.</td>';
+            content += '<td colspan="2">Lain-lain</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.lain.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>10.</td>';
+            content += '<td colspan="2">Dada</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Paru</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Inspeksi</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.inspeksi + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Palpasi</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.palpasi + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Perkusi</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.perkusi + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Auskultasi</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.auskultasi + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Cor</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>HR</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.hr + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>ST</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.st + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Abdomen</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.abdomen + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Hepar</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.hepar + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>e.</td>';
+            content += '<td>Limpa</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.limpa + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>f.</td>';
+            content += '<td>Extrimitas</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.extrimitas + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td>11.</td>';
+            content += '<td colspan="2">Anemis</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.anemis + '</td>';
+            content += '</tr>'
+            content += '<tr>';
+            content += '<td>12.</td>';
+            content += '<td colspan="2">Sianosis</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.sianosis + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>12.</td>';
+            content += '<td colspan="2">Ikhterus</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._fisik.ikhterus + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>13.</td>';
+            content += '<td colspan="2">Berat Badan</td>';
+            content += '<td>:</td>';
+            if (pasien._fisik.berat === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._fisik.berat + ' kg</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>14.</td>';
+            content += '<td colspan="2">Tinggi Badan</td>';
+            content += '<td>:</td>';
+            if (pasien._fisik.tinggi === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._fisik.tinggi + ' cm</td>';
+            }
+            content += '</tr>';
+            content += '</table>';
+
+            //radiologi
+            content += '<p><strong><u>II. PEMERIKSAAN RADIOLOGI</u></strong></p>';
+            content += '<table style="border: 0;">';
+            content += '<tr>';
+            content += '<td style="width: 3%;">b.</td>';
+            content += '<td colspan="2" style="width: 47%;">Thorak PA / Bilateral (Tgl)</td>';
+            content += '<td style="width: 2%;">:</td>';
+            if (pasien._radiologi.thorakpatgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._radiologi.thorakpatgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._radiologi.thorakpahasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td >c.</td>';
+            content += '<td colspan="2">CT Scan Thorak (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._radiologi.thorakcttgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._radiologi.thorakcttgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._radiologi.thorakcthasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td >d.</td>';
+            content += '<td colspan="2">USG Thorak (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._radiologi.thorakusgtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._radiologi.thorakusgtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._radiologi.thorakusghasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '</table>';
+
+            //laboratorium
+            content += '<p><strong><u>IV. PEMERIKSAAN LABORATORIUM</u></strong></p>';
+            content += '<table style="border: 0;">';
+            content += '<tr>';
+            content += '<td style="width: 3%;">1.</td>';
+            content += '<td colspan="2" style="width: 47%;">Darah Rutin / Lengkap</td>';
+            content += '<td style="width: 2%;"></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Hb</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.hb + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>LED</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.led + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Leukosit</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.leukosit + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Thrombosit</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.thrombosit + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>e.</td>';
+            content += '<td>Erythrosit</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.erythrosit + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>f.</td>';
+            content += '<td>Haematokrit (Ht)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.haematokrit + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>g.</td>';
+            content += '<td>Gologan Darah</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.goldarah + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>2.</td>';
+            content += '<td colspan="2">Urine Rutin / Lengkap</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Ph</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.ph + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Reduksi</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.reduksi + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Protein</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.protein + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Bilirubin</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.bilirubin + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Sedimen</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.sedimen + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>3.</td>';
+            content += '<td colspan="2">Faeces Rutin</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.faeces + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>4.</td>';
+            content += '<td colspan="2">Mikrobiologi</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Direct Smear BTA (SPS)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.dsbta + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>I</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.dsbta1 + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>II</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.dsbta2 + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>III</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.dsbta3 + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Kultur / Resistensi BTA (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.btatgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.btatgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Sensitif</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.btasensitif + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Resinten</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.btaresinten + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Direct Smear (Gran) Sputum</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.dssputum + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Kultur / Resistensi Sputum (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.sputumtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.sputumtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Sensitif</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.sputumsensitif + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Resinten</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.sputumresinten + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>e.</td>';
+            content += '<td>Direct (Jamur / Spora)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.jamur + '</td>'; + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Kultur Jamur (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.jamurtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.jamurtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Kultur Cairan Pleura (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.kulturpleuratgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.kulturpleuratgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>5.</td>';
+            content += '<td colspan="2">Kimia Klinik</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Analisa Cairan Pleura (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.analisapleuratgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.analisapleuratgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Tes Rivalta</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.rivalta + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>LDH</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.ldhpleura + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Protein</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.proteinpleura + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Transudat / Exudat</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.transudat + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Faal Hati (LFT) (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.faalhatitgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.faalhatitgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>SGOT</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.sgot + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>SGPT</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.sgpt + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Bil. Total Direct</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.biltotal + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Bil. Direct</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.bildirect + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Alkali Fosfatase</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.fosfatase + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Protein Elektrofores (SPE)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.elektrofores + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Total Protein</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.total + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Faal Ginjal (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.faalginjaltgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.faalginjaltgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Ureum</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.ureum + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Kratinin</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.kratinin + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Asam Urat</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.asamurat + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Kratinin Urine</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.kratininurine + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Protein Urine 24 Jam</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.proteinurine + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>e.</td>';
+            content += '<td>Elektrolit Darah (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.elektrolittgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.elektrolittgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Natrium</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.natrium + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Kalium</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.kalium + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Chlorida</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.chlorida + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>AGDA</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.agda + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>f.</td>';
+            content += '<td>Profil Jantung (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.jantungtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.jantungtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>EKG</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.ekg + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Treadmill</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.treadmill + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>CPK / CK - Nac</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.cpk + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>LDH</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.ldhjantung + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Troponin I</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.troponin + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>g.</td>';
+            content += '<td>Tes Gula Darah (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.glukosatgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.glukosatgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Glukosa Puasa</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.glukosapuasa + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Glukosa 2 Jam PP</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.glukosapp + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Glukosa Ad Random</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.glukosarandom + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>h.</td>';
+            content += '<td>Profil Lipid (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._laboratorium.lipidtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._laboratorium.lipidtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>HDL Cholesterol</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.hdl + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>LDL Cholesterol</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.ldl + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Cholesterol Total</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.cholesterol + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Triglecerida</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.triglecerida + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Lipid Total</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._laboratorium.lipidtotal + '</td>';
+            content += '</tr>';
+            content += '</table>';
+
+            //medis
+            content += '<p><strong><u>V. PEMERIKSAAN / TINDAKAN MEDIS DIAGNOSTIK</u></strong></p>';
+            content += '<table style="border: 0;">';
+            content += '<tr>';
+            content += '<td style="width: 3%;">1.</td>';
+            content += '<td colspan="2" style="width: 47%;">Bronkhoskopi (Tgl)</td>';
+            content += '<td style="width: 2%;">:</td>';
+            if (pasien._medis.bronkhoskopitgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.bronkhoskopitgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.bronkhoskopihasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>2.</td>';
+            content += '<td colspan="2">Tes Fungsi Paru</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Spirometer (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.spirometertgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.spirometertgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>EVC</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.evc + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>FVC (KVP)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.fvc + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>FEVI (VEPI)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.fevi + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>%FVC (%KVP)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.persenfvc === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._medis.persenfvc + ' %</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>%FEVI (%VEPI)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.persenfevi === '') {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + pasien._medis.persenfevi + ' %</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td><u>Kesimpulan</u></td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>' + pasien._medis.kesimpulan + '</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.kkesimpulan + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>PEFR (APE) (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.pefrtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.pefrtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            if (pasien._medis.pefr !== '') {
+                content += '<tr>';
+                content += '<td></td>';
+                content += '<td></td>';
+                content += '<td></td>';
+                content += '<td>:</td>';
+                content += '<td>' + pasien._medis.pefr + ' L/menit</td>';
+                content += '</tr>';
+            }
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Tes Bronkhodilator (Uji Bronkhodilator) (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.bronkhodilatortgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.bronkhodilatortgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            if (pasien._medis.bronkhodilator !== '') {
+                content += '<tr>';
+                content += '<td></td>';
+                content += '<td></td>';
+                content += '<td></td>';
+                content += '<td>:</td>';
+                content += '<td>' + pasien._medis.bronkhodilator + '</td>';
+                content += '</tr>';
+            }
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>d.</td>';
+            content += '<td>Tes Provokasi Bronkhus (Uji Kepekaan Bronkhus) (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.bronkhustgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.bronkhustgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            if (pasien._medis.bronkhus !== '') {
+                content += '<tr>';
+                content += '<td></td>';
+                content += '<td></td>';
+                content += '<td></td>';
+                content += '<td>:</td>';
+                content += '<td>' + pasien._medis.bronkhus + ' : ' + pasien._medis.kbronkhus + '</td>';
+                content += '</tr>';
+            }
+            content += '<tr>';
+            content += '<td>3.</td>';
+            content += '<td colspan="2">Pemeriksaan Jantung</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>a.</td>';
+            content += '<td>Elektrokardiograf (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.ekgtgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.ekgtgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.ekghasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Tes Treadmill (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.treadmilltgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.treadmilltgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.treadmillhasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>4.</td>';
+            content += '<td colspan="2">Immunologi</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>a.</td>';
+            content += '<td>LGE Total</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.lge + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Tes Alergi Kulit (Skin Test)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.skin + ' : ' + pasien._medis.kskin + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>c.</td>';
+            content += '<td>Tes Tuberkulin (Mantoux Test)</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.tuberkulin + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>5.</td>';
+            content += '<td colspan="2">Proof Punctie Pleura (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.pleuratgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.pleuratgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.pleurahasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>6.</td>';
+            content += '<td colspan="2">Histoli, Sitologi (Biopsi Jarum Halus, Biopsi Aspirsi, dsb.) (Tgl)</td>';
+            content += '<td>:</td>';
+            if (pasien._medis.histolitgl === null) {
+                content += '<td></td>';
+            } else {
+                content += '<td>' + moment(pasien._medis.histolitgl).format('DD MMMM YYYY') + '</td>';
+            }
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Lokasi</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.histolilokasi + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Bahan</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.histolibahan + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td colspan="2">Hasil</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._medis.histolihasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
+            content += '</tr>';
+            content += '</table>';
+
+            //pengobatan
+            content += '<p><strong><u>VII. PENGOBATAN</u></strong></p>';
+            content += '<table style="border: 0;">';
+            content += '<tr>';
+            content += '<td style="width: 3%;">1.</td>';
+            content += '<td colspan="2" style="width: 47%;">TB - OAT</td>';
+            content += '<td style="width: 2%;"></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td style="width: 3%;">a.</td>';
+            content += '<td>Kategori</td>';
+            content += '<td>:</td>';
+            content += '<td>' + pasien._pengobatan.tb + '</td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td>b.</td>';
+            content += '<td>Obat Lain-lain</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>1. ' + pasien._pengobatan.tb1 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>2. ' + pasien._pengobatan.tb2 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>3. ' + pasien._pengobatan.tb3 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>4. ' + pasien._pengobatan.tb1 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>5. ' + pasien._pengobatan.tb5 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>2.</td>';
+            content += '<td colspan="2">Non TB</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>1. ' + pasien._pengobatan.nontb1 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>2. ' + pasien._pengobatan.nontb2 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>3. ' + pasien._pengobatan.nontb3 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>4. ' + pasien._pengobatan.nontb4 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '<td>5. ' + pasien._pengobatan.nontb5 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '</table>';
+
+            //terapi
+            content += '<p><strong><u>VIII. TINDAKAN MEDIK TERAPI</u></strong></p>';
+
+            if (pasien._terapi.terapi) {
+                var str1 = pasien._terapi.terapi.split(',');
+                var str2 = ['', 'Nebulizer', 'Punctie Pleura', 'Water Sealed Drainage (WSD)', 'Pleurodesis'];
+
+                content += '<table style="border: 0;">';
+                _.each(str1, function (val, key) {
+                    if (val === '2') {
+                        content += '<tr>';
+                        content += '<td style="width: 3%;">' + (key + 1) + '.</td>';
+                        content += '<td colspan="2" style="width: 47%;">' + str2[val] + '</td>';
+                        content += '<td style="width: 2%;"></td>';
+                        content += '<td></td>';
+                        content += '</tr>';
+                        content += '<tr>';
+                        content += '<td></td>';
+                        content += '<td colspan="2">' + pasien._terapi.punctie + '</td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._terapi.kpunctie + '</td>';
+                        content += '</tr>';
+                    } else {
+                        content += '<tr>';
+                        content += '<td style="width: 3%;">' + (key + 1) + '.</td>';
+                        content += '<td colspan="2" style="width: 47%;">' + str2[val] + '</td>';
+                        content += '<td style="width: 2%;"></td>';
+                        content += '<td></td>';
+                        content += '</tr>';
+                    }
+                });
+                content += '</table>';
+            }
+
+            //rehabilitasi
+            content += '<p><strong><u>IX. REHABILITASI MEDIK</u></strong></p>';
+
+            if (pasien._rehabilitasi.rehabilitasi) {
+                var str3 = pasien._rehabilitasi.rehabilitasi.split(',');
+                var str4 = ['', 'Postural Drainage', 'Latihan Pernafasan Sederhana', 'Latihan Pernafasan Khusus', 'Terapi Listrik'];
+
+                content += '<table style="border: 0;">';
+                _.each(str3, function (val, key) {
+                    content += '<tr>';
+                    content += '<td style="width: 3%;">' + (key + 1) + '.</td>';
+                    content += '<td colspan="2" style="width: 47%;">' + str4[val] + '</td>';
+                    content += '<td style="width: 2%;"></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                });
+                content += '</table>';
+            }
+
+            //konsultasi
+            content += '<p><strong><u>X. KONSULTASI KHUSUS</u></strong></p>';
+
+            if (pasien._konsultasi.konsultasi) {
+                var str5 = pasien._konsultasi.konsultasi.split(',');
+                var str6 = ['', 'Kesehatan Paru dan Konsulen Gizi', 'VCT', 'Berhenti Merokok'];
+
+                content += '<table style="border: 0;">';
+                _.each(str5, function (val, key) {
+                    content += '<tr>';
+                    content += '<td style="width: 3%;">' + (key + 1) + '.</td>';
+                    content += '<td colspan="2" style="width: 47%;">' + str6[val] + '</td>';
+                    content += '<td style="width: 2%;"></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                });
+                content += '</table>';
+            }
+
+            //usul
+            content += '<p><strong><u>XI. USUL / TINDAKAN LANJUT</u></strong></p>';
+            content += '<table style="border: 0;">';
+            content += '<tr>';
+            content += '<td style="width: 3%;">1.</td>';
+            content += '<td colspan="2" style="width: 47%;">' + pasien._usul.usul1 + '</td>';
+            content += '<td style="width: 2%;"></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>2.</td>';
+            content += '<td colspan="2">' + pasien._usul.usul2 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>3.</td>';
+            content += '<td colspan="2">' + pasien._usul.usul3 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>4.</td>';
+            content += '<td colspan="2">' + pasien._usul.usul4 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
+            content += '<tr>';
+            content += '<td>5.</td>';
+            content += '<td colspan="2">' + pasien._usul.usul5 + '</td>';
+            content += '<td></td>';
+            content += '<td></td>';
+            content += '</tr>';
             content += '</table>';
 
             content += '</body>';

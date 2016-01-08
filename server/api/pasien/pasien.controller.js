@@ -226,7 +226,7 @@ export function destroy(req, res) {
 }
 
 export function cetak(req, res) {
-    Pasien.findById(req.params.id).populate('_anamnesa _fisik _radiologi _laboratorium _medis _pengobatan _terapi _rehabilitasi _konsultasi _usul').execAsync()
+    Pasien.findById(req.params.id).populate('_anamnesa _fisik _radiologi _laboratorium _medis _diagnosa _pengobatan _terapi _rehabilitasi _konsultasi _usul').execAsync()
         .then(pasien => {
 
             var content = '';
@@ -1847,6 +1847,282 @@ export function cetak(req, res) {
             content += '<td>:</td>';
             content += '<td>' + pasien._medis.histolihasil.replace(/(?:\r\n|\r|\n)/g, '<br/>') + '</td>';
             content += '</tr>';
+            content += '</table>';
+
+            //diagnosa
+            content += '<p><strong><u>VI. DIAGNOSA</u></strong></p>';
+            content += '<table style="border: 0;">';
+            if (pasien._diagnosa.pdiagnosa) {
+                content += '<tr>';
+                content += '<td style="width: 30%;"><u>Diagnosa Primer</u></td>';
+                content += '<td style="width: 2%;"></td>';
+                content += '<td style="width: 30%;"></td>';
+                content += '<td style="width: 2%;"></td>';
+                content += '<td style="width: 30%;"></td>';
+                content += '<td></td>';
+                content += '</tr>';
+
+                //tbparu
+                if (pasien._diagnosa.pdiagnosa === '1') {
+                    if (pasien._diagnosa.ptbparu === 'TB Paru BTA Positif') {
+                        content += '<tr>';
+                        content += '<td>TB Paru</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>TB Paru BTA Positif</u.</td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.ptbparupositif + '</td>';
+                        content += '</tr>';
+                    } else if (pasien._diagnosa.ptbparu === 'TB Paru BTA Negatif') {
+                        content += '<tr>';
+                        content += '<td>TB Paru</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>TB Paru BTA Negatif</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.ptbparunegatif + '</td>';
+                        content += '</tr>';
+                    } else if (pasien._diagnosa.ptbparu === 'TB Ekstra Paru') {
+                        content += '<tr>';
+                        content += '<td>TB Paru</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>TB Ekstra Paru</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.ptbparuekstra + '</td>';
+                        content += '</tr>';
+                        content += '<tr>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '<td>:</td>';
+                        content += '<td>Lokasi : ' + pasien._diagnosa.ptbparuekstralokasi + '</td>';
+                        content += '</tr>';
+                    } else {
+                        content += '<tr>';
+                        content += '<td>TB Paru</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>' + pasien._diagnosa.ptbparu + '</u></td>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '</tr>';
+                    }
+                }
+
+                //ispa
+                if (pasien._diagnosa.pdiagnosa === '2') {
+                    if (pasien._diagnosa.pispa === 'Pneumonia') {
+                        content += '<tr>';
+                        content += '<td>ISPA (Infeksi Saluran Pernafasan Akut)</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Pneumonia</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.ppneumonia + '</td>';
+                        content += '</tr>';
+                    } else {
+                        content += '<tr>';
+                        content += '<td>ISPA (Infeksi Saluran Pernafasan Akut)</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>' + pasien._diagnosa.pispa + '</u></td>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '</tr>';
+                    }
+                }
+
+                //pleura
+                if (pasien._diagnosa.pdiagnosa === '3') {
+                    if (pasien._diagnosa.ppleura === 'Pneumothoraks') {
+                        content += '<tr>';
+                        content += '<td>Penyakit Kelainan Pleura</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Pneumothoraks</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.ppneumothoraks1 + '</td>';
+                        content += '</tr>';
+                        content += '<tr>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.ppneumothoraks2 + '</td>';
+                        content += '</tr>';
+                    } else if (pasien._diagnosa.ppleura === 'Efusi Pleura (Hemathothoraks / Empyema)') {
+                        content += '<tr>';
+                        content += '<td>Penyakit Kelainan Pleura</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Efusi Pleura (Hemathothoraks / Empyema)</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.pefusi + '</td>';
+                        content += '</tr>';
+                    } else {
+                        content += '<tr>';
+                        content += '<td>Penyakit Kelainan Pleura</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>' + pasien._diagnosa.ppleura + '</u></td>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '</tr>';
+                    }
+                }
+
+                //bronkhial
+                if (pasien._diagnosa.pdiagnosa === '4') {
+                    if (pasien._diagnosa.pbronkhial === 'Dewasa') {
+                        content += '<tr>';
+                        content += '<td>Asma Bronkhial</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Dewasa</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.pdewasa + '</td>';
+                        content += '</tr>';
+                    } else if (pasien._diagnosa.pbronkhial === 'Anak') {
+                        content += '<tr>';
+                        content += '<td>Asma Bronkhial</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Anak</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.panak + '</td>';
+                        content += '</tr>';
+                    }
+                }
+
+                //ppok
+                if (pasien._diagnosa.pdiagnosa === '5') {
+                    if (pasien._diagnosa.pppok === 'Stabil') {
+                        content += '<tr>';
+                        content += '<td>Penyakit Paru Obstruktif Kronik (PPOK)</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Stabil</u></td>';
+                        content += '<td></td>';
+                        content += '<td></td>';
+                        content += '</tr>';
+                    } else if (pasien._diagnosa.pppok === 'Eksaserbasi Akut') {
+                        content += '<tr>';
+                        content += '<td>Penyakit Paru Obstruktif Kronik (PPOK)</td>';
+                        content += '<td>:</td>';
+                        content += '<td><u>Eksaserbasi Akut</u></td>';
+                        content += '<td>:</td>';
+                        content += '<td>' + pasien._diagnosa.peksaserbasi + '</td>';
+                        content += '</tr>';
+                    }
+                }
+
+                //cpc
+                if (pasien._diagnosa.pdiagnosa === '6') {
+                    content += '<tr>';
+                    content += '<td>Cor Pulmonale Chronicum (CPC)</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //bronkhiektasis
+                if (pasien._diagnosa.pdiagnosa === '7') {
+                    content += '<tr>';
+                    content += '<td>Bronkhiektasis</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //atelektasis
+                if (pasien._diagnosa.pdiagnosa === '8') {
+                    content += '<tr>';
+                    content += '<td>Atelektasis</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //tumormediastinum
+                if (pasien._diagnosa.pdiagnosa === '9') {
+                    content += '<tr>';
+                    content += '<td>Abses Paru</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //tumorparu
+                if (pasien._diagnosa.pdiagnosa === '10') {
+                    content += '<tr>';
+                    content += '<td>Tumor Paru</td>';
+                    content += '<td>:</td>';
+                    content += '<td>Tipe / Jenis Sel</td>';
+                    content += '<td>:</td>';
+                    content += '<td>' + pasien._diagnosa.ptptipe + '</td>';
+                    content += '</tr>';
+                    content += '<tr>';
+                    content += '<td></td>';
+                    content += '<td>:</td>';
+                    content += '<td>Stadium</td>';
+                    content += '<td>:</td>';
+                    content += '<td>' + pasien._diagnosa.ptpstadium + '</td>';
+                    content += '</tr>';
+                }
+
+                //tumormediastinum
+                if (pasien._diagnosa.pdiagnosa === '11') {
+                    content += '<tr>';
+                    content += '<td>Tumor Mediastinum</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //vascular
+                if (pasien._diagnosa.pdiagnosa === '12') {
+                    content += '<tr>';
+                    content += '<td>Penyakit Vascular Paru</td>';
+                    content += '<td>:</td>';
+                    content += '<td>' + pasien._diagnosa.pvascular + '</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //sequele
+                if (pasien._diagnosa.pdiagnosa === '13') {
+                    content += '<tr>';
+                    content += '<td>Sequele Tuberkulosis</td>';
+                    content += '<td>:</td>';
+                    content += '<td>' + pasien._diagnosa.psequele + '</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //penyakitparu
+                if (pasien._diagnosa.pdiagnosa === '14') {
+                    content += '<tr>';
+                    content += '<td>Penyakit Paru / Saluran Nafas Lainnya</td>';
+                    content += '<td>:</td>';
+                    content += '<td>' + pasien._diagnosa.pparu + '</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+
+                //penyakitparu
+                if (pasien._diagnosa.pdiagnosa === '15') {
+                    content += '<tr>';
+                    content += '<td>Penyakit Non Paru / Non Saluran Nafas Lainnya</td>';
+                    content += '<td>:</td>';
+                    content += '<td>' + pasien._diagnosa.pnonparu + '</td>';
+                    content += '<td></td>';
+                    content += '<td></td>';
+                    content += '</tr>';
+                }
+            }
+
             content += '</table>';
 
             //pengobatan

@@ -4,117 +4,102 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 var relationship = require('mongoose-relationship');
 
 var DiagnosaSchema = new mongoose.Schema({
-    pdiagnosa: {
+    pdid: {
         type: String,
         default: '',
         trim: true
     },
-    ptbparu: {
+    pdname: {
         type: String,
         default: '',
         trim: true
     },
-    ptbparupositif: {
+    pdid1: {
         type: String,
         default: '',
         trim: true
     },
-    ptbparunegatif: {
+    pdid2: {
         type: String,
         default: '',
         trim: true
     },
-    ptbparuekstra: {
+    pdid4: {
         type: String,
         default: '',
         trim: true
     },
-    ptbparuekstralokasi: {
+    pdid4k: {
         type: String,
         default: '',
         trim: true
     },
-    pispa: {
+    pdid5: {
         type: String,
         default: '',
         trim: true
     },
-    ppneumonia: {
+    pdid13: {
         type: String,
         default: '',
         trim: true
     },
-    ppleura: {
+    pdid13k: {
         type: String,
         default: '',
         trim: true
     },
-    ppneumothoraks1: {
+    pdid14: {
         type: String,
         default: '',
         trim: true
     },
-    ppneumothoraks2: {
+    pdid28: {
         type: String,
         default: '',
         trim: true
     },
-    pefusi: {
+    pdid33k1: {
         type: String,
         default: '',
         trim: true
     },
-    pbronkhial: {
+    pdid33k2: {
         type: String,
         default: '',
         trim: true
     },
-    pdewasa: {
+    pdid35: {
         type: String,
         default: '',
         trim: true
     },
-    panak: {
+    pdid36: {
         type: String,
         default: '',
         trim: true
     },
-    pppok: {
+    pdid37: {
         type: String,
         default: '',
         trim: true
     },
-    peksaserbasi: {
+    pdid38: {
         type: String,
         default: '',
         trim: true
     },
-    ptptipe: {
+    sdid: {
         type: String,
         default: '',
         trim: true
     },
-    ptpstadium: {
+    sdname: {
         type: String,
         default: '',
         trim: true
     },
-    pvascular: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    psequele: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    pparu: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    pnonparu: {
+    ksd: {
         type: String,
         default: '',
         trim: true

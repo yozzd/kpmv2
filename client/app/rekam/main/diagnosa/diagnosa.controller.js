@@ -9,7 +9,6 @@ class RkDiagnosaController {
         this.block = blockUI.instances.get('block');
         this.$timeout = $timeout;
 
-        this.pdiagnosa = {};
         this.submitted = false;
 
         this.blockmessage = 'Loading ...';
@@ -31,345 +30,190 @@ class RkDiagnosaController {
             {
                 id: 4,
                 name: 'TB Ekstra Paru'
-            }
-        ];
-
-        this.opt2 = [
-            {
-                id: 1,
-                name: 'Baru'
-            },
-            {
-                id: 2,
-                name: 'Kambuh'
-            },
-            {
-                id: 3,
-                name: 'After Default'
-            },
-            {
-                id: 4,
-                name: 'Gagal'
             },
             {
                 id: 5,
-                name: 'Kronis'
-            }
-        ];
-
-        this.opt3 = [
-            {
-                id: 1,
-                name: 'Ringan'
-            },
-            {
-                id: 2,
-                name: 'Berat'
-            }
-        ];
-
-        this.opt4 = [
-            {
-                id: 1,
-                name: 'Pleuritis TB (Pl. Eksudativa)'
-            },
-            {
-                id: 2,
-                name: 'Menigitis TB'
-            },
-            {
-                id: 3,
-                name: 'Kelenjar Regio Colli'
-            },
-            {
-                id: 4,
-                name: 'Sub Mandibular'
-            },
-            {
-                id: 5,
-                name: 'Axilla Dextra'
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Pneumonia'
             },
             {
                 id: 6,
-                name: 'Sinistra'
-            }
-        ];
-
-        this.opt5 = [
-            {
-                id: 1,
-                name: 'Pneumonia'
-            },
-            {
-                id: 2,
-                name: 'Bronkhitis'
-            },
-            {
-                id: 3,
-                name: 'Influenza / Flu'
-            },
-            {
-                id: 4,
-                name: 'Rhinitis'
-            },
-            {
-                id: 5,
-                name: 'Tonsilitis'
-            },
-            {
-                id: 6,
-                name: 'Faryngitis / Tonsillofaringitis'
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Bronkhitis'
             },
             {
                 id: 7,
-                name: 'Laringitis'
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Influenza / Flu'
             },
             {
                 id: 8,
-                name: 'Sinusitis'
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Rhinitis'
+            },
+            {
+                id: 9,
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Tonsilitis'
+            },
+            {
+                id: 10,
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Faryingitis / Tonsillofaringitis'
+            },
+            {
+                id: 11,
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Laringitis'
+            },
+            {
+                id: 12,
+                name: 'ISPA (Infeksi Saluran Pernafasan Akut) : Sinusitis'
+            },
+            {
+                id: 13,
+                name: 'Penyakit / Kelainan Pleura : Pneumothoraks'
+            },
+            {
+                id: 14,
+                name: 'Penyakit / Kelainan Pleura : Efusi Pleura (Hemathothoraks / Empyema)'
+            },
+            {
+                id: 15,
+                name: 'Penyakit / Kelainan Pleura : Hydropneumothoraks'
+            },
+            {
+                id: 16,
+                name: 'Penyakit / Kelainan Pleura : Tumor Pleura'
+            },
+            {
+                id: 17,
+                name: 'Penyakit / Kelainan Pleura : Schwarte'
+            },
+            {
+                id: 18,
+                name: 'Asma Bronkhial (Dewasa) : Intermitten'
+            },
+            {
+                id: 19,
+                name: 'Asma Bronkhial (Dewasa) : Persisten Ringan'
+            },
+            {
+                id: 20,
+                name: 'Asma Bronkhial (Dewasa) : Persisten Sedang'
+            },
+            {
+                id: 21,
+                name: 'Asma Bronkhial (Dewasa) : Persisten Berat'
+            },
+            {
+                id: 22,
+                name: 'Asma Bronkhial (Dewasa) : Eksaserbasi Berat'
+            },
+            {
+                id: 23,
+                name: 'Asma Bronkhial (Dewasa) : Status Asmaticus'
+            },
+            {
+                id: 24,
+                name: 'Asma Bronkhial (Anak) : Episodik Jarang'
+            },
+            {
+                id: 25,
+                name: 'Asma Bronkhial (Anak) : Episodik Sering'
+            },
+            {
+                id: 26,
+                name: 'Asma Bronkhial (Anak) : Asma Persisten'
+            },
+            {
+                id: 27,
+                name: 'Penyakit Paru Obstruktif Kronik (PPOK) : Stabil'
+            },
+            {
+                id: 28,
+                name: 'Penyakit Paru Obstruktif Kronik (PPOK) : Eksaserbasi Akut'
+            },
+            {
+                id: 29,
+                name: 'Cor Pulmonale Chronicum (CPC)'
+            },
+            {
+                id: 30,
+                name: 'Bronkhiektasis'
+            },
+            {
+                id: 31,
+                name: 'Atelektasis'
+            },
+            {
+                id: 32,
+                name: 'Abses Paru'
+            },
+            {
+                id: 33,
+                name: 'Tumor Paru'
+            },
+            {
+                id: 34,
+                name: 'Tumor Mediastinum'
+            },
+            {
+                id: 35,
+                name: 'Penyakit Vascular Paru'
+            },
+            {
+                id: 36,
+                name: 'Sequele Tuberkulosis'
+            },
+            {
+                id: 37,
+                name: 'Penyakit Paru / Saluran Nafas Lainnya'
+            },
+            {
+                id: 38,
+                name: 'Penyakit Non Paru / Non Saluran Nafas Lainnya'
             }
         ];
 
-        this.opt6 = [
-            {
-                id: 1,
-                name: '< 5 Tahun'
-            },
-            {
-                id: 2,
-                name: '> 5 Tahun'
-            }
-        ];
+        this.opt2 = ['Baru', 'Kambuh', 'After Default', 'Gagal', 'Kronis'];
+        this.opt3 = ['Ringan', 'Berat'];
+        this.opt4 = ['Pleuritis TB (Pl. Eksudativa)', 'Meningitis TB', 'Kelenjar Regio Colli', 'Sub Mandibular', 'Axilla Dextra', 'Sinistra'];
+        this.opt5 = ['< 5 Tahun', '> 5 Tahun'];
+        this.opt6 = ['Primer', 'Sekunder'];
+        this.opt7 = ['Partialis', 'Totalis', 'Ventil'];
+        this.opt8 = ['Ringan', 'Sedang', 'Berat'];
+        this.opt9 = ['Emboli Paru', 'Infark Paru'];
+        this.opt10 = ['SOPT', 'Kalsifikasi', 'Fibrosis'];
 
-        this.opt7 = [
-            {
-                id: 1,
-                name: 'Pneumothoraks'
-            },
-            {
-                id: 2,
-                name: 'Efusi Pleura (Hemathothoraks / Empyema)'
-            },
-            {
-                id: 3,
-                name: 'Hydropneumothoraks'
-            },
-            {
-                id: 4,
-                name: 'Tumor Pleura'
-            },
-            {
-                id: 5,
-                name: 'Schwarte'
-            }
-        ];
+        this.pd = {};
+        this.pds = this.opt1;
 
-        this.opt8 = [
-            {
-                id: 1,
-                name: 'Primer'
-            },
-            {
-                id: 2,
-                name: 'Sekunder'
-            }
-        ];
+        this.pdid1 = {};
+        this.pdid1s = this.opt2;
 
-        this.opt9 = [
-            {
-                id: 1,
-                name: 'Partialis'
-            },
-            {
-                id: 2,
-                name: 'Totalis'
-            },
-            {
-                id: 3,
-                name: 'Ventil'
-            }
-        ];
+        this.pdid2 = {};
+        this.pdid2s = this.opt3;
 
-        this.opt10 = [
-            {
-                id: 1,
-                name: 'Ringan'
-            },
-            {
-                id: 2,
-                name: 'Sedang'
-            },
-            {
-                id: 3,
-                name: 'Berat / Masif'
-            }
-        ];
+        this.pdid4 = {};
+        this.pdid4s = this.opt3;
 
-        this.opt11 = [
-            {
-                id: 1,
-                name: 'Dewasa'
-            },
-            {
-                id: 2,
-                name: 'Anak'
-            }
-        ];
+        this.pdid4k = {};
+        this.pdid4ks = this.opt4;
 
-        this.opt12 = [
-            {
-                id: 1,
-                name: 'Intermitten'
-            },
-            {
-                id: 2,
-                name: 'Persisten Ringan'
-            },
-            {
-                id: 3,
-                name: 'Persisten Sedang'
-            },
-            {
-                id: 4,
-                name: 'Persisten Berat'
-            },
-            {
-                id: 5,
-                name: 'Eksaserbasi Berat'
-            },
-            {
-                id: 6,
-                name: 'Status Asmaticus'
-            }
-        ];
+        this.pdid5 = {};
+        this.pdid5s = this.opt5;
 
-        this.opt13 = [
-            {
-                id: 1,
-                name: 'Episodik Jarang'
-            },
-            {
-                id: 2,
-                name: 'Episodik Sering'
-            },
-            {
-                id: 3,
-                name: 'Asma Persisten'
-            }
-        ];
+        this.pdid13 = {};
+        this.pdid13s = this.opt6;
 
-        this.opt14 = [
-            {
-                id: 1,
-                name: 'Stabil'
-            },
-            {
-                id: 2,
-                name: 'Eksaserbasi Akut'
-            }
-        ];
+        this.pdid13k = {};
+        this.pdid13ks = this.opt7;
 
-        this.opt15 = [
-            {
-                id: 1,
-                name: 'Ringan'
-            },
-            {
-                id: 2,
-                name: 'Sedang'
-            },
-            {
-                id: 3,
-                name: 'Berat'
-            }
-        ];
+        this.pdid14 = {};
+        this.pdid14s = this.opt8;
 
-        this.opt16 = [
-            {
-                id: 1,
-                name: 'Emboli Paru'
-            },
-            {
-                id: 2,
-                name: 'Infark Paru'
-            }
-        ];
+        this.pdid28 = {};
+        this.pdid28s = this.opt8;
 
-        this.opt17 = [
-            {
-                id: 1,
-                name: 'SOPT'
-            },
-            {
-                id: 2,
-                name: 'Kalsifikasi'
-            },
-            {
-                id: 3,
-                name: 'Fibrosis'
-            }
-        ];
+        this.pdid35 = {};
+        this.pdid35s = this.opt9;
 
-        //tbparu
-        this.ptbparu = {};
-        this.ptbparus = this.opt1;
-
-        this.ptbparupositif = {};
-        this.ptbparupositifs = this.opt2;
-
-        this.ptbparunegatif = {};
-        this.ptbparunegatifs = this.opt3;
-
-        this.ptbparuekstra = {};
-        this.ptbparuekstras = this.opt3;
-
-        this.ptbparuekstralokasi = {};
-        this.ptbparuekstralokasis = this.opt4;
-
-        //ispa
-        this.pispa = {};
-        this.pispas = this.opt5;
-
-        this.ppneumonia = {};
-        this.ppneumonias = this.opt6;
-
-        //pleura
-        this.ppleura = {};
-        this.ppleuras = this.opt7;
-
-        this.ppneumothoraks1 = {};
-        this.ppneumothoraks1s = this.opt8;
-
-        this.ppneumothoraks2 = {};
-        this.ppneumothoraks2s = this.opt9;
-
-        this.pefusi = {};
-        this.pefusis = this.opt10;
-
-        //bronkhial
-        this.pbronkhial = {};
-        this.pbronkhials = this.opt11;
-
-        this.pdewasa = {};
-        this.pdewasas = this.opt12;
-
-        this.panak = {};
-        this.panaks = this.opt13;
-
-        //ppok
-        this.pppok = {};
-        this.pppoks = this.opt14;
-
-        this.peksaserbasi = {};
-        this.peksaserbasis = this.opt15;
-
-        //pvascular
-        this.pvascular = {};
-        this.pvasculars = this.opt16;
-
-        //psequele
-        this.psequele = {};
-        this.psequeles = this.opt17;
+        this.pdid36 = {};
+        this.pdid36s = this.opt10;
     }
 
     getPasien() {
@@ -382,227 +226,151 @@ class RkDiagnosaController {
                     this.data = data;
                     this.nama = data._pasien.nama;
 
-                    this.pdiagnosa = {
-                        opt: this.data.pdiagnosa
-                    };
-
-                    if (this.data.pdiagnosa === '1') {
-                        this.ptbparu = {
+                    if (this.data.pdid) {
+                        this.pd = {
                             selected: {
-                                name: this.data.ptbparu
+                                id: this.data.pdid,
+                                name: this.data.pdname
                             }
                         };
-                        if (this.data.ptbparu === 'TB Paru BTA Positif') {
-                            this.ptbparupositif = {
-                                selected: {
-                                    name: this.data.ptbparupositif
-                                }
-                            };
-                        } else {
-                            this.ptbparupositif = {
-                                selected: undefined
-                            };
-                        }
-                        if (this.data.ptbparu === 'TB Paru BTA Negatif') {
-                            this.ptbparunegatif = {
-                                selected: {
-                                    name: this.data.ptbparunegatif
-                                }
-                            };
-                        } else {
-                            this.ptbparunegatif = {
-                                selected: undefined
-                            };
-                        }
-                        if (this.data.ptbparu === 'TB Ekstra Paru') {
-                            this.ptbparuekstra = {
-                                selected: {
-                                    name: this.data.ptbparuekstra
-                                }
-                            };
-                            this.ptbparuekstralokasi = {
-                                selected: {
-                                    name: this.data.ptbparuekstralokasi
-                                }
-                            };
-                        } else {
-                            this.ptbparuekstra = {
-                                selected: undefined
-                            };
-                            this.ptbparuekstralokasi = {
-                                selected: undefined
-                            };
-                        }
                     } else {
-                        this.ptbparu = {
+                        this.pd = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '2') {
-                        this.pispa = {
-                            selected: {
-                                name: this.data.pispa
-                            }
+                    if (this.data.pdid === '1') {
+                        this.pdid1 = {
+                            selected: this.data.pdid1
                         };
-                        if (this.data.pispa === 'Pneumonia') {
-                            this.ppneumonia = {
-                                selected: {
-                                    name: this.data.ppneumonia
-                                }
-                            };
-                        } else {
-                            this.ppneumonia = {
-                                selected: undefined
-                            };
-                        }
                     } else {
-                        this.pispa = {
+                        this.pdid1 = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '3') {
-                        this.ppleura = {
-                            selected: {
-                                name: this.data.ppleura
-                            }
+                    if (this.data.pdid === '2') {
+                        this.pdid2 = {
+                            selected: this.data.pdid2
                         };
-                        if (this.data.ppleura === 'Pneumothoraks') {
-                            this.ppneumothoraks1 = {
-                                selected: {
-                                    name: this.data.ppneumothoraks1
-                                }
-                            };
-                            this.ppneumothoraks2 = {
-                                selected: {
-                                    name: this.data.ppneumothoraks2
-                                }
-                            };
-                        } else {
-                            this.ppneumothoraks1 = {
-                                selected: undefined
-                            };
-                            this.ppneumothoraks2 = {
-                                selected: undefined
-                            };
-                        }
-                        if (this.data.ppleura === 'Efusi Pleura (Hemathothoraks / Empyema)') {
-                            this.pefusi = {
-                                selected: {
-                                    name: this.data.pefusi
-                                }
-                            };
-                        } else {
-                            this.pefusi = {
-                                selected: undefined
-                            };
-                        }
                     } else {
-                        this.ppleura = {
+                        this.pdid2 = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '4') {
-                        this.pbronkhial = {
-                            selected: {
-                                name: this.data.pbronkhial
-                            }
+                    if (this.data.pdid === '4') {
+                        this.pdid4 = {
+                            selected: this.data.pdid4
                         };
-                        if (this.data.pbronkhial === 'Dewasa') {
-                            this.pdewasa = {
-                                selected: {
-                                    name: this.data.pdewasa
-                                }
-                            };
-                        } else {
-                            this.pdewasa = {
-                                selected: undefined
-                            };
-                        }
-                        if (this.data.pbronkhial === 'Anak') {
-                            this.panak = {
-                                selected: {
-                                    name: this.data.panak
-                                }
-                            };
-                        } else {
-                            this.panak = {
-                                selected: undefined
-                            };
-                        }
+                        this.pdid4k = {
+                            selected: this.data.pdid4k
+                        };
                     } else {
-                        this.pbronkhial = {
+                        this.pdid4 = {
+                            selected: undefined
+                        };
+                        this.pdid4k = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '5') {
-                        this.pppok = {
-                            selected: {
-                                name: this.data.pppok
-                            }
+                    if (this.data.pdid === '5') {
+                        this.pdid5 = {
+                            selected: this.data.pdid5
                         };
-                        if (this.data.pppok === 'Eksaserbasi Akut') {
-                            this.peksaserbasi = {
-                                selected: {
-                                    name: this.data.peksaserbasi
-                                }
-                            };
-                        } else {
-                            this.peksaserbasi = {
-                                selected: undefined
-                            };
-                        }
                     } else {
-                        this.pppok = {
+                        this.pdid5 = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '10') {
-                        this.ptptipe = this.data.ptptipe;
-                        this.ptpstadium = this.data.ptpstadium;
-                    } else {
-                        this.ptptipe = '';
-                        this.ptpstadium = '';
-                    }
-
-                    if (this.data.pdiagnosa === '12') {
-                        this.pvascular = {
-                            selected: {
-                                name: this.data.pvascular
-                            }
+                    if (this.data.pdid === '13') {
+                        this.pdid13 = {
+                            selected: this.data.pdid13
+                        };
+                        this.pdid13k = {
+                            selected: this.data.pdid13k
                         };
                     } else {
-                        this.pvascular = {
+                        this.pdid13 = {
+                            selected: undefined
+                        };
+                        this.pdid13k = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '13') {
-                        this.psequele = {
-                            selected: {
-                                name: this.data.psequele
-                            }
+                    if (this.data.pdid === '14') {
+                        this.pdid14 = {
+                            selected: this.data.pdid14
                         };
                     } else {
-                        this.psequele = {
+                        this.pdid14 = {
                             selected: undefined
                         };
                     }
 
-                    if (this.data.pdiagnosa === '14') {
-                        this.pparu = this.data.pparu;
+                    if (this.data.pdid === '28') {
+                        this.pdid28 = {
+                            selected: this.data.pdid28
+                        };
                     } else {
-                        this.pparu = '';
+                        this.pdid28 = {
+                            selected: undefined
+                        };
                     }
 
-                    if (this.data.pdiagnosa === '15') {
-                        this.pnonparu = this.data.pnonparu;
+                    if (this.data.pdid === '33') {
+                        this.pdid33k1 = this.data.pdid33k1;
+                        this.pdid33k2 = this.data.pdid33k2;
+                    }
+
+                    if (this.data.pdid === '35') {
+                        this.pdid35 = {
+                            selected: this.data.pdid35
+                        };
                     } else {
-                        this.pnonparu = '';
+                        this.pdid35 = {
+                            selected: undefined
+                        };
+                    }
+
+                    if (this.data.pdid === '36') {
+                        this.pdid36 = {
+                            selected: this.data.pdid36
+                        };
+                    } else {
+                        this.pdid36 = {
+                            selected: undefined
+                        };
+                    }
+
+                    if (this.data.pdid === '37') {
+                        this.pdid37 = this.data.pdid37;
+                    }
+
+                    if (this.data.pdid === '38') {
+                        this.pdid38 = this.data.pdid38;
+                    }
+
+                    this.opt11 = !this.data.pdid ? this.opt1 : _.filter(this.opt1, function (val) {
+                        return val.name !== data.pdname;
+                    });
+                    this.sd = {};
+                    this.sds = this.opt11;
+                    if (this.data.sdid) {
+                        this.sd = {
+                            selected: {
+                                id: this.data.sdid,
+                                name: this.data.sdname
+                            }
+                        };
+                        this.ksd = this.data.ksd;
+                    } else {
+                        this.sd = {
+                            selected: undefined
+                        };
                     }
 
                     this.block.stop();
@@ -614,29 +382,46 @@ class RkDiagnosaController {
         this.submitted = true;
         if (form.$valid) {
             this.Restangular.one('diagnosas').customPUT({
-                    pdiagnosa: this.pdiagnosa.opt,
-                    ptbparu: this.ptbparu.selected === undefined ? '' : this.ptbparu.selected.name,
-                    ptbparupositif: this.ptbparupositif.selected === undefined ? '' : this.ptbparupositif.selected.name,
-                    ptbparunegatif: this.ptbparunegatif.selected === undefined ? '' : this.ptbparunegatif.selected.name,
-                    ptbparuekstra: this.ptbparuekstra.selected === undefined ? '' : this.ptbparuekstra.selected.name,
-                    ptbparuekstralokasi: this.ptbparuekstralokasi.selected === undefined ? '' : this.ptbparuekstralokasi.selected.name,
-                    pispa: this.pispa.selected === undefined ? '' : this.pispa.selected.name,
-                    ppneumonia: this.ppneumonia.selected === undefined ? '' : this.ppneumonia.selected.name,
-                    ppleura: this.ppleura.selected === undefined ? '' : this.ppleura.selected.name,
-                    ppneumothoraks1: this.ppneumothoraks1.selected === undefined ? '' : this.ppneumothoraks1.selected.name,
-                    ppneumothoraks2: this.ppneumothoraks2.selected === undefined ? '' : this.ppneumothoraks2.selected.name,
-                    pefusi: this.pefusi.selected === undefined ? '' : this.pefusi.selected.name,
-                    pbronkhial: this.pbronkhial.selected === undefined ? '' : this.pbronkhial.selected.name,
-                    pdewasa: this.pdewasa.selected === undefined ? '' : this.pdewasa.selected.name,
-                    panak: this.panak.selected === undefined ? '' : this.panak.selected.name,
-                    pppok: this.pppok.selected === undefined ? '' : this.pppok.selected.name,
-                    peksaserbasi: this.peksaserbasi.selected === undefined ? '' : this.peksaserbasi.selected.name,
-                    ptptipe: this.ptptipe,
-                    ptpstadium: this.ptpstadium,
-                    pvascular: this.pvascular.selected === undefined ? '' : this.pvascular.selected.name,
-                    psequele: this.psequele.selected === undefined ? '' : this.psequele.selected.name,
-                    pparu: this.pparu,
-                    pnonparu: this.pnonparu,
+                    pdid: this.pd.selected === undefined ? '' : this.pd.selected.id,
+                    pdname: this.pd.selected === undefined ? '' : this.pd.selected.name,
+                    pdid1: this.pdid1.selected === undefined ? '' : this.pdid1.selected,
+                    pdid2: this.pdid2.selected === undefined ? '' : this.pdid2.selected,
+                    pdid4: this.pdid4.selected === undefined ? '' : this.pdid4.selected,
+                    pdid4k: this.pdid4k.selected === undefined ? '' : this.pdid4k.selected,
+                    pdid5: this.pdid5.selected === undefined ? '' : this.pdid5.selected,
+                    pdid13: this.pdid13.selected === undefined ? '' : this.pdid13.selected,
+                    pdid13k: this.pdid13k.selected === undefined ? '' : this.pdid13k.selected,
+                    pdid14: this.pdid14.selected === undefined ? '' : this.pdid14.selected,
+                    pdid28: this.pdid28.selected === undefined ? '' : this.pdid28.selected,
+                    pdid33k1: this.pdid33k1,
+                    pdid33k2: this.pdid33k2,
+                    pdid35: this.pdid35.selected === undefined ? '' : this.pdid35.selected,
+                    pdid36: this.pdid36.selected === undefined ? '' : this.pdid36.selected,
+                    pdid37: this.pdid37,
+                    pdid38: this.pdid38,
+                }, this.data._id)
+                .then(() => {
+                    this.blockmessage = 'Updating ...';
+                    this.getPasien();
+                })
+                .catch(err => {
+                    this.$alert({
+                        content: err.data,
+                        placement: 'top-right',
+                        type: 'danger',
+                        duration: 5
+                    });
+                });
+        }
+    }
+
+    submit2(form) {
+        this.submitted = true;
+        if (form.$valid) {
+            this.Restangular.one('diagnosas').customPUT({
+                    sdid: this.sd.selected === undefined ? '' : this.sd.selected.id,
+                    sdname: this.sd.selected === undefined ? '' : this.sd.selected.name,
+                    ksd: this.ksd,
                 }, this.data._id)
                 .then(() => {
                     this.blockmessage = 'Updating ...';

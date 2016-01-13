@@ -22,6 +22,7 @@ var Terapi = require('../terapi/terapi.model');
 var Rehabilitasi = require('../rehabilitasi/rehabilitasi.model');
 var Konsultasi = require('../konsultasi/konsultasi.model');
 var Usul = require('../usul/usul.model');
+var Kontrol = require('../kontrol/kontrol.model');
 
 var fs = require('bluebird').promisifyAll(require('fs-extra'));
 var NodePDF = require('bluebird').promisifyAll(require('nodepdf'));
@@ -197,6 +198,13 @@ export function create(req, res) {
                             _pasien: saved[0]._id
                         });
                         newUsul.saveAsync();
+                        return saved;
+                    })
+                    .then(saved => {
+                        var newKontrol = new Kontrol({
+                            _pasien: saved[0]._id
+                        });
+                        newKontrol.saveAsync();
                         return saved;
                     });
             }

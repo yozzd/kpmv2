@@ -146,6 +146,10 @@ var PasienSchema = new mongoose.Schema({
     _usul: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Usul'
+    },
+    _kontrol: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Kontrol'
     }
 });
 

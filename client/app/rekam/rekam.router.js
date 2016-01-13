@@ -212,5 +212,47 @@ angular.module('kpmApp.rekam')
                 ncyBreadcrumb: {
                     label: 'Usul / Tindakan Lanjut'
                 }
+            })
+            .state('rekam.sub.kontrol', {
+                url: '/kontrol',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/kontrol/daftar/daftar.html',
+                        controller: 'RkKontrolDaftarController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Kartu Kontrol'
+                }
+            })
+            .state('rekam.sub.kontrol.create', {
+                url: '/create',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/kontrol/create/create.html',
+                        controller: 'RkKontrolCreateController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Create Kartu Kontrol'
+                }
+            })
+            .state('rekam.sub.kontrol.edit', {
+                url: '/edit/{kid}',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/main/kontrol/edit/edit.html',
+                        controller: 'RkKontrolEditController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Edit Kartu Kontrol'
+                }
             });
     });

@@ -1,0 +1,116 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Create Kartu Kontrol</h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <form class="form" name="form1" ng-submit="rk.submit1(form1)" novalidate>
+                    <table class="ft">
+                        <tr>
+                            <td style="width: 30%;">Tanggal <span class="req">*</span></td>
+                            <td>
+                                <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.tanggal" data-date-format="dd MMMM yyyy" data-autoclose="true" data-container="body" bs-datepicker required disabled>
+                            </td>
+                            <td style="width: 30%;">
+                                <p class="help-block" style="margin: 0;" ng-show="form1.tanggal.$error.required && rk.submitted">
+                                    <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pemeriksaan</td>
+                            <td>
+                                <input type="file" ngf-select ng-model="rk.file" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFiles">
+                                <p class="help-block" ng-show="form1.file.$error.maxSize">
+                                    <span class="fa fa-times-circle fa-fw"></span> Ukuran file terlalu besar {{errorFiles[0].size / 1000000|number:1}}MB : maksimum 2MB
+                                </p>
+                            </td>
+                            <td class="text-center">
+                                <a ng-href="{{rk.pemeriksaan && 'app/rekam/main/files/'+rk.id+'/images/'+rk.pemeriksaan || 'assets/images/noimage.jpg'}}" target="_blank" title="{{rk.pemeriksaan}}">
+                                    <img class="img-thumbnail" ng-src="{{rk.pemeriksaan && 'app/rekam/main/files/'+rk.id+'/images/thumb-'+rk.pemeriksaan || 'assets/images/noimage.jpg'}}">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Keluhan</td>
+                            <td>
+                                <textarea name="keluhan" class="form-control" rows="3" ng-model="rk.keluhan"></textarea>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Lab</td>
+                            <td>
+                                <textarea name="lab" class="form-control" rows="3" ng-model="rk.lab"></textarea>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Sputum</td>
+                            <td>
+                                <textarea name="sputum" class="form-control" rows="3" ng-model="rk.sputum"></textarea>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>MT Tes</td>
+                            <td>
+                                <textarea name="mt" class="form-control" rows="3" ng-model="rk.mt"></textarea>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Berat Badan</td>
+                            <td>
+                                <div class="input-group">
+                                    <input type="text" name="bb" class="form-control input-sm" ng-model="rk.bb">
+                                    <div class="input-group-addon">kg</div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tinggi Badan</td>
+                            <td>
+                                <div class="input-group">
+                                    <input type="text" name="tb" class="form-control input-sm" ng-model="rk.tb">
+                                    <div class="input-group-addon">cm</div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Diagnosa</td>
+                            <td>
+                                <ui-select name="diagnosa" ng-model="rk.diagnosa.selected">
+                                    <ui-select-match placeholder="Pilih...">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="diagnosa in rk.diagnosas | filter: $select.search">
+                                        <div ng-bind-html="diagnosa.name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Terapi</td>
+                            <td>
+                                <textarea name="terapi" class="form-control" rows="3" ng-model="rk.terapi"></textarea>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <hr/>
+                        <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                        <button class="btn btn-danger btn-sm" type="button" ng-click="rk.showmodal()">Hapus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

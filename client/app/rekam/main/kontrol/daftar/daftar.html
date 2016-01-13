@@ -1,0 +1,56 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Kartu Kontrol <a style="font-size: 13px;" ui-sref=".create">Create</a></h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div ng-show="rk.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
+                <div class="table-responsive" ng-show="rk.data.kontrol.length>0">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Tanggal</th>
+                                <th class="text-center">Pemeriksaan</th>
+                                <th class="text-center">Keluhan</th>
+                                <th class="text-center">Lab</th>
+                                <th class="text-center">Sputum</th>
+                                <th class="text-center">MT Tes</th>
+                                <th class="text-center">BB (kg)</th>
+                                <th class="text-center">TB (cm)</th>
+                                <th class="text-center">Diagnosa</th>
+                                <th class="text-center">Terapi</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in rk.map">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>
+                                <td class="text-center">
+                                    <a ng-href="{{data.pemeriksaan && 'app/rekam/main/files/'+rk.id+'/images/'+data.pemeriksaan || 'assets/images/noimage.jpg'}}" target="_blank" title="{{data.pemeriksaan}}">
+                                        <img class="img-thumbnail" ng-src="{{data.pemeriksaan && 'app/rekam/main/files/'+rk.id+'/images/thumb-'+data.pemeriksaan || 'assets/images/noimage.jpg'}}">
+                                    </a>
+                                </td>
+                                <td ng-bind-html="data.keluhan"></td>
+                                <td ng-bind-html="data.lab"></td>
+                                <td ng-bind-html="data.sputum"></td>
+                                <td ng-bind-html="data.mt"></td>
+                                <td class="text-center">{{data.bb}}</td>
+                                <td class="text-center">{{data.tb}}</td>
+                                <td class="text-center">{{data.diagnosaname}}</td>
+                                <td ng-bind-html="data.terapi"></td>
+                                <td class="text-center"><a ui-sref=".edit({kid:data._id})">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

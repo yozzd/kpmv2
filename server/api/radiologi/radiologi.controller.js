@@ -87,7 +87,6 @@ export function create(req, res) {
 
 // Updates an existing Radiologi in the DB
 export function files(req, res) {
-    console.log(req.body);
     var name = _.kebabCase(req.files.file.name.split('.')[0]) + '.' + req.files.file.name.split('.')[1].toLowerCase();
     req.body.image = name;
 

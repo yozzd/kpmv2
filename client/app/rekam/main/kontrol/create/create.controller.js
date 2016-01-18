@@ -186,10 +186,27 @@ class RkKontrolCreateController {
                 this.$timeout(() => {
                     this.data = data;
                     this.nama = this.data._pasien.nama;
+                    this.umur = this.data._pasien.umur;
+
+                    if (this.data.kontrol[0]) {
+                        this.diagnosa = {
+                            selected: {
+                                id: this.data.kontrol[0].diagnosaid,
+                                name: this.data.kontrol[0].diagnosaname
+                            }
+                        };
+                    } else {
+                        this.diagnosa = {
+                            selected: undefined
+                        };
+                    }
 
                     this.block.stop();
                 }, 1000);
             });
+    }
+    hint(tanggal) {
+        this.info = moment(this.data._pasien.tanggal).to(moment(tanggal), true);
     }
 
     submit1(form) {
@@ -199,6 +216,9 @@ class RkKontrolCreateController {
                 this.Restangular.all('kontrols').customPOST({
                         id: this.data._id,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
+                        nama: this.data._pasien.nama,
+                        umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).to(moment(this.tanggal), true),
+                        jk: this.data._pasien.jk,
                         keluhan: this.keluhan,
                         lab: this.lab,
                         sputum: this.sputum,
@@ -207,7 +227,8 @@ class RkKontrolCreateController {
                         tb: this.tb,
                         diagnosaid: this.diagnosa.selected === undefined ? '' : this.diagnosa.selected.id,
                         diagnosaname: this.diagnosa.selected === undefined ? '' : this.diagnosa.selected.name,
-                        terapi: this.terapi
+                        terapi: this.terapi,
+                        status: 'L'
                     })
                     .then(() => {
                         this.$alert({
@@ -233,6 +254,9 @@ class RkKontrolCreateController {
                     fields: {
                         id: this.data._id,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
+                        nama: this.data._pasien.nama,
+                        umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).to(moment(this.tanggal), true),
+                        jk: this.data._pasien.jk,
                         keluhan: this.keluhan,
                         lab: this.lab,
                         sputum: this.sputum,
@@ -241,7 +265,8 @@ class RkKontrolCreateController {
                         tb: this.tb,
                         diagnosaid: this.diagnosa.selected === undefined ? '' : this.diagnosa.selected.id,
                         diagnosaname: this.diagnosa.selected === undefined ? '' : this.diagnosa.selected.name,
-                        terapi: this.terapi
+                        terapi: this.terapi,
+                        status: 'L'
                     }
                 });
                 this.file.upload

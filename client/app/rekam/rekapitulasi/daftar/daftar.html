@@ -1,0 +1,72 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Rekapitulasi</h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div class="well">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <ui-select name="month" ng-model="rk.month.selected" ng-change="rk.change(rk.month.selected.name,rk.year.selected.name)" style="width: 200px;">
+                                <ui-select-match placeholder="Bulan...">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="month in rk.months | filter: $select.search">
+                                    <div ng-bind-html="month.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group">
+                            <ui-select name="year" ng-model="rk.year.selected" ng-change="rk.change(rk.month.selected.name,rk.year.selected.name)" style="width: 200px;">
+                                <ui-select-match placeholder="Tahun...">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="year in rk.years | filter: $select.search">
+                                    <div ng-bind-html="year.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </form>
+                </div>
+                <div ng-show="rk.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data!</div>
+                <div class="table-responsive" ng-show="rk.bydate.length>0">
+                    <table class="rt">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th class="text-center">Umur</th>
+                                <th class="text-center">Jenis Kelamin</th>
+                                <th class="text-center">B</th>
+                                <th class="text-center">L</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat-start="date in rk.bydate">
+                                <td style="width: 3%;"><span class="fa fa-calendar"></span></td>
+                                <td>{{date|date:'dd MMMM yyyy'}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat-start="pasien in rk.map | orderBy: 'nama'" ng-hide="pasien.tanggal!=date">
+                                <td></td>
+                                <td><a ui-sref="rekam.sub({id: pasien.pid})">{{pasien.nama}}</a></td>
+                                <td class="text-center">{{pasien.umur}}</td>
+                                <td class="text-center">{{pasien.jk}}</td>
+                                <td class="text-center"><span ng-show="pasien.status=='B'">&bull;</span></td>
+                                <td class="text-center"><span ng-show="pasien.status=='L'">&bull;</span></td>
+                            </tr>
+                            <tr ng-repeat-end></tr>
+                            <tr ng-repeat-end ng-hide="false">
+                                <td colspan="6"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

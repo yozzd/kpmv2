@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="blockui" block-ui="block">
                 <div ng-show="rk.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
-                <div class="table-responsive" ng-show="rk.data.kontrol.length>0">
+                <div class="table-responsive" ng-show="rk.map.length>0">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="data in rk.map">
+                            <tr ng-repeat="data in rk.map | orderBy:'tanggal'">
                                 <td class="text-center">{{$index+1}}</td>
                                 <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>
                                 <td class="text-center">

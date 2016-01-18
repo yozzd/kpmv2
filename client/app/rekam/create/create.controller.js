@@ -87,7 +87,7 @@ class RkCreateController {
     }
 
     lahir(tgl) {
-        this.data.umur = moment(tgl).toNow(true);
+        this.data.umur = moment(tgl).to(moment(this.data.tanggal), true);
     }
 
     submit(form) {

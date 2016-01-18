@@ -5,8 +5,26 @@ var relationship = require('mongoose-relationship');
 
 var KontrolSchema = new mongoose.Schema({
     kontrol: [{
+        pid: {
+            type: mongoose.Schema.Types.ObjectId
+        },
         tanggal: {
             type: Date,
+            default: '',
+            trim: true
+        },
+        nama: {
+            type: String,
+            default: '',
+            trim: true
+        },
+        umur: {
+            type: String,
+            default: '',
+            trim: true
+        },
+        jk: {
+            type: String,
             default: '',
             trim: true
         },
@@ -56,6 +74,11 @@ var KontrolSchema = new mongoose.Schema({
             trim: true
         },
         terapi: {
+            type: String,
+            default: '',
+            trim: true
+        },
+        status: {
             type: String,
             default: '',
             trim: true

@@ -14,11 +14,22 @@
                         <tr>
                             <td style="width: 30%;">Tanggal <span class="req">*</span></td>
                             <td>
-                                <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.tanggal" data-date-format="dd MMMM yyyy" data-autoclose="true" data-container="body" bs-datepicker required>
+                                <input type="text" name="tanggal" class="form-control input-sm" ng-model="rk.tanggal" ng-change="rk.hint(rk.tanggal)" data-date-format="dd MMMM yyyy" data-autoclose="true" data-container="body" bs-datepicker required>
                             </td>
                             <td style="width: 30%;">
                                 <p class="help-block" style="margin: 0;" ng-show="form1.tanggal.$error.required && rk.submitted">
                                     <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                                </p>
+                            </td>
+                        </tr>
+                        <tr ng-hide="rk.data._pasien.lahir">
+                            <td>Umur</td>
+                            <td>
+                                <input type="text" name="umur" class="form-control input-sm" ng-model="rk.umur">
+                            </td>
+                            <td>
+                                <p class="help-block" style="margin: 0;" ng-show="rk.info">
+                                    <span class="fa fa-exclamation-circle fa-fw"></span> {{rk.info}} dari tanggal registrasi
                                 </p>
                             </td>
                         </tr>

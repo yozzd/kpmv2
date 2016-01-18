@@ -27,9 +27,13 @@ class RkKontrolDaftarController {
                 this.$timeout(() => {
                     this.data = data;
                     this.nama = this.data._pasien.nama;
-                    this.nodata = this.data.kontrol.length < 1;
 
-                    this.map = _.map(this.data.kontrol, function (val) {
+                    this.filter = _.filter(this.data.kontrol, function (val) {
+                        return val.status !== 'B';
+                    });
+                    this.nodata = this.filter.length < 1;
+
+                    this.map = _.map(this.filter, function (val) {
                         return {
                             _id: val._id,
                             tanggal: val.tanggal,

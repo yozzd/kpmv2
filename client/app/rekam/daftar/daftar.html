@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="data in rk.datas | orderBy:predicate:reverse | filter:search">
+                            <tr ng-repeat="data in rk.datas | orderBy:rk.predicate:reverse | filter:search">
                                 <td class="text-center">{{$index+1}}</td>
                                 <td>{{data.registrasi}}</td>
                                 <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>

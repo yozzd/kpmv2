@@ -8,6 +8,9 @@ class AsideLeftController {
         }, {
         'label': 'Create Pasien',
         'state': 'rekam.create'
+    }, {
+        'label': 'Rekapitulasi',
+        'state': 'rekam.rekapitulasi'
     }];
 
     //end-non-standard

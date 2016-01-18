@@ -65,7 +65,7 @@ function removeEntity(res) {
 
 // Gets a list of Kontrols
 export function index(req, res) {
-    Kontrol.findAsync()
+    Kontrol.find().populate('_pasien').execAsync()
         .then(responseWithResult(res))
         .catch(handleError(res));
 }
@@ -86,7 +86,11 @@ export function create(req, res) {
         .then(handleEntityNotFound(res))
         .then(find => {
             find.kontrol.push({
+                pid: find._pasien,
                 tanggal: req.body.tanggal,
+                nama: req.body.nama,
+                umur: req.body.umur,
+                jk: req.body.jk,
                 keluhan: req.body.keluhan,
                 lab: req.body.lab,
                 sputum: req.body.sputum,
@@ -95,7 +99,8 @@ export function create(req, res) {
                 tb: req.body.tb,
                 diagnosaid: req.body.diagnosaid,
                 diagnosaname: req.body.diagnosaname,
-                terapi: req.body.terapi
+                terapi: req.body.terapi,
+                status: req.body.status
             });
             find.saveAsync();
             return find;
@@ -126,6 +131,9 @@ export function filescreate(req, res) {
         .then(find => {
             find.kontrol.push({
                 tanggal: req.body.tanggal,
+                nama: req.body.nama,
+                umur: req.body.umur,
+                jk: req.body.jk,
                 pemeriksaan: name,
                 keluhan: req.body.keluhan,
                 lab: req.body.lab,
@@ -135,7 +143,8 @@ export function filescreate(req, res) {
                 tb: req.body.tb,
                 diagnosaid: req.body.diagnosaid,
                 diagnosaname: req.body.diagnosaname,
-                terapi: req.body.terapi
+                terapi: req.body.terapi,
+                status: req.body.status
             });
             find.saveAsync();
             return find;

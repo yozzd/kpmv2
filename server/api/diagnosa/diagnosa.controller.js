@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 var Diagnosa = require('./diagnosa.model');
+var Kontrol = require('../kontrol/kontrol.model');
 
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
@@ -88,9 +89,39 @@ export function update(req, res) {
     if (req.body._id) {
         delete req.body._id;
     }
-    Diagnosa.findByIdAsync(req.params.id)
+    Diagnosa.findById(req.params.id).populate('_pasien').execAsync()
         .then(handleEntityNotFound(res))
         .then(saveUpdates(req.body))
+        .then(saved => {
+            return Kontrol.findOneAsync({
+                    _pasien: saved._pasien._id
+                })
+                .then(find => {
+                    if (!find.kontrol[0]) {
+                        find.kontrol.push({
+                            pid: saved._pasien._id,
+                            tanggal: saved._pasien.tanggal,
+                            nama: saved._pasien.nama,
+                            umur: saved._pasien.umur,
+                            jk: saved._pasien.jk,
+                            diagnosaid: saved.pdid,
+                            diagnosaname: saved.pdname,
+                            status: 'B',
+                        });
+                        return find.saveAsync();
+                    } else {
+                        find.kontrol[0].pid = saved._pasien._id;
+                        find.kontrol[0].tanggal = saved._pasien.tanggal;
+                        find.kontrol[0].nama = saved._pasien.nama;
+                        find.kontrol[0].umur = saved._pasien.umur;
+                        find.kontrol[0].jk = saved._pasien.jk;
+                        find.kontrol[0].diagnosaid = saved.pdid;
+                        find.kontrol[0].diagnosaname = saved.pdname;
+                        find.kontrol[0].status = 'B';
+                        return find.saveAsync();
+                    }
+                });
+        })
         .then(responseWithResult(res))
         .catch(handleError(res));
 }

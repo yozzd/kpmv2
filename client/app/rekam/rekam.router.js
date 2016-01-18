@@ -254,5 +254,19 @@ angular.module('kpmApp.rekam')
                 ncyBreadcrumb: {
                     label: 'Edit Kartu Kontrol'
                 }
+            })
+            .state('rekam.rekapitulasi', {
+                url: '/rekapitulasi',
+                authenticate: 'rekam',
+                views: {
+                    '@': {
+                        templateUrl: 'app/rekam/rekapitulasi/daftar/daftar.html',
+                        controller: 'RkRekapitulasiDaftarController',
+                        controllerAs: 'rk'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Rekapitulasi'
+                }
             });
     });

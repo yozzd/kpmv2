@@ -118,8 +118,8 @@ class RkProfilController {
             });
     }
 
-    lahir(tgl) {
-        this.data.umur = moment(tgl).toNow(true);
+    lahir(r, l) {
+        this.data.umur = moment(r).preciseDiff(moment(l));
     }
 
     submit(form) {

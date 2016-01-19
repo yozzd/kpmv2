@@ -191,6 +191,9 @@ export function filesupdate(req, res) {
                 return chr._id.toString() === req.body.kid;
             });
             find.kontrol[index].tanggal = req.body.tanggal;
+            find.kontrol[index].nama = req.body.nama;
+            find.kontrol[index].umur = req.body.umur;
+            find.kontrol[index].jk = req.body.jk;
             find.kontrol[index].pemeriksaan = name;
             find.kontrol[index].keluhan = req.body.keluhan;
             find.kontrol[index].lab = req.body.lab;
@@ -220,6 +223,9 @@ export function update(req, res) {
                 return chr._id.toString() === req.body.kid;
             });
             find.kontrol[index].tanggal = req.body.tanggal;
+            find.kontrol[index].nama = req.body.nama;
+            find.kontrol[index].umur = req.body.umur;
+            find.kontrol[index].jk = req.body.jk;
             find.kontrol[index].keluhan = req.body.keluhan;
             find.kontrol[index].lab = req.body.lab;
             find.kontrol[index].sputum = req.body.sputum;

@@ -206,7 +206,7 @@ class RkKontrolCreateController {
             });
     }
     hint(tanggal) {
-        this.info = moment(this.data._pasien.tanggal).to(moment(tanggal), true);
+        this.info = moment(tanggal).preciseDiff(moment(this.data._pasien.tanggal));
     }
 
     submit1(form) {
@@ -217,7 +217,7 @@ class RkKontrolCreateController {
                         id: this.data._id,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
                         nama: this.data._pasien.nama,
-                        umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).to(moment(this.tanggal), true),
+                        umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).preciseDiff(moment(this.tanggal)),
                         jk: this.data._pasien.jk,
                         keluhan: this.keluhan,
                         lab: this.lab,
@@ -255,7 +255,7 @@ class RkKontrolCreateController {
                         id: this.data._id,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
                         nama: this.data._pasien.nama,
-                        umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).to(moment(this.tanggal), true),
+                        umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).preciseDiff(moment(this.tanggal)),
                         jk: this.data._pasien.jk,
                         keluhan: this.keluhan,
                         lab: this.lab,

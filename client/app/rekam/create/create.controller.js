@@ -86,8 +86,8 @@ class RkCreateController {
         ];
     }
 
-    lahir(tgl) {
-        this.data.umur = moment(tgl).to(moment(this.data.tanggal), true);
+    lahir(r, l) {
+        this.data.umur = moment(r).preciseDiff(moment(l));
     }
 
     submit(form) {

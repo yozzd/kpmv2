@@ -221,6 +221,32 @@ export function update(req, res) {
     Pasien.findByIdAsync(req.params.id)
         .then(handleEntityNotFound(res))
         .then(saveUpdates(req.body))
+        .then(saved => {
+            return Kontrol.findOneAsync({
+                    _pasien: saved._id
+                })
+                .then(find => {
+                    if (!find.kontrol[0]) {
+                        find.kontrol.push({
+                            pid: saved._id,
+                            tanggal: saved.tanggal,
+                            nama: saved.nama,
+                            umur: saved.umur,
+                            jk: saved.jk,
+                            status: 'B',
+                        });
+                        return find.saveAsync();
+                    } else {
+                        find.kontrol[0].pid = saved._id;
+                        find.kontrol[0].tanggal = saved.tanggal;
+                        find.kontrol[0].nama = saved.nama;
+                        find.kontrol[0].umur = saved.umur;
+                        find.kontrol[0].jk = saved.jk;
+                        find.kontrol[0].status = 'B';
+                        return find.saveAsync();
+                    }
+                });
+        })
         .then(responseWithResult(res))
         .catch(handleError(res));
 }

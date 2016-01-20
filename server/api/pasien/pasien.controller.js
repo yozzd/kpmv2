@@ -256,6 +256,105 @@ export function destroy(req, res) {
     Pasien.findByIdAsync(req.params.id)
         .then(handleEntityNotFound(res))
         .then(removeEntity(res))
+        .then(() => {
+            fs.removeAsync('./client/app/rekam/main/files/' + req.params.id)
+        })
+        .then(() => {
+            Anamnesa.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Fisik.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Radiologi.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Laboratorium.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Medis.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Diagnosa.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Pengobatan.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Terapi.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Rehabilitasi.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Konsultasi.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Usul.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
+        .then(() => {
+            Kontrol.findOneAsync({
+                    _pasien: req.params.id
+                })
+                .then(pasien => {
+                    pasien.removeAsync()
+                })
+        })
         .catch(handleError(res));
 }
 

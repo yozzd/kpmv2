@@ -5,12 +5,17 @@ angular.module('kpmApp.rekam')
         $stateProvider
             .state('rekam', {
                 url: '/r',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/daftar/daftar.html',
                         controller: 'RkDaftarController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -19,12 +24,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.create', {
                 url: '/create',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/create/create.html',
                         controller: 'RkCreateController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -33,12 +43,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub', {
                 url: '/sub/{id}',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/sub/sub.html',
                         controller: 'RkSubController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -47,12 +62,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.profil', {
                 url: '/profil',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/profil/profil.html',
                         controller: 'RkProfilController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -61,12 +81,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.anamnesa', {
                 url: '/anamnesa',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/anamnesa/anamnesa.html',
                         controller: 'RkAnamnesaController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -75,12 +100,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.fisik', {
                 url: '/fisik',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/fisik/fisik.html',
                         controller: 'RkFisikDiagnostikController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -89,12 +119,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.radiologi', {
                 url: '/radiologi',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/radiologi/radiologi.html',
                         controller: 'RkRadiologiController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -103,12 +138,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.laboratorium', {
                 url: '/laboratorium',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/laboratorium/laboratorium.html',
                         controller: 'RkLaboratoriumController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -117,12 +157,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.medis', {
                 url: '/medis',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/medis/medis.html',
                         controller: 'RkMedisController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -131,12 +176,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.diagnosa', {
                 url: '/diagnosa',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/diagnosa/diagnosa.html',
                         controller: 'RkDiagnosaController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -145,12 +195,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.pengobatan', {
                 url: '/pengobatan',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/pengobatan/pengobatan.html',
                         controller: 'RkPengobatanController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -159,12 +214,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.terapi', {
                 url: '/terapi',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/terapi/terapi.html',
                         controller: 'RkTerapiController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -173,12 +233,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.rehabilitasi', {
                 url: '/rehabilitasi',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/rehabilitasi/rehabilitasi.html',
                         controller: 'RkRehabilitasiController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -187,12 +252,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.konsultasi', {
                 url: '/konsultasi',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/konsultasi/konsultasi.html',
                         controller: 'RkKonsultasiController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -201,12 +271,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.usul', {
                 url: '/usul',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/usul/usul.html',
                         controller: 'RkUsulController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -215,12 +290,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.kontrol', {
                 url: '/kontrol',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/kontrol/daftar/daftar.html',
                         controller: 'RkKontrolDaftarController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -229,12 +309,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.kontrol.create', {
                 url: '/create',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/kontrol/create/create.html',
                         controller: 'RkKontrolCreateController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -243,12 +328,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.sub.kontrol.edit', {
                 url: '/edit/{kid}',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/main/kontrol/edit/edit.html',
                         controller: 'RkKontrolEditController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {
@@ -257,12 +347,17 @@ angular.module('kpmApp.rekam')
             })
             .state('rekam.rekapitulasi', {
                 url: '/rekapitulasi',
-                authenticate: 'rekam',
                 views: {
                     '@': {
                         templateUrl: 'app/rekam/rekapitulasi/daftar/daftar.html',
                         controller: 'RkRekapitulasiDaftarController',
                         controllerAs: 'rk'
+                    }
+                },
+                data: {
+                    permissions: {
+                        only: ['rekam', 'admin'],
+                        redirectTo: 'forbidden'
                     }
                 },
                 ncyBreadcrumb: {

@@ -3,7 +3,7 @@
 (function () {
 
     angular.module('kpmApp.auth')
-        .run(function ($rootScope, $state, Auth) {
+        .run(function ($rootScope, $state, Auth, Permission, $q) {
             // Redirect to login if route requires auth and the user is not logged in, or doesn't have required role
             $rootScope.$on('$stateChangeStart', function (event, next) {
 
@@ -33,6 +33,35 @@
                     });
                 }
             });
+
+            //angular-permission
+            Permission
+                .defineRole('admin', function () {
+                    var deferred = $q.defer();
+                    Auth.getCurrentUser(function (data) {
+                        if (data.role === 'admin') {
+                            deferred.resolve();
+                        } else {
+                            deferred.reject();
+                        }
+                    }, function () {
+                        deferred.reject();
+                    });
+                    return deferred.promise;
+                })
+                .defineRole('rekam', function () {
+                    var deferred = $q.defer();
+                    Auth.getCurrentUser(function (data) {
+                        if (data.role === 'rekam') {
+                            deferred.resolve();
+                        } else {
+                            deferred.reject();
+                        }
+                    }, function () {
+                        deferred.reject();
+                    });
+                    return deferred.promise;
+                });
         });
 
 })();

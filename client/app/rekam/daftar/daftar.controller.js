@@ -2,10 +2,13 @@
 
 class RkDaftarController {
 
-    constructor(Restangular, blockUI, $timeout) {
+    constructor(Restangular, blockUI, $timeout, $modal, $scope) {
         this.block = blockUI.instances.get('block');
         this.$timeout = $timeout;
         this.Restangular = Restangular;
+        this.$modal = $modal;
+        this.$scope = $scope;
+
         this.getPasien();
         this.predicate = 'registrasi';
 
@@ -29,9 +32,22 @@ class RkDaftarController {
                 this.$timeout(() => {
                     this.datas = datas;
                     this.nodata = this.datas.length < 1;
+
                     this.block.stop();
                 }, 1000);
             });
+    }
+
+    showmodal(id) {
+        this.scope = this.$scope.$new();
+        this.scope.id = id;
+        this.modal = this.$modal({
+            templateUrl: 'app/rekam/hapus/hapus.html',
+            show: false,
+            scope: this.scope
+        });
+
+        this.modal.$promise.then(this.modal.show);
     }
 }
 

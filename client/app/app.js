@@ -18,7 +18,8 @@ angular.module('kpmApp', [
     'blockUI',
     'ui.select',
     'ngFileUpload',
-    'checklist-model'
+    'checklist-model',
+    'permission'
 ])
     .config(function ($urlRouterProvider, $locationProvider, RestangularProvider, blockUIConfig, uiSelectConfig) {
         $urlRouterProvider

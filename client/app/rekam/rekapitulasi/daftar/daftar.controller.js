@@ -284,6 +284,13 @@ class RkRekapitulasiDaftarController {
     change(m, y, d) {
         this.getPasien(m, y, d);
     }
+
+    popup(m, y, d) {
+        var left = screen.width / 2 - 400;
+        var top = screen.height / 2 - 250;
+        var url = '/api/kontrols/cetak/' + m + '/' + y + '/' + d;
+        window.open(url, '', 'top=' + top + ',left=' + left + ',width=800,height=500');
+    }
 }
 
 angular.module('kpmApp.rekam')

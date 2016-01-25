@@ -2,9 +2,10 @@
 
 class RkCreateController {
 
-    constructor(Restangular, $alert) {
+    constructor(Restangular, $alert, $state) {
         this.Restangular = Restangular;
         this.$alert = $alert;
+        this.$state = $state;
 
         this.data = {};
         this.submitted = false;
@@ -122,6 +123,7 @@ class RkCreateController {
                         type: 'info',
                         duration: 5
                     });
+                    this.$state.go('rekam');
                 })
                 .catch(err => {
                     this.$alert({

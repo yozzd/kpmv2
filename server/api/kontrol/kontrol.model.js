@@ -13,6 +13,11 @@ var KontrolSchema = new mongoose.Schema({
             default: '',
             trim: true
         },
+        registrasi: {
+            type: String,
+            default: '',
+            trim: true
+        },
         nama: {
             type: String,
             default: '',

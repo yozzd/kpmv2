@@ -11,8 +11,10 @@
 
 import _ from 'lodash';
 var Kontrol = require('./kontrol.model');
+
 var fs = require('bluebird').promisifyAll(require('fs-extra'));
 var easyimg = require('easyimage');
+var NodePDF = require('bluebird').promisifyAll(require('nodepdf'));
 var moment = require('moment');
 moment.locale('id');
 
@@ -88,6 +90,7 @@ export function create(req, res) {
             find.kontrol.push({
                 pid: find._pasien,
                 tanggal: req.body.tanggal,
+                registrasi: req.body.registrasi,
                 nama: req.body.nama,
                 umur: req.body.umur,
                 jk: req.body.jk,
@@ -131,6 +134,7 @@ export function filescreate(req, res) {
         .then(find => {
             find.kontrol.push({
                 tanggal: req.body.tanggal,
+                registrasi: req.body.registrasi,
                 nama: req.body.nama,
                 umur: req.body.umur,
                 jk: req.body.jk,
@@ -191,6 +195,7 @@ export function filesupdate(req, res) {
                 return chr._id.toString() === req.body.kid;
             });
             find.kontrol[index].tanggal = req.body.tanggal;
+            find.kontrol[index].registrasi = req.body.registrasi;
             find.kontrol[index].nama = req.body.nama;
             find.kontrol[index].umur = req.body.umur;
             find.kontrol[index].jk = req.body.jk;
@@ -223,6 +228,7 @@ export function update(req, res) {
                 return chr._id.toString() === req.body.kid;
             });
             find.kontrol[index].tanggal = req.body.tanggal;
+            find.kontrol[index].registrasi = req.body.registrasi;
             find.kontrol[index].nama = req.body.nama;
             find.kontrol[index].umur = req.body.umur;
             find.kontrol[index].jk = req.body.jk;
@@ -273,4 +279,93 @@ export function destroy(req, res) {
         .then(handleEntityNotFound(res))
         .then(removeEntity(res))
         .catch(handleError(res));
+}
+
+export function cetak(req, res) {
+    Kontrol.findAsync()
+        .then(pasien => {
+
+            var map = _.chain(pasien).map(function (val) {
+                return val.kontrol;
+            }).flatten().value();
+
+            var content = '';
+            content += '<html>';
+            content += '<style>';
+            content += 'body {font-size: 12px; font-family: "Times New Roman", Georgia, Serif;}';
+            content += 'table {font-size: 12px; width: 100%; background-color: transparent; border-collapse: collapse; border-spacing: 0; border-top: 1px solid #000000; border-left: 1px solid #000000;}';
+            content += '.table th, .table td {padding: 2px 4px 4px 4px; text-align: left; vertical-align: middle; border-right: 1px solid #000000; border-bottom: 1px solid #000000;}';
+            content += '.table th {font-weight: bold;}';
+            content += '.table thead th {vertical-align: middle;}';
+            content += 'table td {vertical-align: top;}';
+            content += '</style>';
+            content += '<body>';
+            content += '<table style="border: 0;">';
+
+            if (req.params.d === '0') {
+                var filter1 = _.chain(map).filter(function (val) {
+                    return moment(val.tanggal).format('MMMM') === req.params.m && moment(val.tanggal).format('YYYY') === req.params.y;
+                }).sortBy().value();
+
+                var bydate1 = _.chain(filter1).map(function (val) {
+                    return val.tanggal.toString();
+                }).uniq().sortBy().value();
+
+                for (var i = 0; i < bydate1.length; i++) {
+                    content += '<tr>';
+                    content += '<td colspan="5">' + moment(bydate1[i]).format('DD MMMM YYYY') + '<td>';
+                    content += '</tr>';
+                    for (var j = 0; j < filter1.length; j++) {
+                        if (filter1[j].tanggal.toString() === bydate1[i].toString()) {
+                            content += '<tr>';
+                            content += '<td>' + filter1[j].registrasi + '<td>';
+                            content += '<td>' + filter1[j].nama + '<td>';
+                            content += '<td>' + filter1[j].umur + '<td>';
+                            content += '<td>' + filter1[j].jk + '<td>';
+                            content += '<td>' + filter1[j].diagnosaname + '<td>';
+                            content += '</tr>';
+                        }
+                    }
+                }
+            } else {
+                var filter2 = _.chain(map).filter(function (val) {
+                    return moment(val.tanggal).format('MMMM') === req.params.m && moment(val.tanggal).format('YYYY') === req.params.y && val.diagnosaid === req.params.d;
+                }).value();
+
+                var bydate2 = _.chain(filter2).map(function (val) {
+                    return val.tanggal;
+                }).uniq().sortBy().value();
+
+                content += '<tr>';
+                content += '<td>tidak<td>';
+                content += '</tr>';
+            }
+
+            content += '</table>';
+            content += '</body>';
+            content += '</html>';
+
+            var options = {
+                'content': content,
+                'paperSize': {
+                    'pageFormat': 'A4',
+                    'orientation': 'portrait',
+                    'margin': {
+                        'top': '2cm',
+                        'right': '2cm',
+                        'bottom': '2cm',
+                        'left': '2cm'
+                    }
+                }
+            }
+
+            NodePDF.renderAsync(null, './client/app/rekam/main/files/' + req.params.id + '/pdf/' + req.params.id + '.pdf', options)
+                .then(() => {
+                    fs.readFileAsync('./client/app/rekam/main/files/' + req.params.id + '/pdf/' + req.params.id + '.pdf')
+                        .then(data => {
+                            res.contentType('application/pdf');
+                            res.send(data);
+                        })
+                })
+        });
 }

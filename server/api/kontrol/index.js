@@ -15,5 +15,6 @@ router.put('/files/update/:id', auth.hasRole('rekam'), multipart(), controller.f
 router.put('/:id', auth.hasRole('rekam'), controller.update);
 router.put('/hapus/:id', auth.hasRole('rekam'), controller.hapus);
 router.delete('/:id', auth.hasRole('rekam'), controller.destroy);
+router.get('/cetak/:m/:y/:d', controller.cetak);
 
 module.exports = router;

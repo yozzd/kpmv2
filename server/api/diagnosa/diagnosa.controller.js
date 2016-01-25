@@ -101,6 +101,7 @@ export function update(req, res) {
                         find.kontrol.push({
                             pid: saved._pasien._id,
                             tanggal: saved._pasien.tanggal,
+                            registrasi: saved._pasien.registrasi,
                             nama: saved._pasien.nama,
                             umur: saved._pasien.umur,
                             jk: saved._pasien.jk,
@@ -112,6 +113,7 @@ export function update(req, res) {
                     } else {
                         find.kontrol[0].pid = saved._pasien._id;
                         find.kontrol[0].tanggal = saved._pasien.tanggal;
+                        find.kontrol[0].registrasi = saved._pasien.registrasi;
                         find.kontrol[0].nama = saved._pasien.nama;
                         find.kontrol[0].umur = saved._pasien.umur;
                         find.kontrol[0].jk = saved._pasien.jk;

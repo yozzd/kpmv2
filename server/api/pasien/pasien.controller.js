@@ -230,6 +230,7 @@ export function update(req, res) {
                         find.kontrol.push({
                             pid: saved._id,
                             tanggal: saved.tanggal,
+                            registrasi: saved.registrasi,
                             nama: saved.nama,
                             umur: saved.umur,
                             jk: saved.jk,
@@ -239,6 +240,7 @@ export function update(req, res) {
                     } else {
                         find.kontrol[0].pid = saved._id;
                         find.kontrol[0].tanggal = saved.tanggal;
+                        find.kontrol[0].registrasi = saved.registrasi;
                         find.kontrol[0].nama = saved.nama;
                         find.kontrol[0].umur = saved.umur;
                         find.kontrol[0].jk = saved.jk;

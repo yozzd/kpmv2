@@ -14,7 +14,8 @@
                         <tr>
                             <td style="width: 20%;"><strong>Bulan</strong></td>
                             <td style="width: 20%;"><strong>Tahun</strong></td>
-                            <td style="width: 60%;"><strong>Diagnosa</strong></td>
+                            <td style="width: 45%;"><strong>Diagnosa</strong></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>
@@ -41,6 +42,9 @@
                                     </ui-select-choices>
                                 </ui-select>
                             </td>
+                            <td>
+                                <a href="" ng-click="rk.popup(rk.month.selected.name,rk.year.selected.name,rk.diag.selected.id)"><span class="fa fa-print fa-fw"></span> Cetak</a>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -49,6 +53,7 @@
                     <table class="table table-condensed rt2">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <th class="text-center">Umur</th>
@@ -61,15 +66,11 @@
                         <tbody>
                             <tr ng-repeat-start="date in rk.bydate">
                                 <td class="text-center" style="width: 3%; background: #eee;"><span class="fa fa-calendar"></span></td>
-                                <td style="background: #eee;">{{date|date:'dd MMMM yyyy'}}</td>
-                                <td style="background: #eee;"></td>
-                                <td style="background: #eee;"></td>
-                                <td style="background: #eee;"></td>
-                                <td style="background: #eee;"></td>
-                                <td style="background: #eee;"></td>
+                                <td style="background: #eee;" colspan="7">{{date|date:'dd MMMM yyyy'}}</td>
                             </tr>
                             <tr ng-repeat-start="pasien in rk.filter | orderBy: 'nama'" ng-hide="pasien.tanggal!=date">
                                 <td></td>
+                                <td class="text-center">{{pasien.registrasi}}</td>
                                 <td><a ui-sref="rekam.sub({id: pasien.pid})">{{pasien.nama}}</a></td>
                                 <td class="text-center">{{pasien.umur}}</td>
                                 <td class="text-center">{{pasien.jk}}</td>

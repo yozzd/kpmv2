@@ -216,6 +216,7 @@ class RkKontrolCreateController {
                 this.Restangular.all('kontrols').customPOST({
                         id: this.data._id,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
+                        registrasi: this.data._pasien.registrasi,
                         nama: this.data._pasien.nama,
                         umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).preciseDiff(moment(this.tanggal)),
                         jk: this.data._pasien.jk,
@@ -254,6 +255,7 @@ class RkKontrolCreateController {
                     fields: {
                         id: this.data._id,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
+                        registrasi: this.data._pasien.registrasi,
                         nama: this.data._pasien.nama,
                         umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).preciseDiff(moment(this.tanggal)),
                         jk: this.data._pasien.jk,

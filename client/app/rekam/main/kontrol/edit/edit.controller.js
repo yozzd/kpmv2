@@ -233,6 +233,7 @@ class RkKontrolEditController {
                 this.Restangular.one('kontrols').customPUT({
                         kid: this.$stateParams.kid,
                         tanggal: this.tanggal,
+                        registrasi: this.data._pasien.registrasi,
                         nama: this.data._pasien.nama,
                         umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).preciseDiff(moment(this.tanggal)),
                         jk: this.data._pasien.jk,
@@ -266,6 +267,7 @@ class RkKontrolEditController {
                     fields: {
                         kid: this.$stateParams.kid,
                         tanggal: this.tanggal === null ? '' : this.tanggal,
+                        registrasi: this.data._pasien.registrasi,
                         nama: this.data._pasien.nama,
                         umur: this.data._pasien.lahir === null ? this.umur : moment(this.data._pasien.lahir).preciseDiff(moment(this.tanggal)),
                         jk: this.data._pasien.jk,

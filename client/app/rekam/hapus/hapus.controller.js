@@ -27,5 +27,5 @@ class PasienHapusController {
     }
 }
 
-angular.module('kpmApp')
+angular.module('kpmApp.rekam')
     .controller('PasienHapusController', PasienHapusController);

@@ -1,38 +1,28 @@
 'use strict';
 
-(function () {
+class MainController {
 
-    class MainController {
+    constructor(Auth) {
+        this.isLoggedIn = Auth.isLoggedIn;
+        this.isAdmin = Auth.isAdmin;
+        this.isRekam = Auth.isRekam;
+        this.getCurrentUser = Auth.getCurrentUser;
 
-        constructor($http, $scope, socket) {
-            this.$http = $http;
-            this.awesomeThings = [];
-
-            $http.get('/api/things').then(response => {
-                this.awesomeThings = response.data;
-                socket.syncUpdates('thing', this.awesomeThings);
-            });
-
-            $scope.$on('$destroy', function () {
-                socket.unsyncUpdates('thing');
-            });
-        }
-
-        addThing() {
-            if (this.newThing) {
-                this.$http.post('/api/things', {
-                    name: this.newThing
-                });
-                this.newThing = '';
-            }
-        }
-
-        deleteThing(thing) {
-            this.$http.delete('/api/things/' + thing._id);
-        }
+        this.rekam = [{
+            'label': 'Daftar Pasien',
+            'state': 'rekam',
+            'icon': 'fa fa-th-list fa-4x'
+        }, {
+            'label': 'Create Pasien',
+            'state': 'rekam.create',
+            'icon': 'fa fa-user-plus fa-4x'
+        }, {
+            'label': 'Rekapitulasi',
+            'state': 'rekam.rekapitulasi',
+            'icon': 'fa fa-bolt fa-4x'
+        }];
     }
+}
 
-    angular.module('kpmApp')
-        .controller('MainController', MainController);
-
-})();
+angular.module('kpmApp')
+    .controller('MainController', MainController);

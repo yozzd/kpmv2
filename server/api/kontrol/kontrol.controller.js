@@ -282,6 +282,21 @@ export function destroy(req, res) {
 }
 
 export function cetak(req, res) {
+    var diagnosa = ['Semua Diagnosa', 'TB Paru BTA Positif', 'TB Paru BTA Negatif', 'TB Paru Anak (Tersangka)',
+                'TB Ekstra Paru', 'ISPA (Infeksi Saluran Pernafasan Akut) : Pneumonia', 'ISPA (Infeksi Saluran Pernafasan Akut) : Bronkhitis',
+                'ISPA (Infeksi Saluran Pernafasan Akut) : Influenza / Flu', 'ISPA (Infeksi Saluran Pernafasan Akut) : Rhinitis',
+                'ISPA (Infeksi Saluran Pernafasan Akut) : Tonsilitis', 'ISPA (Infeksi Saluran Pernafasan Akut) : Faryingitis / Tonsillofaringitis',
+                'ISPA (Infeksi Saluran Pernafasan Akut) : Laringitis', 'ISPA (Infeksi Saluran Pernafasan Akut) : Sinusitis',
+                'Penyakit / Kelainan Pleura : Pneumothoraks', 'Penyakit / Kelainan Pleura : Efusi Pleura (Hemathothoraks / Empyema)',
+                'Penyakit / Kelainan Pleura : Hydropneumothoraks', 'Penyakit / Kelainan Pleura : Tumor Pleura',
+                'Penyakit / Kelainan Pleura : Schwarte', 'Asma Bronkhial (Dewasa) : Intermitten', 'Asma Bronkhial (Dewasa) : Persisten Ringan',
+                'Asma Bronkhial (Dewasa) : Persisten Sedang', 'Asma Bronkhial (Dewasa) : Persisten Berat', 'Asma Bronkhial (Dewasa) : Eksaserbasi Berat',
+                'Asma Bronkhial (Dewasa) : Status Asmaticus', 'Asma Bronkhial (Anak) : Episodik Jarang', 'Asma Bronkhial (Anak) : Episodik Sering',
+                'Asma Bronkhial (Anak) : Asma Persisten', 'Penyakit Paru Obstruktif Kronik (PPOK) : Stabil', 'Penyakit Paru Obstruktif Kronik (PPOK) : Eksaserbasi Akut',
+                'Cor Pulmonale Chronicum (CPC)', 'Bronkhiektasis', 'Atelektasis', 'Abses Paru', 'Tumor Paru', 'Tumor Mediastinum',
+                'Penyakit Vascular Paru', 'Sequele Tuberkulosis', 'Penyakit Paru / Saluran Nafas Lainnya', 'Penyakit Non Paru / Non Saluran Nafas Lainnya',
+        ];
+
     Kontrol.findAsync()
         .then(pasien => {
 
@@ -300,48 +315,103 @@ export function cetak(req, res) {
             content += 'table td {vertical-align: top;}';
             content += '</style>';
             content += '<body>';
-            content += '<table style="border: 0;">';
 
             if (req.params.d === '0') {
+                content += '<h3 style="text-align: center;"><u>Rekapitulasi Data Pasien untuk Bulan ' + req.params.m + ' Tahun ' + req.params.y + '</u></h3>';
+            } else {
+                content += '<h3 style="text-align: center;"><u>Rekapitulasi Data Pasien untuk Bulan ' + req.params.m + ' Tahun ' + req.params.y + ' <br>Diagnosa ' + diagnosa[req.params.d] + '</u></h3>';
+            }
+
+            content += '<table style="border: 0;">';
+            content += '<thead>';
+            content += '<tr>';
+            content += '<th style="text-align: center; height: 30px;">No. Registrasi</th>';
+            content += '<th style="text-align: center; height: 30px;">Nama</th>';
+            content += '<th style="text-align: center; height: 30px;">Umur</th>';
+            content += '<th style="text-align: center; height: 30px;">Jenis Kelamin</th>';
+            content += '<th style="text-align: center; height: 30px;">Diagnosa</th>';
+            content += '<th style="text-align: center; height: 30px; width: 3%;">B</th>';
+            content += '<th style="text-align: center; height: 30px; width: 3%;">L</th>';
+            content += '</tr>';
+            content += '</thead>';
+            content += '<tbody>';
+
+            if (req.params.d === '0') {
+
                 var filter1 = _.chain(map).filter(function (val) {
-                    return moment(val.tanggal).format('MMMM') === req.params.m && moment(val.tanggal).format('YYYY') === req.params.y;
-                }).sortBy().value();
+                    return moment(new Date(val.tanggal)).format('MMMM') === req.params.m && moment(new Date(val.tanggal)).format('YYYY') === req.params.y;
+                }).value();
 
                 var bydate1 = _.chain(filter1).map(function (val) {
-                    return val.tanggal.toString();
+                    return new Date(val.tanggal).toISOString();
                 }).uniq().sortBy().value();
 
                 for (var i = 0; i < bydate1.length; i++) {
                     content += '<tr>';
-                    content += '<td colspan="5">' + moment(bydate1[i]).format('DD MMMM YYYY') + '<td>';
+                    content += '<td colspan="7" style="background: #eee;"><strong>' + moment(new Date(bydate1[i])).format('DD MMMM YYYY') + '</strong></td>';
                     content += '</tr>';
                     for (var j = 0; j < filter1.length; j++) {
-                        if (filter1[j].tanggal.toString() === bydate1[i].toString()) {
+                        if (filter1[j].tanggal.toISOString() === bydate1[i]) {
                             content += '<tr>';
-                            content += '<td>' + filter1[j].registrasi + '<td>';
-                            content += '<td>' + filter1[j].nama + '<td>';
-                            content += '<td>' + filter1[j].umur + '<td>';
-                            content += '<td>' + filter1[j].jk + '<td>';
-                            content += '<td>' + filter1[j].diagnosaname + '<td>';
+                            content += '<td>' + filter1[j].registrasi + '</td>';
+                            content += '<td>' + filter1[j].nama + '</td>';
+                            content += '<td>' + filter1[j].umur + '</td>';
+                            content += '<td style="text-align: center;">' + filter1[j].jk + '</td>';
+                            content += '<td>' + filter1[j].diagnosaname + '</td>';
+                            if (filter1[j].status === 'B') {
+                                content += '<td style="text-align: center;">&bull;</td>';
+                                content += '<td></td>';
+                            } else {
+                                content += '<td></td>';
+                                content += '<td style="text-align: center;">&bull;</td>';
+                            }
                             content += '</tr>';
                         }
                     }
+                    content += '<tr>';
+                    content += '<td colspan="7" style="height: 30px;"></td>';
+                    content += '</tr>';
                 }
             } else {
                 var filter2 = _.chain(map).filter(function (val) {
-                    return moment(val.tanggal).format('MMMM') === req.params.m && moment(val.tanggal).format('YYYY') === req.params.y && val.diagnosaid === req.params.d;
+                    return moment(new Date(val.tanggal)).format('MMMM') === req.params.m && moment(new Date(val.tanggal)).format('YYYY') === req.params.y && val.diagnosaid === req.params.d;
                 }).value();
 
                 var bydate2 = _.chain(filter2).map(function (val) {
-                    return val.tanggal;
+                    return val.tanggal.toISOString();
                 }).uniq().sortBy().value();
 
-                content += '<tr>';
-                content += '<td>tidak<td>';
-                content += '</tr>';
+                for (var k = 0; k < bydate2.length; k++) {
+                    content += '<tr>';
+                    content += '<td colspan="7" style="background: #eee;"><strong>' + moment(new Date(bydate2[k])).format('DD MMMM YYYY') + '</strong></td>';
+                    content += '</tr>';
+                    for (var l = 0; l < filter2.length; l++) {
+                        if (filter2[l].tanggal.toISOString() === bydate2[k]) {
+                            content += '<tr>';
+                            content += '<td>' + filter2[l].registrasi + '</td>';
+                            content += '<td>' + filter2[l].nama + '</td>';
+                            content += '<td>' + filter2[l].umur + '</td>';
+                            content += '<td style="text-align: center;">' + filter2[l].jk + '</td>';
+                            content += '<td>' + filter2[l].diagnosaname + '</td>';
+                            if (filter2[l].status === 'B') {
+                                content += '<td style="text-align: center;">&bull;</td>';
+                                content += '<td></td>';
+                            } else {
+                                content += '<td></td>';
+                                content += '<td style="text-align: center;">&bull;</td>';
+                            }
+                            content += '</tr>';
+                        }
+                    }
+                    content += '<tr>';
+                    content += '<td colspan="7" style="height: 30px;"></td>';
+                    content += '</tr>';
+                }
             }
 
+            content += '</tbody>';
             content += '</table>';
+
             content += '</body>';
             content += '</html>';
 

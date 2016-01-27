@@ -491,6 +491,37 @@ p.help-block {
     }
 }
 
+.banner {
+    margin-bottom: 20px;
+    h1 {
+        font-size: 60px;
+        line-height: 1;
+        letter-spacing: -1px;
+    }
+    img {
+        width: 100px;
+    }
+}
+
+.widget {
+    margin-right: 20px;
+    a {
+        span {
+            display: block;
+        }
+    }
+    a.btn {
+        width: 120px;
+        height: 150px;
+        padding: 35px 12px;
+        line-height: 85px;
+        font-size: @font-size;
+        -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+}
+
 
 /*media*/
 
@@ -511,5 +542,4 @@ p.help-block {
 
 // injector
 @import 'admin/admin.less';
-@import 'main/main.less';
 // endinjector

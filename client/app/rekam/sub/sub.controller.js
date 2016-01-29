@@ -2,9 +2,12 @@
 
 class RkSubController {
 
-    constructor(Restangular, $stateParams) {
+    constructor(Restangular, $stateParams, $modal, $scope) {
         this.Restangular = Restangular;
         this.$stateParams = $stateParams;
+        this.$modal = $modal;
+        this.$scope = $scope;
+
         this.getPasien();
     }
 
@@ -14,6 +17,18 @@ class RkSubController {
                 this.id = data._id;
                 this.nama = data.nama;
             });
+    }
+
+    showmodal(id) {
+        this.scope = this.$scope.$new();
+        this.scope.id = id;
+        this.modal = this.$modal({
+            templateUrl: 'app/rekam/hapus/hapus.html',
+            show: false,
+            scope: this.scope
+        });
+
+        this.modal.$promise.then(this.modal.show);
     }
 
     popup(id) {

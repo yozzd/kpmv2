@@ -3,29 +3,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h4>Daftar Pasien <a style="font-size: 13px;" ui-sref=".create">Create</a></h4>
+            <h4>Daftar Pasien<a ui-sref=".create" class="btn btn-primary btn-sm pull-right"><span class="fa fa-plus"></span> Create</a></h4>
             <hr/>
         </div>
         <div class="col-md-12">
             <div class="blockui" block-ui="block">
                 <div ng-show="rk.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
                 <div class="well" ng-show="rk.datas.length>0">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <ui-select name="by" ng-model="rk.by.selected" search-enabled="false" style="width: 200px;">
-                                <ui-select-match placeholder="Cari berdasarkan...">{{$select.selected.name}}</ui-select-match>
-                                <ui-select-choices repeat="by in rk.bys">
-                                    <div ng-bind-html="by.name"></div>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
-                        <div class="form-group" ng-show="rk.by.selected.id=='1'">
-                            <input type="text" class="form-control input-sm" ng-model="search.registrasi" style="width: 200px;" />
-                        </div>
-                        <div class="form-group" ng-show="rk.by.selected.id=='2'">
-                            <input type="text" class="form-control input-sm" ng-model="search.nama" style="width: 200px;" />
-                        </div>
-                    </form>
+                    <table class="st">
+                        <tr>
+                            <td style="width: 300px;">
+                                <input type="text" class="form-control input-sm" ng-model="search.registrasi" placeholder="Cari No. Registrasi..." />
+                            </td>
+                            <td style="width: 300px;">
+                                <input type="text" class="form-control input-sm" ng-model="search.nama" placeholder="Cari Nama Pasien..." />
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="table-responsive" ng-show="rk.datas.length>0">
                     <table class="table table-bordered table-striped">

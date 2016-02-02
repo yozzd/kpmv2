@@ -19,7 +19,11 @@ class MainController {
         }, {
             'label': 'Rekapitulasi',
             'state': 'rekam.rekapitulasi',
-            'icon': 'fa fa-bolt fa-4x'
+            'icon': 'fa fa-users fa-4x'
+        }, {
+            'label': 'Settings',
+            'state': 'settings',
+            'icon': 'fa fa-cog fa-4x'
         }];
     }
 }

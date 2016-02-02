@@ -6,7 +6,7 @@
             </div>
             <div class="aside-body">
                 <div class="list-group" ng-show="aside.isRekam()">
-                    <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in aside.rekam" class="list-group-item" title="{{menu.label}}">{{menu.label}}</a>
+                    <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in aside.rekam" class="list-group-item" title="{{menu.label}}"><span class="{{menu.icon}}"></span> {{menu.label}}</a>
                 </div>
             </div>
         </div>

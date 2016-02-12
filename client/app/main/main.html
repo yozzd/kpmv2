@@ -11,25 +11,23 @@
 <div class="container">
     <div class="col-md-2" ng-show="main.isRekam()" ng-repeat="menu in main.rekam">
         <div class="hpanel">
-            <a ui-sref="{{menu.state}}">
-                <div class="panel-body text-center">
+            <div class="panel-body text-center">
+                <a ui-sref="{{menu.state}}">
                     <div class="m">
                         <span class="{{menu.icon}}"></span>
                     </div>
-                </div>
-                {{menu.label}}</a>
+                    {{menu.label}}</a>
+            </div>
         </div>
     </div>
     <div class="col-md-2" ng-show="main.isGudang()" ng-repeat="menu in main.gudang">
         <div class="hpanel">
-            <div class="panel-body">
-                <div class="text-center">
-                    <a ui-sref="{{menu.state}}">
-                        <div class="m">
-                            <span class="{{menu.icon}}"></span>
-                        </div>
-                        {{menu.label}}</a>
-                </div>
+            <div class="panel-body text-center">
+                <a ui-sref="{{menu.state}}">
+                    <div class="m">
+                        <span class="{{menu.icon}}"></span>
+                    </div>
+                    {{menu.label}}</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,27 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Satuan</h4>
+            <hr/>
+        </div>
+        <form class="form" name="form" ng-submit="gd.submit(form)" novalidate>
+            <div class="col-md-4">
+                <div class="form-group" ng-class="{'has-error':form.satuan.$error.required && gd.submitted}">
+                    <label>Satuan <span class="req">*</span></label>
+                    <input type="text" name="satuan" class="form-control input-sm" ng-model="gd.data.satuan" required>
+                    <p class="help-block" ng-show="form.satuan.$error.required && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                <button type="button" ng-click="gd.showmodal(gd.data._id)" class="btn btn-danger btn-sm">Hapus</button>
+            </div>
+        </form>
+    </div>
+</div>

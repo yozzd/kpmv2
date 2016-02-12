@@ -21,13 +21,12 @@
     "restangular": "~1.5.1",
     "angular-breadcrumb": "~0.4.1",
     "angular-block-ui": "~0.2.2",
-    "moment": "~2.10.6",
+    "moment": "^2.11.2",
     "ui-select": "angular-ui-select#~0.13.2",
     "select2": "~3.4.5",
     "ng-file-upload": "~11.0.0",
     "checklist-model": "~0.8.0",
-    "angular-permission": "~1.1.1",
-    "angular-timer": "~1.3.3"
+    "angular-permission": "~1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

@@ -1,0 +1,38 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Create Obat</h4>
+            <hr/>
+        </div>
+        <form class="form" name="form" ng-submit="gd.submit(form)" novalidate>
+            <div class="col-md-4">
+                <div class="form-group" ng-class="{'has-error':form.obat.$error.required && gd.submitted}">
+                    <label>Nama Obat <span class="req">*</span></label>
+                    <input type="text" name="obat" class="form-control input-sm" ng-model="gd.data.obat" required>
+                    <p class="help-block" ng-show="form.obat.$error.required && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                    </p>
+                </div>
+                <div class="form-group" ng-class="{'has-error':form.st.$error.required && gd.submitted}">
+                    <label>Satuan <span class="req">*</span></label>
+                    <ui-select name="st" ng-model="gd.st.selected" required>
+                        <ui-select-match placeholder="Pilih...">{{$select.selected.satuan}}</ui-select-match>
+                        <ui-select-choices repeat="st in gd.sts | filter: $select.search">
+                            <div ng-bind-html="st.satuan | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                    <p class="help-block" ng-show="form.st.$error.required && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>

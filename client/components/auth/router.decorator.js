@@ -49,6 +49,19 @@
                     });
                     return deferred.promise;
                 })
+                .defineRole('gudang', function () {
+                    var deferred = $q.defer();
+                    Auth.getCurrentUser(function (data) {
+                        if (data.role === 'gudang') {
+                            deferred.resolve();
+                        } else {
+                            deferred.reject();
+                        }
+                    }, function () {
+                        deferred.reject();
+                    });
+                    return deferred.promise;
+                })
                 .defineRole('rekam', function () {
                     var deferred = $q.defer();
                     Auth.getCurrentUser(function (data) {

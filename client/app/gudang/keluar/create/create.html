@@ -1,0 +1,49 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Create Obat Keluar</h4>
+            <hr/>
+        </div>
+        <form class="form" name="form" ng-submit="gd.submit(form)" novalidate>
+            <div class="col-md-6">
+                <div class="form-group" ng-class="{'has-error':form.tanggal.$error.required && gd.submitted}">
+                    <label>Tanggal <span class="req">*</span></label>
+                    <input type="text" name="tanggal" class="form-control input-sm" ng-model="gd.data.tanggal" data-date-format="dd MMMM yyyy" data-autoclose="true" data-container="body" bs-datepicker required>
+                    <p class="help-block" ng-show="form.tanggal.$error.required && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                    </p>
+                </div>
+                <div class="form-group" ng-class="{'has-error':form.ob.$error.required && gd.submitted}">
+                    <label>Nama Obat <span class="req">*</span></label>
+                    <ui-select name="ob" ng-model="gd.ob.selected" ng-change="gd.change(gd.ob.selected._id)" required>
+                        <ui-select-match placeholder="Pilih...">{{$select.selected.obat}}</ui-select-match>
+                        <ui-select-choices repeat="ob in gd.obs | filter: $select.search">
+                            <div ng-bind-html="ob.obat | highlight: $select.search"></div>
+                            <div ng-bind-html="ob.satuan"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                    <p class="help-block" ng-show="form.ob.$error.required && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                    </p>
+                </div>
+                <div class="form-group" ng-class="{'has-error':form.jumlah.$error.required && gd.submitted}">
+                    <label>Jumlah <span class="req">*</span></label>
+                    <input type="text" name="jumlah" class="form-control input-sm" ng-model="gd.data.jumlah" ng-pattern="/^(\d)+$/" required />
+                    <p class="help-block" ng-show="form.jumlah.$error.required && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                    </p>
+                    <p class="help-block" ng-show="form.jumlah.$error.pattern && gd.submitted">
+                        <span class="fa fa-times-circle fa-fw"></span> Harus angka
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                <button class="btn btn-primary btn-sm" type="submit">Simpan</button>
+            </div>
+        </form>
+    </div>
+</div>

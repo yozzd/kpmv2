@@ -80,9 +80,6 @@
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/checklist-model/checklist-model.js"></script>
     <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
-    <script src="bower_components/momentjs/moment.js"></script>
-    <script src="bower_components/humanize-duration/humanize-duration.js"></script>
-    <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
     <!-- endbower -->
     <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -90,13 +87,28 @@
     <script src="app/app.js"></script>
     <!-- injector:js -->
     <script src="app/admin/admin.module.js"></script>
+    <script src="app/gudang/gudang.module.js"></script>
     <script src="app/rekam/rekam.module.js"></script>
     <script src="components/auth/auth.module.js"></script>
     <script src="components/util/util.module.js"></script>
-    <script src="app/rekam/main/medis/medis.controller.js"></script>
-    <script src="app/account/account.js"></script>
+    <script src="app/rekam/main/fisik/fisik.controller.js"></script>
     <script src="app/admin/admin.router.js"></script>
     <script src="app/app.constant.js"></script>
+    <script src="app/gudang/create/create.controller.js"></script>
+    <script src="app/gudang/daftar/daftar.controller.js"></script>
+    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/gudang/gudang.router.js"></script>
+    <script src="app/gudang/keluar/create/create.controller.js"></script>
+    <script src="app/gudang/keluar/daftar/daftar.controller.js"></script>
+    <script src="app/gudang/keluar/edit/edit.controller.js"></script>
+    <script src="app/gudang/keluar/hapus/hapus.controller.js"></script>
+    <script src="app/gudang/masuk/create/create.controller.js"></script>
+    <script src="app/gudang/masuk/daftar/daftar.controller.js"></script>
+    <script src="app/gudang/masuk/edit/edit.controller.js"></script>
+    <script src="app/gudang/masuk/hapus/hapus.controller.js"></script>
+    <script src="app/gudang/satuan/edit.controller.js"></script>
+    <script src="app/gudang/satuan/hapus.controller.js"></script>
+    <script src="app/gudang/satuan/satuan.controller.js"></script>
     <script src="app/main/main.controller.js"></script>
     <script src="app/main/main.js"></script>
     <script src="app/rekam/create/create.controller.js"></script>
@@ -104,25 +116,25 @@
     <script src="app/rekam/hapus/hapus.controller.js"></script>
     <script src="app/rekam/main/anamnesa/anamnesa.controller.js"></script>
     <script src="app/rekam/main/diagnosa/diagnosa.controller.js"></script>
-    <script src="app/rekam/main/fisik/fisik.controller.js"></script>
+    <script src="app/account/login/login.controller.js"></script>
     <script src="app/rekam/main/konsultasi/konsultasi.controller.js"></script>
     <script src="app/rekam/main/kontrol/create/create.controller.js"></script>
     <script src="app/rekam/main/kontrol/daftar/daftar.controller.js"></script>
     <script src="app/rekam/main/kontrol/edit/edit.controller.js"></script>
     <script src="app/rekam/main/kontrol/hapus/hapus.controller.js"></script>
     <script src="app/rekam/main/laboratorium/laboratorium.controller.js"></script>
-    <script src="app/account/login/login.controller.js"></script>
+    <script src="app/rekam/main/medis/medis.controller.js"></script>
     <script src="app/rekam/main/pengobatan/pengobatan.controller.js"></script>
     <script src="app/rekam/main/profil/profil.controller.js"></script>
     <script src="app/rekam/main/radiologi/radiologi.controller.js"></script>
     <script src="app/rekam/main/rehabilitasi/rehabilitasi.controller.js"></script>
     <script src="app/rekam/main/terapi/terapi.controller.js"></script>
     <script src="app/rekam/main/usul/usul.controller.js"></script>
-    <script src="app/account/settings/settings.controller.js"></script>
+    <script src="app/account/signup/signup.controller.js"></script>
     <script src="app/rekam/rekam.router.js"></script>
     <script src="app/rekam/rekapitulasi/daftar/daftar.controller.js"></script>
     <script src="app/rekam/sub/sub.controller.js"></script>
-    <script src="app/account/signup/signup.controller.js"></script>
+    <script src="app/admin/admin.controller.js"></script>
     <script src="components/auth/auth.service.js"></script>
     <script src="components/auth/interceptor.service.js"></script>
     <script src="components/auth/router.decorator.js"></script>
@@ -132,7 +144,7 @@
     <script src="components/navbar/navbar.directive.js"></script>
     <script src="components/socket/socket.service.js"></script>
     <script src="components/template/asideleft.controller.js"></script>
-    <script src="app/admin/admin.controller.js"></script>
+    <script src="app/account/account.js"></script>
     <script src="components/util/util.service.js"></script>
     <!-- endinjector -->
     <!-- endbuild -->

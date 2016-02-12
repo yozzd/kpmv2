@@ -1,0 +1,39 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Daftar Obat<a ui-sref=".create" class="btn btn-primary btn-sm pull-right"><span class="fa fa-plus"></span> Create</a></h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div ng-show="gd.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
+                <div class="table-responsive" ng-show="gd.datas.length>0">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width: 5%;">No</th>
+                                <th class="text-center">Nama Obat</th>
+                                <th class="text-center">Satuan</th>
+                                <th class="text-center">Masuk</th>
+                                <th class="text-center">Keluar</th>
+                                <th class="text-center">Stok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in gd.datas | orderBy:'obat'">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.obat}}</td>
+                                <td>{{data.satuan}}</td>
+                                <td class="text-right">{{data.masuk|number:'0'}}</td>
+                                <td class="text-right">{{data.keluar|number:'0'}}</td>
+                                <td class="text-right">{{data.masuk-data.keluar|number:'0'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

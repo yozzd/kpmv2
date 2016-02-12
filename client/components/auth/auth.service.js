@@ -172,13 +172,18 @@
                  * @param  {Function|*} callback - optional, function(is)
                  * @return {Bool|Promise}
                  */
-                isAdmin() {
+                /*isAdmin() {
                     return Auth.hasRole
                         .apply(Auth, [].concat.apply(['admin'], arguments));
+                },*/
+                isAdmin: function () {
+                    return currentUser.role === 'admin';
                 },
-                isRekam() {
-                    return Auth.hasRole
-                        .apply(Auth, [].concat.apply(['rekam'], arguments));
+                isGudang: function () {
+                    return currentUser.role === 'gudang';
+                },
+                isRekam: function () {
+                    return currentUser.role === 'rekam';
                 },
 
                 /**

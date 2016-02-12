@@ -9,7 +9,28 @@
 </header>
 
 <div class="container">
-    <ul class="list-inline" ng-show="main.isRekam()">
-        <li class="widget" ng-repeat="menu in main.rekam"><a ui-sref="{{menu.state}}" class="btn btn-default" title="{{menu.label}}"><span class="{{menu.icon}}"></span><span>{{menu.label}}</span></a></li>
-    </ul>
+    <div class="col-md-2" ng-show="main.isRekam()" ng-repeat="menu in main.rekam">
+        <div class="hpanel">
+            <a ui-sref="{{menu.state}}">
+                <div class="panel-body text-center">
+                    <div class="m">
+                        <span class="{{menu.icon}}"></span>
+                    </div>
+                </div>
+                {{menu.label}}</a>
+        </div>
+    </div>
+    <div class="col-md-2" ng-show="main.isGudang()" ng-repeat="menu in main.gudang">
+        <div class="hpanel">
+            <div class="panel-body">
+                <div class="text-center">
+                    <a ui-sref="{{menu.state}}">
+                        <div class="m">
+                            <span class="{{menu.icon}}"></span>
+                        </div>
+                        {{menu.label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

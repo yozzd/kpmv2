@@ -3,6 +3,7 @@
 angular.module('kpmApp', [
     'kpmApp.auth',
     'kpmApp.admin',
+    'kpmApp.gudang',
     'kpmApp.rekam',
     'kpmApp.constants',
     'ngCookies',
@@ -19,8 +20,7 @@ angular.module('kpmApp', [
     'ui.select',
     'ngFileUpload',
     'checklist-model',
-    'permission',
-    'timer'
+    'permission'
 ])
     .config(function ($urlRouterProvider, $locationProvider, RestangularProvider, blockUIConfig, uiSelectConfig) {
         $urlRouterProvider

@@ -43,9 +43,6 @@ module.exports = function(config) {
       'client/bower_components/ng-file-upload/ng-file-upload.js',
       'client/bower_components/checklist-model/checklist-model.js',
       'client/bower_components/angular-permission/dist/angular-permission.js',
-      'client/bower_components/momentjs/moment.js',
-      'client/bower_components/humanize-duration/humanize-duration.js',
-      'client/bower_components/angular-timer/dist/angular-timer.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

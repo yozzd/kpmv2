@@ -1,0 +1,69 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Daftar Obat Keluar<a ui-sref=".create" class="btn btn-primary btn-sm pull-right"><span class="fa fa-plus"></span> Create</a></h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div class="well">
+                    <table class="rt1">
+                        <tr>
+                            <td style="width: 20%;"><strong>Bulan</strong></td>
+                            <td style="width: 20%;"><strong>Tahun</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ui-select name="month" ng-model="gd.month.selected" ng-change="gd.change(gd.month.selected.name,gd.year.selected.name)">
+                                    <ui-select-match placeholder="Bulan...">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="month in gd.months | filter: $select.search">
+                                        <div ng-bind-html="month.name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </td>
+                            <td>
+                                <ui-select name="year" ng-model="gd.year.selected" ng-change="gd.change(gd.month.selected.name,gd.year.selected.name)">
+                                    <ui-select-match placeholder="Tahun...">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices repeat="year in gd.years | filter: $select.search">
+                                        <div ng-bind-html="year.name | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div ng-show="gd.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data!</div>
+                <div class="table-responsive" ng-show="gd.bydate.length>0">
+                    <table class="table table-condensed rt2">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center">Nama Obat</th>
+                                <th class="text-center">Satuan</th>
+                                <th class="text-center">Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat-start="date in gd.bydate">
+                                <td class="text-center" style="width: 3%; background: #eee;"><span class="fa fa-calendar"></span></td>
+                                <td style="background: #eee;" colspan="4">{{date|date:'dd MMMM yyyy'}}</td>
+                            </tr>
+                            <tr ng-repeat-start="keluar in gd.filter | orderBy: 'obat'" ng-hide="keluar.tanggal!=date">
+                                <td></td>
+                                <td><a ui-sref=".edit({id:keluar._id})">{{keluar.obat}}</a></td>
+                                <td class="text-center">{{keluar.satuan}}</td>
+                                <td class="text-right">{{keluar.jumlah|number:'0'}}</td>
+                            </tr>
+                            <tr ng-repeat-end></tr>
+                            <tr ng-repeat-end ng-hide="false">
+                                <td colspan="4" style="height: 28px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

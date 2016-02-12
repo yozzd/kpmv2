@@ -3,7 +3,7 @@
 
 angular.module('kpmApp.constants', [])
 
-.constant('appConfig', {userRoles:['guest','user','rekam','admin']})
+.constant('appConfig', {userRoles:['guest','user','gudang','rekam','admin']})
 
 ;
 })(angular);

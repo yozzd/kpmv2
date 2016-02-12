@@ -9,6 +9,10 @@ import path from 'path';
 
 export default function (app) {
     // Insert routes below
+    app.use('/api/keluars', require('./api/keluar'));
+    app.use('/api/masuks', require('./api/masuk'));
+    app.use('/api/satuans', require('./api/satuan'));
+    app.use('/api/obats', require('./api/obat'));
     app.use('/api/kontrols', require('./api/kontrol'));
     app.use('/api/diagnosas', require('./api/diagnosa'));
     app.use('/api/usuls', require('./api/usul'));

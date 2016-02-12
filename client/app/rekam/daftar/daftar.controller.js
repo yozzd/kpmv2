@@ -9,18 +9,6 @@ class RkDaftarController {
 
         this.getPasien();
         this.predicate = 'registrasi';
-
-        this.by = {};
-        this.bys = [
-            {
-                id: '1',
-                name: 'No. Registrasi'
-            },
-            {
-                id: '2',
-                name: 'Nama Pasien'
-            }
-        ];
     }
 
     getPasien() {

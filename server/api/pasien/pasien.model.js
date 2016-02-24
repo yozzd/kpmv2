@@ -103,6 +103,48 @@ var PasienSchema = new mongoose.Schema({
         default: '',
         trim: true
     },
+    resep: [{
+        tanggal: {
+            type: Date,
+            default: '',
+            trim: true
+        },
+        dokter: {
+            type: String,
+            default: '',
+            trim: true
+        },
+        image: {
+            type: String,
+            default: '',
+            trim: true
+        },
+        items: [{
+            oid: {
+                type: mongoose.Schema.Types.ObjectId
+            },
+            obat: {
+                type: String,
+                default: '',
+                trim: true
+            },
+            satuan: {
+                type: String,
+                default: '',
+                trim: true
+            },
+            keterangan: {
+                type: String,
+                default: '',
+                trim: true
+            },
+            jumlah: {
+                type: Number,
+                default: '',
+                trim: true
+            }
+        }]
+    }],
     _anamnesa: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Anamnesa'

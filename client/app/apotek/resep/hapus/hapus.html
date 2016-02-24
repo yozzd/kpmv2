@@ -1,0 +1,16 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="ResepHapusController as del">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger"><span class="fa fa-exclamation-triangle"></span> Perhatian</h4>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin akan menghapus data ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" ng-click="del.hapus(id)">Ya</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="$hide()">Tidak</button>
+            </div>
+        </div>
+    </div>
+</div>

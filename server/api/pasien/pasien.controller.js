@@ -25,6 +25,7 @@ var Usul = require('../usul/usul.model');
 var Kontrol = require('../kontrol/kontrol.model');
 
 var fs = require('bluebird').promisifyAll(require('fs-extra'));
+var easyimg = require('easyimage');
 var NodePDF = require('bluebird').promisifyAll(require('nodepdf'));
 var moment = require('moment');
 moment.locale('id');
@@ -357,6 +358,147 @@ export function destroy(req, res) {
                     pasien.removeAsync()
                 })
         })
+        .catch(handleError(res));
+}
+
+export function rcr(req, res) {
+    Pasien.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(data => {
+            data.resep.push({
+                tanggal: req.body.tanggal,
+                dokter: req.body.dokter,
+                items: req.body.items
+            })
+            return data.saveAsync();
+        })
+        .then(responseWithResult(res))
+        .catch(handleError(res));
+}
+
+export function rcrimg(req, res) {
+    var name = _.kebabCase(req.files.file.name.split('.')[0]) + '.' + req.files.file.name.split('.')[1].toLowerCase();
+
+    if (req.body._id) {
+        delete req.body._id;
+    }
+    Pasien.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(data => {
+            return fs.ensureDirAsync('./client/app/apotek/resep/images/' + data._id)
+                .then(() => {
+                    return data;
+                });
+        })
+        .then(data => {
+            easyimg.exec('convert -thumbnail 80 ' + req.files.file.path + './client/app/apotek/resep/images/' + data._id + '/thumb-' + name);
+            return data;
+        })
+        .then(data => {
+            easyimg.exec('convert ' + req.files.file.path + './client/app/apotek/resep/images/' + data._id + '/' + name);
+            return data;
+        })
+        .then(data => {
+            data.resep.push({
+                tanggal: req.body.tanggal,
+                dokter: req.body.dokter,
+                items: req.body.items,
+                image: name
+            })
+            return data.saveAsync();
+        })
+        .then(responseWithResult(res))
+        .catch(handleError(res));
+}
+
+export function rup(req, res) {
+
+    Pasien.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(data => {
+
+            var index = _.chain(data.resep).findIndex(function (v) {
+                return v._id.toString() === req.body.tid;
+            }).value();
+
+            data.resep[index].tanggal = req.body.tanggal;
+            data.resep[index].dokter = req.body.dokter;
+            data.resep[index].items = req.body.items;
+            data.saveAsync();
+
+            return data;
+        })
+        .then(responseWithResult(res))
+        .catch(handleError(res));
+}
+
+export function rupimg(req, res) {
+    var name = _.kebabCase(req.files.file.name.split('.')[0]) + '.' + req.files.file.name.split('.')[1].toLowerCase();
+
+    if (req.body._id) {
+        delete req.body._id;
+    }
+    Pasien.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(data => {
+            return fs.ensureDirAsync('./client/app/apotek/resep/images/' + data._id)
+                .then(() => {
+                    return data;
+                });
+        })
+        .then(data => {
+            easyimg.exec('convert -thumbnail 80 ' + req.files.file.path + './client/app/apotek/resep/images/' + data._id + '/thumb-' + name);
+            return data;
+        })
+        .then(data => {
+            easyimg.exec('convert ' + req.files.file.path + './client/app/apotek/resep/images/' + data._id + '/' + name);
+            return data;
+        })
+        .then(data => {
+
+            var index = _.chain(data.resep).findIndex(function (v) {
+                return v._id.toString() === req.body.tid;
+            }).value();
+
+            data.resep[index].tanggal = req.body.tanggal;
+            data.resep[index].dokter = req.body.dokter;
+            data.resep[index].items = req.body.items;
+            data.resep[index].image = name;
+            data.saveAsync();
+
+            return data;
+        })
+        .then(responseWithResult(res))
+        .catch(handleError(res));
+}
+
+export function rdel(req, res) {
+
+    Pasien.findByIdAsync(req.params.id)
+        .then(handleEntityNotFound(res))
+        .then(data => {
+
+            var filter = _.chain(data.resep).filter(function (v) {
+                return v._id.toString() === req.body.id;
+            }).value();
+
+            if (filter[0].image) {
+                return fs.removeAsync('./client/app/apotek/resep/images/' + data._id + '/' + filter[0].image)
+                    .then(() => {
+                        fs.removeAsync('./client/app/apotek/resep/images/' + data._id + '/thumb-' + filter[0].image);
+                        return data;
+                    })
+            } else {
+                return data;
+            }
+        })
+        .then(data => {
+            data.resep.pull(req.body.id);
+            data.saveAsync();
+
+            return data;
+        })
+        .then(responseWithResult(res))
         .catch(handleError(res));
 }
 

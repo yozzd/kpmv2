@@ -4,6 +4,7 @@ angular.module('kpmApp', [
     'kpmApp.auth',
     'kpmApp.admin',
     'kpmApp.gudang',
+    'kpmApp.apotek',
     'kpmApp.rekam',
     'kpmApp.constants',
     'ngCookies',

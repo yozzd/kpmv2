@@ -1,0 +1,63 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Daftar Pasien</h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div ng-show="ap.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
+                <div class="well" ng-show="ap.datas.length>0">
+                    <table class="st">
+                        <tr>
+                            <td style="width: 300px;">
+                                <input type="text" class="form-control input-sm" ng-model="search.registrasi" placeholder="Cari No. Registrasi..." />
+                            </td>
+                            <td style="width: 300px;">
+                                <input type="text" class="form-control input-sm" ng-model="search.nama" placeholder="Cari Nama Pasien..." />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="table-responsive" ng-show="ap.datas.length>0">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="sort" ng-click="ap.predicate='registrasi'; reverse=!reverse">
+                                    <span>No. Registrasi<span ng-show="ap.predicate=='registrasi'"><span ng-class="{'fa fa-angle-up pull-right':!reverse,'fa fa-angle-down pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="text-center">Tanggal Registrasi</th>
+                                <th class="sort" ng-click="ap.predicate='nama'; reverse=!reverse">
+                                    <span>Nama Pasien<span ng-show="ap.predicate=='nama'"><span ng-class="{'fa fa-angle-up pull-right':!reverse,'fa fa-angle-down pull-right':reverse}"></span></span>
+                                    </span>
+                                </th>
+                                <th class="text-center">Umur</th>
+                                <th class="text-center">Jenis Kelamin</th>
+                                <th class="text-center">Status Keluarga</th>
+                                <th class="text-center">Dikirim / Konsul</th>
+                                <th class="text-center">Pembiayaan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in ap.datas | orderBy:ap.predicate:reverse | filter:search">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.registrasi}}</td>
+                                <td>{{data.tanggal|date:'dd MMMM yyyy'}}</td>
+                                <td><a ui-sref=".resep({id:data._id})">{{data.nama}}</a></td>
+                                <td>{{data.umur}}</td>
+                                <td>{{data.jk}}</td>
+                                <td>{{data.sk}}</td>
+                                <td>{{data.dikirim}} {{data.kdikirim}}</td>
+                                <td>{{data.pembiayaan}} {{data.kpembiayaan}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

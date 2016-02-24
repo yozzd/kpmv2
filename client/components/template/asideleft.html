@@ -11,6 +11,9 @@
                 <div class="list-group" ng-show="aside.isGudang()">
                     <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in aside.gudang" class="list-group-item" title="{{menu.label}}"><span class="{{menu.icon}}"></span> {{menu.label}}</a>
                 </div>
+                <div class="list-group" ng-show="aside.isApotek()">
+                    <a ui-sref="{{menu.state}}" ui-sref-active-eq="active" ng-repeat="menu in aside.apotek" class="list-group-item" title="{{menu.label}}"><span class="{{menu.icon}}"></span> {{menu.label}}</a>
+                </div>
             </div>
         </div>
     </div>

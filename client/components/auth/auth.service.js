@@ -182,6 +182,9 @@
                 isGudang: function () {
                     return currentUser.role === 'gudang';
                 },
+                isApotek: function () {
+                    return currentUser.role === 'apotek';
+                },
                 isRekam: function () {
                     return currentUser.role === 'rekam';
                 },

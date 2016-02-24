@@ -1,0 +1,91 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ncy-breadcrumb></ncy-breadcrumb>
+            <h4>Edit Resep</h4>
+            <hr/>
+        </div>
+        <form class="form" name="form" ng-submit="ap.submit(form)" novalidate>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="form-group" ng-class="{'has-error':form.tanggal.$error.required && ap.submitted}">
+                        <label>Tanggal <span class="req">*</span></label>
+                        <input type="text" name="tanggal" class="form-control input-sm" ng-model="ap.data.tanggal" data-date-format="dd MMMM yyyy" data-autoclose="true" bs-datepicker required>
+                        <p class="help-block" ng-show="form.tanggal.$error.required && ap.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':form.dokter.$error.required && ap.submitted}">
+                        <label>Nama Dokter <span class="req">*</span></label>
+                        <input type="text" name="dokter" class="form-control input-sm" ng-model="ap.data.dokter" required>
+                        <p class="help-block" ng-show="form.dokter.$error.required && ap.submitted">
+                            <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Gambar Resep</label>
+                        <input type="file" ngf-select ng-model="ap.file" name="file" accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFiles">
+                        <p class="help-block" ng-show="form.file.$error.maxSize">
+                            <span class="fa fa-times-circle fa-fw"></span> Ukuran file terlalu besar {{errorFiles[0].size / 1000000|number:1}}MB : maksimum 2MB
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a ng-href="{{ap.data.image && 'app/apotek/resep/images/'+ap.id+'/'+ap.data.image || 'assets/images/noimage.jpg'}}" target="_blank" title="{{ap.data.image}}">
+                        <img class="img-thumbnail" ng-src="{{ap.data.image && 'app/apotek/resep/images/'+ap.id+'/thumb-'+ap.data.image || 'assets/images/noimage.jpg'}}">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Obat</label>
+                        <div>
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="ap.tambah()" title="Tambah Obat"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-warning btn-xs" ng-show="ap.arr.length>1" ng-click="ap.kurang()" title="Kurangi Obat"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div ng-repeat="key in ap.arr">
+                        <div class="form-group">
+                            <label>Nama Obat</label>
+                            <ui-select name="obat" ng-model="ap.arr[$index].obat.selected" theme="select2">
+                                <ui-select-match>{{$select.selected.obat}} {{$select.selected.satuan}}</ui-select-match>
+                                <ui-select-choices repeat="data in ap.obats | filter: {obat: $select.search} | orderBy:'obat'">
+                                    <div class="pull-left" ng-bind-html="data.obat | highlight: $select.search"></div>
+                                    <div class="pull-right" ng-bind="data.satuan"></div>
+                                    <div class="clearfix"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="form-group">
+                            <label>Jumlah</label>
+                            <input type="text" name="jumlah" class="form-control input-sm" ng-model="ap.arr[$index].jumlah">
+                            <p class="help-block" ng-show="form.jumlah.$error.required && ap.submitted">
+                                <span class="fa fa-times-circle fa-fw"></span> Tidak boleh kosong
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label>Keterangan</label>
+                            <input type="text" name="keterangan" class="form-control input-sm" ng-model="ap.arr[$index].keterangan">
+                        </div>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr/>
+                <button class="btn btn-primary btn-sm" type="submit">Update</button>
+                <button type="button" ng-click="ap.showmodal(ap.data._id)" class="btn btn-danger btn-sm">Hapus</button>
+            </div>
+        </form>
+    </div>
+</div>

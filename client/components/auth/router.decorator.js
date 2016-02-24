@@ -62,6 +62,19 @@
                     });
                     return deferred.promise;
                 })
+                .defineRole('apotek', function () {
+                    var deferred = $q.defer();
+                    Auth.getCurrentUser(function (data) {
+                        if (data.role === 'apotek') {
+                            deferred.resolve();
+                        } else {
+                            deferred.reject();
+                        }
+                    }, function () {
+                        deferred.reject();
+                    });
+                    return deferred.promise;
+                })
                 .defineRole('rekam', function () {
                     var deferred = $q.defer();
                     Auth.getCurrentUser(function (data) {

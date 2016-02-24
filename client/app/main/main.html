@@ -31,4 +31,15 @@
             </div>
         </div>
     </div>
+    <div class="col-md-2" ng-show="main.isApotek()" ng-repeat="menu in main.apotek">
+        <div class="hpanel">
+            <div class="panel-body text-center">
+                <a ui-sref="{{menu.state}}">
+                    <div class="m">
+                        <span class="{{menu.icon}}"></span>
+                    </div>
+                    {{menu.label}}</a>
+            </div>
+        </div>
+    </div>
 </div>

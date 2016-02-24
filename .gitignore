@@ -7,3 +7,4 @@ dist
 /server/config
 npm-debug.log
 client/app/rekam/main/files
+client/app/apotek/resep/images

@@ -42,12 +42,27 @@ class AsideLeftController {
         'icon': 'fa fa-cog fa-fw'
     }];
 
+    apotek = [{
+        'label': 'Daftar Pasien',
+        'state': 'apotek',
+        'icon': 'fa fa-th-list fa-fw'
+    }, {
+        'label': 'Daftar Obat',
+        'state': 'apotek.obat',
+        'icon': 'fa fa-sign-in fa-fw'
+    }, {
+        'label': 'Settings',
+        'state': 'settings',
+        'icon': 'fa fa-cog fa-fw'
+    }];
+
     //end-non-standard
 
     constructor(Auth) {
         this.isLoggedIn = Auth.isLoggedIn;
         this.isAdmin = Auth.isAdmin;
         this.isGudang = Auth.isGudang;
+        this.isApotek = Auth.isApotek;
         this.isRekam = Auth.isRekam;
         this.getCurrentUser = Auth.getCurrentUser;
     }

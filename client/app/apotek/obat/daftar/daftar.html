@@ -1,0 +1,39 @@
+<navbar></navbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Daftar Obat</h4>
+            <hr/>
+        </div>
+        <div class="col-md-12">
+            <div class="blockui" block-ui="block">
+                <div ng-show="ap.nodata" class="alert alert-info"><span class="fa fa-exclamation-circle"></span> Tidak ada data! <a ui-sref=".create">Create</a></div>
+                <div class="table-responsive" ng-show="ap.datas.length>0">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width: 5%;">No</th>
+                                <th class="text-center">Nama Obat</th>
+                                <th class="text-center">Satuan</th>
+                                <th class="text-center">Masuk</th>
+                                <th class="text-center">Keluar</th>
+                                <th class="text-center">Stok</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in ap.arr2 | orderBy:'obat'">
+                                <td class="text-center">{{$index+1}}</td>
+                                <td>{{data.obat}}</td>
+                                <td>{{data.satuan}}</td>
+                                <td class="text-right">{{data.jumlah|number:'0'}}</td>
+                                <td class="text-right">{{data.terpakai|number:'0'}}</td>
+                                <td class="text-right">{{data.jumlah-data.terpakai|number:'0'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

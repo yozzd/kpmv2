@@ -6,6 +6,7 @@ class MainController {
         this.isLoggedIn = Auth.isLoggedIn;
         this.isAdmin = Auth.isAdmin;
         this.isGudang = Auth.isGudang;
+        this.isApotek = Auth.isApotek;
         this.isRekam = Auth.isRekam;
         this.getCurrentUser = Auth.getCurrentUser;
 
@@ -43,6 +44,20 @@ class MainController {
             'label': 'Daftar Obat Keluar',
             'state': 'gudang.keluar',
             'icon': 'fa fa-sign-out fa-4x'
+        }, {
+            'label': 'Settings',
+            'state': 'settings',
+            'icon': 'fa fa-cog fa-4x'
+        }];
+
+        this.apotek = [{
+            'label': 'Daftar Pasien',
+            'state': 'apotek',
+            'icon': 'fa fa-th-list fa-4x'
+        }, {
+            'label': 'Daftar Obat',
+            'state': 'apotek.obat',
+            'icon': 'fa fa-sign-in fa-4x'
         }, {
             'label': 'Settings',
             'state': 'settings',

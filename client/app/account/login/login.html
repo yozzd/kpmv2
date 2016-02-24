@@ -5,7 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <h1>Login</h1>
+                    <div class="text-center">
+                        <ng-letter-avatar data="Medik" shape="round" height="50" width="50" fontSize="30"></ng-letter-avatar>
+                    </div>
+                    <h3 class="text-center">Sign in</h3>
                     <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
                         <div class="form-group">
                             <label>Username</label>
@@ -28,7 +31,6 @@
                             <button class="btn btn-primary btn-sm btn-block" type="submit"><span class="fa fa-sign-in fa-fw"></span> Login</button>
                         </div>
                     </form>
-                    <hr/>
                     <div class="footer">
                         <div>Copyright &copy; {{vm.y1}}<span ng-show="vm.y2>vm.y1"> - {{vm.y2}}</span></div>
                         <div>UPT. Kesehatan Paru Masyarakat Provinsi Sumatera Utara</div>

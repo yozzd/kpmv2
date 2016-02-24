@@ -32,7 +32,7 @@ class ApDaftarObatController {
 
     getObat() {
         this.block.start();
-        this.Restangular.all('keluars').customGETLIST()
+        this.Restangular.all('obats').customGETLIST()
             .then(datas => {
                 this.$timeout(() => {
                     this.datas = datas;
@@ -49,7 +49,7 @@ class ApDaftarObatController {
                             id: v._id,
                             obat: v.obat,
                             satuan: v.satuan,
-                            jumlah: v.jumlah,
+                            masuk: v.keluar,
                             terpakai: dd,
                         });
                     });

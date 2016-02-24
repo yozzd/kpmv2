@@ -53,7 +53,7 @@ class ApResepEditController {
     }
 
     getObat() {
-        this.Restangular.all('keluars').customGETLIST()
+        this.Restangular.all('obats').customGETLIST()
             .then(datas => {
                 this.obats = datas;
             });

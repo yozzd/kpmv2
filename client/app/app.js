@@ -21,7 +21,8 @@ angular.module('kpmApp', [
     'ui.select',
     'ngFileUpload',
     'checklist-model',
-    'permission'
+    'permission',
+    'ngLetterAvatar'
 ])
     .config(function ($urlRouterProvider, $locationProvider, RestangularProvider, blockUIConfig, uiSelectConfig) {
         $urlRouterProvider
